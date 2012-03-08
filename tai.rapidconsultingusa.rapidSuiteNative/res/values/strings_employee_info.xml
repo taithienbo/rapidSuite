@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+<string name="employee_id">Employee Id</string>
+<string name="name">Name</string>
+<string name="status">Status</string>
+<string name="lastStatusUpdate">Last Status Update</string>
+<string name="gender">Gender</string>
+<string name="dateOfBirth">Date of Birth</string>
+<string name="department">Department</string>
+<string name="position">Position</string>
+<string name="phoneNumber">Phone Number</string>
+<string name="email">Email</string>
+<string name="address">Address</string>
+<string name="currentLocation">Current Location</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="employee_info_array">
+		<item>Employee Id</item>
+		<item>Name</item>
+		<item>Status</item>
+		<item>Last Status Update</item>
+		<item>Gender</item>
+		<item>Date of Birth</item>
+		<item>Department</item>
+		<item>Position</item>
+		<item>Phone Number</item>
+		<item>Email</item>
+		<item>Address</item>
+		<item>Current Location</item>
+	</string-array>
+</resources>

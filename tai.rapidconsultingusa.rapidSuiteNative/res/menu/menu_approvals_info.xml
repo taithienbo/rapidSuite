@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_approve" android:title="@string/action_approve"
+		android:showAsAction="ifRoom|withText" />
+	<item android:id="@+id/menu_reject" android:title="@string/action_reject"
+		android:showAsAction="ifRoom|withText" />
+	<item android:id="@+id/menu_set_as_pending" android:title="@string/action_set_as_pending"
+		android:showAsAction="ifRoom|withText" />
+</menu>

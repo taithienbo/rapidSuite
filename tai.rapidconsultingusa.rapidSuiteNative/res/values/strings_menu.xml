@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<resources>
+	<!--Menu Items Title for approvals_info -->
+	
+	<string name="action_approve">Approve</string>
+	<string name="action_reject">Reject</string>
+	<string name="action_set_as_pending">Set As Pending</string>
+
+<!-- Menu item title for log_out -->
+
+    <string name="action_logout">Log Out</string>
+    
+    <!-- Menu item title for View Employee Location -->
+    <string name="action_view_location">View Location</string>
+</resources>
+	

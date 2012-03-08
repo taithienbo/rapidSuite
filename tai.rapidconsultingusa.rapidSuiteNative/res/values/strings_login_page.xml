@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="login_to_rapidSuite">Login To RapidSuite</string>
+    <string name="user_name">User Name</string>
+    <string name="user_pass">Password</string>
+    <string name="login_button">Login</string>
+    <string name="logout">Thanks for using RapidSuite></string>
+  
+
+</resources>
