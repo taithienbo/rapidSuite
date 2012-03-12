@@ -210,10 +210,10 @@ public class ModuleFragment extends ListFragment {
 		case 5: 	// ApprovalsHistory
 			newFragment = new ApprovalsFragment(PROCESSED);
 			break;
-		case 6:		// Reports
+		//case 6:		// Reports	Temporary disabled
 		
-			break;
-		case 7:
+		//	break;
+		case  6://7:
 			newFragment = new SettingsFragment();
 			break;
 		}
