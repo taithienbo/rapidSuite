@@ -213,7 +213,7 @@ public class ModuleFragment extends ListFragment {
 		//case 6:		// Reports	Temporary disabled
 		
 		//	break;
-		case  6://7:
+		case 6 ://7:
 			newFragment = new SettingsFragment();
 			break;
 		}

@@ -22,18 +22,21 @@ public final class R {
         public static final int approvals_gray=0x7f020002;
         public static final int approvals_green=0x7f020003;
         public static final int approvals_red=0x7f020004;
-        public static final int employee=0x7f020005;
-        public static final int home=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int inventory=0x7f020008;
-        public static final int inventory_gray=0x7f020009;
-        public static final int ns_textured_background=0x7f02000a;
-        public static final int rapid=0x7f02000b;
-        public static final int rapidsuite_login_horizontal=0x7f02000c;
-        public static final int rapidsuite_login_vertical=0x7f02000d;
-        public static final int reports=0x7f02000e;
-        public static final int settings=0x7f02000f;
-        public static final int splash_welcome_screen_portrait=0x7f020010;
+        public static final int dark_border=0x7f020005;
+        public static final int employee=0x7f020006;
+        public static final int home=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int inventory=0x7f020009;
+        public static final int inventory_gray=0x7f02000a;
+        public static final int login_1024_768=0x7f02000b;
+        public static final int login_768_1024=0x7f02000c;
+        public static final int ns_textured_background=0x7f02000d;
+        public static final int rapid=0x7f02000e;
+        public static final int rapidsuite_login_horizontal=0x7f02000f;
+        public static final int rapidsuite_login_vertical=0x7f020010;
+        public static final int reports=0x7f020011;
+        public static final int settings=0x7f020012;
+        public static final int splash_welcome_screen_portrait=0x7f020013;
     }
     public static final class id {
         public static final int employeesFragment=0x7f080004;
@@ -42,18 +45,19 @@ public final class R {
         public static final int imageView_employee=0x7f080007;
         public static final int imageView_inventory=0x7f08000c;
         public static final int imageView_rapid=0x7f080009;
+        public static final int linearLayout_modules_list_layout=0x7f080015;
         public static final int loginPage_button_login=0x7f080010;
         public static final int loginPage_exitText_user_name=0x7f08000e;
         public static final int loginPage_exitText_user_pass=0x7f08000f;
         public static final int mapViewParentLinearLayout=0x7f080013;
         public static final int mapview=0x7f080014;
-        public static final int menu_approve=0x7f080017;
-        public static final int menu_location=0x7f08001a;
-        public static final int menu_logout=0x7f08001b;
-        public static final int menu_reject=0x7f080018;
-        public static final int menu_set_as_pending=0x7f080019;
+        public static final int menu_approve=0x7f080018;
+        public static final int menu_location=0x7f08001b;
+        public static final int menu_logout=0x7f08001c;
+        public static final int menu_reject=0x7f080019;
+        public static final int menu_set_as_pending=0x7f08001a;
         public static final int moduleFragment=0x7f080011;
-        public static final int module_icon=0x7f080015;
+        public static final int module_icon=0x7f080016;
         public static final int textView_approvals_info_field=0x7f080000;
         public static final int textView_approvals_info_value=0x7f080001;
         public static final int textView_approvals_item_name=0x7f080003;
@@ -63,7 +67,7 @@ public final class R {
         public static final int textView_inventory_info_field=0x7f08000a;
         public static final int textView_inventory_info_value=0x7f08000b;
         public static final int textView_inventory_name=0x7f08000d;
-        public static final int textView_module_item2=0x7f080016;
+        public static final int textView_module_item2=0x7f080017;
     }
     public static final class layout {
         public static final int approvals_info_list_layout=0x7f030000;
@@ -150,9 +154,14 @@ public final class R {
         public static final int user_pass=0x7f050011;
     }
     public static final class style {
-        public static final int custome_theme=0x7f060002;
-        public static final int editText_user_authentication_horizontal=0x7f060000;
-        public static final int editText_user_authentication_vertical=0x7f060001;
-        public static final int module_list_item=0x7f060003;
+        public static final int IconStylePic=0x7f060000;
+        public static final int IconStyleReg=0x7f060001;
+        public static final int ListStyleLand=0x7f060002;
+        public static final int ListStylePort=0x7f060003;
+        public static final int TextStyle=0x7f060008;
+        public static final int custome_theme=0x7f060006;
+        public static final int editText_user_authentication_horizontal=0x7f060004;
+        public static final int editText_user_authentication_vertical=0x7f060005;
+        public static final int module_list_item=0x7f060007;
     }
 }

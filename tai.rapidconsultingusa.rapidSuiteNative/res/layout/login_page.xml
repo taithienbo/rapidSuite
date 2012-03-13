@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-    android:background="@drawable/rapidsuite_login_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_768_1024"
     android:orientation="vertical" >
 
     <EditText
         android:id="@+id/loginPage_exitText_user_name"
-       style="@style/editText_user_authentication_vertical"
+        style="@style/editText_user_authentication_vertical"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="180dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
+        android:layout_marginTop="250dp"
         android:hint="@string/user_name" >
     </EditText>
 
@@ -19,16 +19,16 @@
         android:id="@+id/loginPage_exitText_user_pass"
         style="@style/editText_user_authentication_vertical"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="180dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
         android:hint="@string/user_pass" >
     </EditText>
 
     <Button
         android:id="@+id/loginPage_button_login"
         style="@style/editText_user_authentication_vertical"
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="180dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
         android:text="@string/login_button" >
     </Button>
 
