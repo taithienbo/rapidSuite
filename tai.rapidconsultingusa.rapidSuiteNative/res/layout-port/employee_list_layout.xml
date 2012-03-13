@@ -4,11 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <SearchView
+        android:id="@+id/searchView_employeeSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:iconifiedByDefault="false"
+        android:divider="@drawable/dark_border"
+        android:queryHint="@string/search_hint" >
+    </SearchView>
+
     <ListView
         android:id="@id/android:list"
-        style="@style/ListStyleLand"
+        style="@style/ListStylePort"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:drawSelectorOnTop="true" />
 

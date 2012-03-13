@@ -35,63 +35,70 @@ public final class R {
         public static final int rapidsuite_login_horizontal=0x7f02000f;
         public static final int rapidsuite_login_vertical=0x7f020010;
         public static final int reports=0x7f020011;
-        public static final int settings=0x7f020012;
-        public static final int splash_welcome_screen_portrait=0x7f020013;
+        public static final int rounded_corner=0x7f020012;
+        public static final int settings=0x7f020013;
+        public static final int splash_welcome_screen_portrait=0x7f020014;
     }
     public static final class id {
-        public static final int employeesFragment=0x7f080004;
-        public static final int fragment_container=0x7f080012;
-        public static final int imageView_approvals_icon=0x7f080002;
-        public static final int imageView_employee=0x7f080007;
-        public static final int imageView_inventory=0x7f08000c;
-        public static final int imageView_rapid=0x7f080009;
-        public static final int linearLayout_modules_list_layout=0x7f080015;
-        public static final int loginPage_button_login=0x7f080010;
-        public static final int loginPage_exitText_user_name=0x7f08000e;
-        public static final int loginPage_exitText_user_pass=0x7f08000f;
-        public static final int mapViewParentLinearLayout=0x7f080013;
-        public static final int mapview=0x7f080014;
-        public static final int menu_approve=0x7f080018;
-        public static final int menu_location=0x7f08001b;
-        public static final int menu_logout=0x7f08001c;
-        public static final int menu_reject=0x7f080019;
-        public static final int menu_set_as_pending=0x7f08001a;
-        public static final int moduleFragment=0x7f080011;
-        public static final int module_icon=0x7f080016;
-        public static final int textView_approvals_info_field=0x7f080000;
-        public static final int textView_approvals_info_value=0x7f080001;
-        public static final int textView_approvals_item_name=0x7f080003;
-        public static final int textView_employee_field=0x7f080005;
-        public static final int textView_employee_row=0x7f080008;
-        public static final int textView_employee_value=0x7f080006;
-        public static final int textView_inventory_info_field=0x7f08000a;
-        public static final int textView_inventory_info_value=0x7f08000b;
-        public static final int textView_inventory_name=0x7f08000d;
-        public static final int textView_module_item2=0x7f080017;
+        public static final int approvals_fragment=0x7f080000;
+        public static final int employeesFragment=0x7f080005;
+        public static final int fragment_container=0x7f080014;
+        public static final int imageView_approvals_icon=0x7f080003;
+        public static final int imageView_employee=0x7f080009;
+        public static final int imageView_inventory=0x7f08000e;
+        public static final int imageView_rapid=0x7f08000b;
+        public static final int linearLayout_modules_list_layout=0x7f080018;
+        public static final int listView_map_info=0x7f080017;
+        public static final int loginPage_button_login=0x7f080012;
+        public static final int loginPage_exitText_user_name=0x7f080010;
+        public static final int loginPage_exitText_user_pass=0x7f080011;
+        public static final int mapViewParentLinearLayout=0x7f080015;
+        public static final int mapview=0x7f080016;
+        public static final int menu_approve=0x7f08001b;
+        public static final int menu_location=0x7f08001e;
+        public static final int menu_logout=0x7f08001f;
+        public static final int menu_reject=0x7f08001c;
+        public static final int menu_set_as_pending=0x7f08001d;
+        public static final int moduleFragment=0x7f080013;
+        public static final int module_icon=0x7f080019;
+        public static final int searchView_employeeSearchView=0x7f080008;
+        public static final int textView_approvals_info_field=0x7f080001;
+        public static final int textView_approvals_info_value=0x7f080002;
+        public static final int textView_approvals_item_name=0x7f080004;
+        public static final int textView_employee_field=0x7f080006;
+        public static final int textView_employee_row=0x7f08000a;
+        public static final int textView_employee_value=0x7f080007;
+        public static final int textView_inventory_info_field=0x7f08000c;
+        public static final int textView_inventory_info_value=0x7f08000d;
+        public static final int textView_inventory_name=0x7f08000f;
+        public static final int textView_module_item2=0x7f08001a;
     }
     public static final class layout {
-        public static final int approvals_info_list_layout=0x7f030000;
-        public static final int approvals_info_row_layout=0x7f030001;
-        public static final int approvals_list_layout=0x7f030002;
-        public static final int approvals_row_layout=0x7f030003;
-        public static final int employee_fragment_layout=0x7f030004;
-        public static final int employee_info_list_layout=0x7f030005;
-        public static final int employee_info_row_layout=0x7f030006;
-        public static final int employee_list_layout=0x7f030007;
-        public static final int employee_row_layout=0x7f030008;
-        public static final int home_layout=0x7f030009;
-        public static final int inventory_info_list_layout=0x7f03000a;
-        public static final int inventory_info_row_layout=0x7f03000b;
-        public static final int inventory_list_layout=0x7f03000c;
-        public static final int inventory_row_layout=0x7f03000d;
-        public static final int login_page=0x7f03000e;
-        public static final int main_activity_layout=0x7f03000f;
-        public static final int map_layout=0x7f030010;
-        public static final int module_list_layout=0x7f030011;
-        public static final int module_row_layout=0x7f030012;
-        public static final int settings_layout=0x7f030013;
-        public static final int splash_screen_layout=0x7f030014;
-        public static final int test=0x7f030015;
+        public static final int approvals_fragment_layout=0x7f030000;
+        public static final int approvals_info_list_layout=0x7f030001;
+        public static final int approvals_info_row_layout=0x7f030002;
+        public static final int approvals_list_layout=0x7f030003;
+        public static final int approvals_row_layout=0x7f030004;
+        public static final int employee_fragment_layout=0x7f030005;
+        public static final int employee_info_list_layout=0x7f030006;
+        public static final int employee_info_row_layout=0x7f030007;
+        public static final int employee_list_layout=0x7f030008;
+        public static final int employee_row_layout=0x7f030009;
+        public static final int home_layout=0x7f03000a;
+        public static final int inventory_info_list_layout=0x7f03000b;
+        public static final int inventory_info_row_layout=0x7f03000c;
+        public static final int inventory_list_layout=0x7f03000d;
+        public static final int inventory_row_layout=0x7f03000e;
+        public static final int login_page=0x7f03000f;
+        public static final int main_activity_layout=0x7f030010;
+        public static final int map_layout=0x7f030011;
+        public static final int module_list_layout=0x7f030012;
+        public static final int module_row_layout=0x7f030013;
+        public static final int searchable=0x7f030014;
+        public static final int settings_layout=0x7f030015;
+        public static final int shape_rounded_corner=0x7f030016;
+        public static final int splash_screen_layout=0x7f030017;
+        public static final int test=0x7f030018;
     }
     public static final class menu {
         public static final int menu_approvals_info=0x7f070000;
@@ -111,29 +118,30 @@ public final class R {
          */
         public static final int action_view_location=0x7f050019;
         public static final int address=0x7f05000c;
+        public static final int app_label=0x7f05001a;
         public static final int app_name=0x7f050000;
         public static final int currentLocation=0x7f05000d;
-        public static final int database_configurations=0x7f05001a;
+        public static final int database_configurations=0x7f05001c;
         /**  Database Host Information 
          */
-        public static final int database_host=0x7f05001b;
-        public static final int database_host_dialog_title=0x7f05001d;
-        public static final int database_host_summary=0x7f05001c;
+        public static final int database_host=0x7f05001d;
+        public static final int database_host_dialog_title=0x7f05001f;
+        public static final int database_host_summary=0x7f05001e;
         /**  Database Name 
          */
-        public static final int database_name=0x7f05001e;
-        public static final int database_name_dialog_title=0x7f050020;
-        public static final int database_name_summary=0x7f05001f;
+        public static final int database_name=0x7f050020;
+        public static final int database_name_dialog_title=0x7f050022;
+        public static final int database_name_summary=0x7f050021;
         /**  Database Password 
          */
-        public static final int database_pass=0x7f050024;
-        public static final int database_pass_dialog_title=0x7f050026;
-        public static final int database_pass_summary=0x7f050025;
+        public static final int database_pass=0x7f050026;
+        public static final int database_pass_dialog_title=0x7f050028;
+        public static final int database_pass_summary=0x7f050027;
         /**  Database User 
          */
-        public static final int database_user=0x7f050021;
-        public static final int database_user_dialog_title=0x7f050023;
-        public static final int database_user_summary=0x7f050022;
+        public static final int database_user=0x7f050023;
+        public static final int database_user_dialog_title=0x7f050025;
+        public static final int database_user_summary=0x7f050024;
         public static final int dateOfBirth=0x7f050007;
         public static final int department=0x7f050008;
         public static final int email=0x7f05000b;
@@ -149,6 +157,7 @@ public final class R {
         public static final int phoneNumber=0x7f05000a;
         public static final int position=0x7f050009;
         public static final int rapid=0x7f05000e;
+        public static final int search_hint=0x7f05001b;
         public static final int status=0x7f050004;
         public static final int user_name=0x7f050010;
         public static final int user_pass=0x7f050011;

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<style name="ListStyleLand">
-	    <item name="android:layout_marginLeft">100dp</item>
-	    <item name="android:layout_marginRight">100dp</item>
+	    <item name="android:layout_marginLeft">50dp</item>
+	    <item name="android:layout_marginRight">50dp</item>
 	</style>
 	
 		<style name="ListStylePort">
-	    <item name="android:layout_marginLeft">15dp</item>
-	    <item name="android:layout_marginRight">15dp</item>
+	    <item name="android:layout_marginLeft">10dp</item>
+	    <item name="android:layout_marginRight">10dp</item>
 	</style>
 
 </resources>
