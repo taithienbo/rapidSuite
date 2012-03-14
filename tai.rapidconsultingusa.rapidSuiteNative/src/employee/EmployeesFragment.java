@@ -43,13 +43,20 @@ public class EmployeesFragment extends ListFragment {
 	
 	private OnModuleItemSelectedListener module_item_listener;
 
+	private static final String CURRENT_SELECTED_EMPLOYEE = "current_selected_employee";
+	
+	private static int current_item_position_selected = 0;
+	
+	private static final String LOG_INFO_TAG = "EmployeesFragment";
 
 
-
-
+	
+	
+	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState){
-
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
+	{
+		super.onCreateView(inflater, viewgroup, savedInstanceState);
 
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.employee_list_layout, null);
@@ -60,20 +67,38 @@ public class EmployeesFragment extends ListFragment {
 		
 		lv.setAdapter(new EmployeeListAdapter<Employee>(getActivity().getBaseContext(), R.layout.employee_row_layout, R.id.textView_employee_row, 
 				employee_list));
+		
+		Log.d (LOG_INFO_TAG, "onCreateView() called");
 	
+	
+		if ( savedInstanceState != null)
+		{
+			current_item_position_selected = savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE);
+			showDetails(current_item_position_selected);
+		}
+
 		return view;
 	}
 	
+	
 
 	@Override 
-	public void onListItemClick(ListView l, View v, int position, long id){
+	public void onListItemClick(ListView l, View v, int position, long id)
+	{
+		showDetails(position);
+	}
 
+
+	private void showDetails(int position)
+	{
+		// Remember the current selected position to restore state if the view
+		// is changed 
+		
+		current_item_position_selected = position;
+		
 		ListView lv = getListView();
 		lv.setItemChecked(position, true);
-		lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		lv.setItemChecked(position, true);
-		lv.setClickable(true);
-		lv.setSelection(position);
+
 		
 		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
 		
@@ -81,14 +106,25 @@ public class EmployeesFragment extends ListFragment {
 		FragmentManager fm = this.getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		
-	//	Fragment fragment_container = (Fragment)fm.findFragmentById(R.id.fragment_container);
+		// We know that when this method is called, the container is either 
+		// null or it is an instance of EmployeesInfoFragment
+	//	EmployeeInfoFragment fragment =  (EmployeeInfoFragment) fm.findFragmentById(R.id.fragment_container);
 		
-		ft.replace(R.id.fragment_container, new EmployeeInfoFragment(e));
-		ft.addToBackStack(null);
-		ft.commit();
+		Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 		
-	//	Toast.makeText(getActivity(), e.getName(), Toast.LENGTH_LONG).show();
+		if ( fragment == null || fragment.getClass().getName() != EmployeeInfoFragment.class.getName())
+		{
+			fragment = EmployeeInfoFragment.getEmployeesFragmentInstance(e);
+			ft.replace(R.id.fragment_container, fragment);
+			ft.setTransition ( FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			ft.commit();
+		
+		}
+	
+		
 
+		
+		Log.d(LOG_INFO_TAG, "showDetails() called");
 	}
 
 
@@ -102,7 +138,52 @@ public class EmployeesFragment extends ListFragment {
 	
 	
 	@Override
-	public void onAttach(Activity activity){
+	public void onDestroyView()
+	{
+		super.onDestroyView();
+		Log.d(LOG_INFO_TAG, "onDestroyView() cakked");
+	}
+	
+	
+	@Override
+	public void onDetach()
+	{
+		super.onDetach();
+		Log.d(LOG_INFO_TAG, "onDetach() called");
+	}
+	
+	@Override
+	public void onActivityCreated (Bundle savedInstanceState)
+	{
+		super.onActivityCreated (savedInstanceState);
+		
+		if ( savedInstanceState != null)
+		{
+			current_item_position_selected = savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE, 0);
+			showDetails ( current_item_position_selected );
+		}
+		
+		Log.d(LOG_INFO_TAG, "onActivityCreated called");
+	}
+	
+
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState)
+	{
+		super.onSaveInstanceState(outState);
+		Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
+
+
+		outState.putInt(CURRENT_SELECTED_EMPLOYEE, current_item_position_selected);
+
+	}
+	
+	
+	
+	@Override
+	public void onAttach(Activity activity)
+	{
 		super.onAttach(activity);
 		Log.d(LOG_INFO_TAG, "onAttach() called");
 		try{
@@ -159,7 +240,8 @@ public class EmployeesFragment extends ListFragment {
 
 
 		public EmployeeListAdapter(Context context, int resource,
-				int textViewResourceId, List<T> employee_list) {
+				int textViewResourceId, List<T> employee_list) 
+		{
 			super(context, resource, textViewResourceId, employee_list);
 			// TODO Auto-generated constructor stub
 		
@@ -167,7 +249,7 @@ public class EmployeesFragment extends ListFragment {
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.employee_list = (ArrayList<Employee>) employee_list;
-			Log.i("EmployeeFragment Info", "EmployeeListAdapter.constructor called");
+		//	Log.i("EmployeeFragment Info", "EmployeeListAdapter.constructor called");
 		}
 
 
@@ -176,11 +258,11 @@ public class EmployeesFragment extends ListFragment {
 		//	Log.i("EmployeeFragment Info", "EmployeeListAdapter.getView() called");
 			View v = convertView;
 
-			if(v == null){
+			if(v == null)
+			{
 				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = li.inflate(R.layout.employee_row_layout, null);
 			}
-
 		
 			TextView employee_name = (TextView) v.findViewById(R.id.textView_employee_row);
 				
@@ -195,5 +277,5 @@ public class EmployeesFragment extends ListFragment {
 	//	private static final String LOG_INFO_TAG = "EmploeesFragmentInfo";
 		
 	}
-	private static final String LOG_INFO_TAG = "EmployeesFragmentInfo";
+	
 }

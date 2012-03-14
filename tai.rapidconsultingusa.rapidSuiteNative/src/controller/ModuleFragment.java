@@ -72,15 +72,21 @@ public class ModuleFragment extends ListFragment {
 
 		return view;
 	}
+	
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		Log.d(LOG_INFO_TAG, "onActivityCreated() called");
+	//	Log.d(LOG_INFO_TAG, "onActivityCreated() called");
 		
-		if(savedInstanceState != null )
-			current_selected_item_position = savedInstanceState.getInt(CURRENT_ITEM_POSITION);
+		if(savedInstanceState != null)
+		{
+			current_selected_item_position = savedInstanceState.getInt(CURRENT_ITEM_POSITION, 0);
+			
+			showDetails(current_selected_item_position);
+		}
+			
 	}
 
 
@@ -88,14 +94,11 @@ public class ModuleFragment extends ListFragment {
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
+	//	Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
 
-		// Get the module selected to restore the fragment state 
-		// when onActivityCreated() is called again 
-		ListView lv = getListView();
 
-		current_selected_item_position = lv.getCheckedItemPosition();
 
+		outState.putInt(CURRENT_ITEM_POSITION, current_selected_item_position);
 
 	}
 
@@ -107,10 +110,7 @@ public class ModuleFragment extends ListFragment {
 	{
 		super.onResume();
 
-		if(current_selected_item_position != ListView.INVALID_POSITION)
-
-		//	onListItemClick(getListView(), view, current_selected_item_position, 0 );
-
+		
 		Log.d(LOG_INFO_TAG, "onResume() called");
 
 
@@ -166,69 +166,107 @@ public class ModuleFragment extends ListFragment {
 
 
 	@Override 
-	public void onListItemClick(ListView l, View v, int position, long id){
+	public void onListItemClick(ListView l, View v, int position, long id)
+	{
+		
+		showDetails(position);
+		
+	}
+
+
+	private void showDetails(int position) 
+	{
+		// TODO Auto-generated method stub
 		Log.i(LOG_INFO_TAG, "onListItemCLick() called");
 		ListView lv = getListView();
 		lv.setItemChecked(position, true);
-		lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		lv.setItemChecked(position, true);
-		lv.setClickable(true);
-		lv.setSelection(position);
 
 
 		// Remember the item selected to restore later if the fragment is 
 		// stopped and then resumed 
 		current_selected_item_position = position;
 
-		TextView menu_item = (TextView) v.findViewById(R.id.textView_module_item2);
+	//	TextView menu_item = (TextView) v.findViewById(R.id.textView_module_item2);
 
-		String item = (String) menu_item.getText().toString();
+	//	String item = (String) menu_item.getText().toString();
 
 
 		//	Fragment module_fragment = (Fragment) getFragmentManager().findFragmentById(R.id.fragment_container);
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 
 
-		Fragment newFragment = null;
+		Fragment fragment = getFragmentManager().findFragmentById((R.id.fragment_container));
 		
-		switch(current_selected_item_position)
+		
+		
+		switch(position)
 		{
 		case 0:		// Home
-			newFragment = new HomeFragment();
+			if(fragment == null || fragment.getClass().getName() != HomeFragment.class.getName())
+			{
+				fragment = new HomeFragment();
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
+				
 			break;
 		case 1: 	// Modules
+
 			break;
 		case 2:		// Employees
-			newFragment = new EmployeesFragment();
+			if(fragment == null || fragment.getClass().getName() != EmployeesFragment.class.getName())
+			{
+				fragment = new EmployeesFragment();
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 			break;
 		case 3:		// Inventory
-			newFragment = new InventoryFragment();
+			if(fragment == null || fragment.getClass().getName() != InventoryFragment.class.getName())
+			{
+				fragment = new InventoryFragment();
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 			break;
 		case 4: 	// Approvals 
-			newFragment = new ApprovalsFragment(PENDING);
+			if(fragment == null || fragment.getClass().getName() != ApprovalsFragment.class.getName())
+			{
+				fragment = new ApprovalsFragment(PENDING);
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 			break;
+
 		case 5: 	// ApprovalsHistory
-			newFragment = new ApprovalsFragment(PROCESSED);
+			if(fragment == null || fragment.getClass().getName() != ApprovalsFragment.class.getName())
+			{
+				fragment = new ApprovalsFragment(PROCESSED);
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 			break;
 		//case 6:		// Reports	Temporary disabled
 		
 		//	break;
 		case 6 ://7:
-			newFragment = new SettingsFragment();
+			if(fragment == null || fragment.getClass().getName() != SettingsFragment.class.getName())
+			{
+				fragment = new SettingsFragment();
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
 			break;
 		}
 		
-	
-		if(newFragment != null){
-
-			ft.replace(R.id.fragment_container, newFragment);
-			ft.addToBackStack(null);
-			ft.commit();
-		}
-
-
-		//	module_item_listener.onModuleItemSelectedListener(item);
-
+		
+		
 	}
 
 

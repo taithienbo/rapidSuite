@@ -39,8 +39,28 @@ public class EmployeeInfoFragment extends ListFragment{
 
 
 	public EmployeeInfoFragment(){}
+	
+	
 
-	public EmployeeInfoFragment(Employee employee){
+	public Employee getCurrentSelectedEmployee()
+	{
+		return (Employee) getArguments().getSerializable(Employee.RETRIEVAL_KEY);
+	}
+	
+	
+	public static EmployeeInfoFragment getEmployeesFragmentInstance (Employee employee)
+	{
+		EmployeeInfoFragment f = new EmployeeInfoFragment( employee );
+		//this.current_item_position_selected = position;
+		Bundle args = new Bundle();
+		args.putSerializable(Employee.RETRIEVAL_KEY, employee);
+		f.setArguments(args);
+
+		return f;
+	}
+
+	public EmployeeInfoFragment( Employee employee)
+	{
 		this.employee = employee;
 	}
 
@@ -57,7 +77,7 @@ public class EmployeeInfoFragment extends ListFragment{
 	public void onResume()
 	{
 		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+		////(LOG_INFO_TAG, "onResume() called");
 	}
 	
 	
@@ -66,7 +86,7 @@ public class EmployeeInfoFragment extends ListFragment{
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
+		//(LOG_INFO_TAG, "onPause() called");
 	}
 	
 	
@@ -74,7 +94,7 @@ public class EmployeeInfoFragment extends ListFragment{
 	public void onStop()
 	{
 		super.onStop();
-		Log.d(LOG_INFO_TAG, "onStop() called");
+		//Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 	
 	
@@ -82,7 +102,7 @@ public class EmployeeInfoFragment extends ListFragment{
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+		//(LOG_INFO_TAG, "onResume() called");
 	}
 
 	@Override
@@ -104,7 +124,8 @@ public class EmployeeInfoFragment extends ListFragment{
 
 
 	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.menu_location, menu);
 
@@ -112,7 +133,8 @@ public class EmployeeInfoFragment extends ListFragment{
 
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item){
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 
 		switch(item.getItemId()){
 		case R.id.menu_location:
@@ -122,8 +144,8 @@ public class EmployeeInfoFragment extends ListFragment{
 			Float lati = new Float(employee.getCurrentLatitude());
 			Float longit = new Float(employee.getCurrentLongitude());
 			
-			Log.i(LOG_INFO_TAG, "current lati as float: " + lati);
-			Log.i(LOG_INFO_TAG, "currnet lonit as float: " + longit);
+	//		Log.i(LOG_INFO_TAG, "current lati as float: " + lati);
+	//		Log.i(LOG_INFO_TAG, "currnet lonit as float: " + longit);
 
 
 			Bundle bundle = new Bundle();
@@ -150,9 +172,10 @@ public class EmployeeInfoFragment extends ListFragment{
 
 	}
 	@Override
-	public void onViewCreated (View view, Bundle savedInstanceState){
+	public void onViewCreated (View view, Bundle savedInstanceState)
+	{
 		super.onViewCreated(view, savedInstanceState);
-
+		//(LOG_INFO_TAG, "onViewCreated called");
 	}
 
 
@@ -181,7 +204,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
-			Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.getView() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.getView() called");
 			View v = convertView;
 
 			if(v == null){
@@ -242,7 +265,7 @@ public class EmployeeInfoFragment extends ListFragment{
 	}
 
 
-	private static final String LOG_INFO_TAG = "EmployeeInfoFragment Info";
+	private static final String LOG_INFO_TAG = "EmployeeInfoFragment";
 
 	/**
 	 * @param itemStatus the status value defined in the database 

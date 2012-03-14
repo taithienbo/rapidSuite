@@ -178,7 +178,7 @@ public final class R {
         public static final int TextStyle=0x7f060008;
         /**  Dark blue 
          */
-        public static final int TextStyle_Map_Field=0x7f060009;
+        public static final int TextStyle_Field=0x7f060009;
         public static final int custome_theme=0x7f060006;
         public static final int editText_user_authentication_horizontal=0x7f060004;
         public static final int editText_user_authentication_vertical=0x7f060005;

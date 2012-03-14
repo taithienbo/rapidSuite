@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--  Inventory_list_layout for portrait mode -->
+
+<!--  portrait mode -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
          android:orientation="vertical"
          android:layout_width="match_parent"
@@ -10,8 +11,8 @@
      <ListView android:id="@id/android:list"
                android:layout_width="match_parent"
                android:layout_weight="1"
-               style = "@style/ListStylePort"
                android:layout_height="0dip"
+               style = "@style/ListStylePort"
                android:drawSelectorOnTop="false"/>
 
  </LinearLayout>

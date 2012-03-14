@@ -35,6 +35,7 @@ public class Employee implements Serializable
 	
 	
 	public static final String RETRIEVAL_KEY = "Employee Object";
+	public static final String RETRIEVAL_KEY_OTHER = "Employee";
 
 
 	/**

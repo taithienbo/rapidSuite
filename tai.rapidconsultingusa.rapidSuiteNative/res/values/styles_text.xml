@@ -3,11 +3,15 @@
 
     <style name="TextStyle" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#150517</item> <!-- black -->
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
     </style>
 
-    <style name="TextStyle.Map_Field">
+    <style name="TextStyle.Field">
         <item name="android:textColor"> #0000A0 </item> <!-- Dark blue -->
+
     </style>
 
 </resources>

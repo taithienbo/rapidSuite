@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  landscape mode  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="horizontal"
-    android:weightSum = "100" >
+    android:orientation="horizontal" >
 
     <TextView
-        android:id="@+id/textView_map_employee_field"
+        android:id="@+id/textView_inventory_info_field"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_weight="30" 
-        style = "@style/TextStyle.Field">
+        android:layout_weight="1"
+     >
     </TextView>
 
     <TextView
-        android:id="@+id/textView_map_employee_value"
-        style="@style/TextStyle"
+        android:id="@+id/textView_inventory_info_value"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_weight="40" >
+        android:layout_weight="1"
+ >
     </TextView>
 
 </LinearLayout>
