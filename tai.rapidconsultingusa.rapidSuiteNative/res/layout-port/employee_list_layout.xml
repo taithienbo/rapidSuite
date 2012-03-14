@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- portrait mode -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +9,8 @@
         android:id="@+id/searchView_employeeSearchView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:iconifiedByDefault="false"
         android:divider="@drawable/dark_border"
+        android:iconifiedByDefault="false"
         android:queryHint="@string/search_hint" >
     </SearchView>
 

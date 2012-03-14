@@ -10,7 +10,6 @@
 
     <ImageView
         android:id="@+id/imageView_approvals_icon"
-
         android:layout_width="0dp"
 		style = "@style/IconStyleReg"
         android:layout_weight = "30"
@@ -22,7 +21,7 @@
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_weight="40"
-        style = "@style/TextStyle"
+        style = "@style/TextStyle.Port"
         android:layout_gravity="center_vertical" >
     </TextView>
 

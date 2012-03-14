@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- portrait -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout_modules_list_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#463E41"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@id/android:list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/dark_border"
+        android:drawSelectorOnTop="true" />
+
+</LinearLayout>

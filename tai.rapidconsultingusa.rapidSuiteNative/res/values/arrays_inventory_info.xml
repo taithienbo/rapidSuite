@@ -2,17 +2,16 @@
 <resources>
 
     <string-array name="inventory_info_array">
-        <item>Name:</item>
-        <item>Id:</item>
-        <item>Code:</item>
-        <item>Category:</item>
-        <item>Manufacturer:</item>
-        <item>Wholesale Price:</item>
-        <item>Suggested Retail Price:</item>
+        <item>Name</item>
+        <item>Id</item>
+        <item>Code</item>
+        <item>Category</item>
+        <item>Manufacturer</item>
+        <item>Wholesale Price</item>
+        <item>Suggested Retail Price</item>
         <item>Availability</item>
-        <item>Current Location:</item>
-        <item>Last Location Update:</item>
-        <item></item>
+        <item>Current Location</item>
+        <item>Last Location Update</item>
     </string-array>
 
 </resources>

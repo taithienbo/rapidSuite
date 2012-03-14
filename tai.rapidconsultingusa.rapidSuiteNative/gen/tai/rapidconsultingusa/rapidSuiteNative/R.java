@@ -179,6 +179,8 @@ public final class R {
         /**  Dark blue 
          */
         public static final int TextStyle_Field=0x7f060009;
+        public static final int TextStyle_Field_Port=0x7f06000b;
+        public static final int TextStyle_Port=0x7f06000a;
         public static final int custome_theme=0x7f060006;
         public static final int editText_user_authentication_horizontal=0x7f060004;
         public static final int editText_user_authentication_vertical=0x7f060005;

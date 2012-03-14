@@ -14,4 +14,14 @@
 
     </style>
 
+    <style name="TextStyle.Port">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="TextStyle.Field.Port">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
 </resources>

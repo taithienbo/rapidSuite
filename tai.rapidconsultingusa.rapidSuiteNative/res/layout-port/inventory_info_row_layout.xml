@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- portrait -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView_inventory_info_field"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-     >
+        style="@style/TextStyle.Field.Port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
     </TextView>
 
     <TextView
         android:id="@+id/textView_inventory_info_value"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
- >
+        style="@style/TextStyle.Port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
     </TextView>
 
 </LinearLayout>

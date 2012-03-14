@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  landscape mode -->
+<!-- landscape mode -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="horizontal" android:layout_width="match_parent"
-	android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
 
-	<fragment class="controller.ModuleFragment"
-		android:id="@+id/moduleFragment" android:layout_weight="25"
-		android:layout_width="0dp" android:layout_height="match_parent"
-		>
-	</fragment>
+    <fragment
+        android:id="@+id/moduleFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="25"
+        class="controller.ModuleFragment" >
+    </fragment>
 
-	<FrameLayout android:id="@+id/fragment_container"
-		android:layout_width="0px" android:layout_height="match_parent"
-		android:background="#808080"
-		android:layout_weight="75">
-	</FrameLayout>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="75"
+        android:background="#808080" >
+    </FrameLayout>
 
 </LinearLayout>

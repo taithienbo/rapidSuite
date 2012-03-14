@@ -7,18 +7,16 @@
 
     <TextView
         android:id="@+id/textView_map_inventory_field"
+        style="@style/TextStyle.Field.Port"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" 
-        style = "@style/TextStyle.Field">
+        android:layout_height="wrap_content" >
     </TextView>
 
     <TextView
         android:id="@+id/textView_map_inventory_value"
-        style="@style/TextStyle"
+        style="@style/TextStyle.Port"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="wrap_content" >
     </TextView>
 
 </LinearLayout>

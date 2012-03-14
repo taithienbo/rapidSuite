@@ -9,8 +9,8 @@
      <ListView android:id="@id/android:list"
                android:layout_width="match_parent"
                android:layout_weight="1"
-               android:layout_height="0dip"
+               android:layout_height="0dp"
                style = "@style/ListStylePort"
-               android:drawSelectorOnTop="false"/>
+               android:drawSelectorOnTop="true"/>
 
  </LinearLayout>
