@@ -3,6 +3,7 @@ package employee;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
@@ -15,8 +16,26 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.util.Log;
 
-public class Employee{
+
+// Employee class implements Serializable so that an Employee object can 
+// be passed to an activity via Intent 
+public class Employee implements Serializable
+{
+
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	private String name, pictureLink, status, lastStatusUpdate, gender, birthday, department,
+	position, phoneNumber, email, address, currentAddress, currentLongitude, currentLatitude, 
+	lastLocationUpdate;
+	
+	
+	public static final String RETRIEVAL_KEY = "Employee Object";
+
 
 	/**
 	 * 
@@ -42,7 +61,7 @@ public class Employee{
 			String gender, String birthday, String department, String position, 
 			String phone, String email, String address, String currentAddress, 
 			String current_longitude, String current_latitude, String lastlocationUpdate){
-		
+
 		this.name = name;
 		this.pictureLink = pictureLink;
 		this.status = status;
@@ -59,98 +78,111 @@ public class Employee{
 		this.currentLatitude = current_latitude;
 		this.lastLocationUpdate = lastlocationUpdate;
 		this.employee_id = employee_id;
-		
+
 	}
-	
-	
-	public String getName(){
+
+
+	public String getName()
+	{
 		return name;
 	}
-	
-	
-	public String getPictureLink(){
+
+
+	public String getPictureLink()
+	{
 		return pictureLink;
 	}
-	
-	public String getStatus(){
+
+	public String getStatus()
+	{
 		return status;
 	}
-	
-	
-	public String getLastStatusUpdate(){
+
+
+	public String getLastStatusUpdate()
+	{
 		return lastStatusUpdate;
 	}
-	
-	
-	public String getGender(){
+
+
+	public String getGender()
+	{
 		return gender;
 	}
-	
-	
-	public String getBirthday(){
+
+
+	public String getBirthday()
+	{
 		return birthday;
 	}
-	
-	
-	public String getDepartment(){
+
+
+	public String getDepartment()
+	{
 		return department;
 	}
-	
 
-	
-	
-	public String getPosition(){
+
+
+
+	public String getPosition()
+	{
 		return position;
 	}
-	
-	
-	public String getPhoneNumber(){
+
+
+	public String getPhoneNumber()
+	{
 		return phoneNumber;
 	}
-	
+
 	public String getEmail(){
 		return email;
 	}
-	
-	
-	public String getAddress(){
+
+
+	public String getAddress()
+	{
 		return address;
 	}
-	
-	
-	public String getCurrentAddress(){
+
+
+	public String getCurrentAddress()
+	{
 		return currentAddress;
 	}
-	
-	
-	public String getCurrentLongitude(){
+
+
+	public String getCurrentLongitude()
+	{
 		return currentLongitude;
 	}
-	
-	
-	public String getCurrentLatitude(){
+
+
+	public String getCurrentLatitude()
+	{
 		return currentLatitude;
 	}
-	
-	
-	public String getLastLocationUpdate(){
+
+
+	public String getLastLocationUpdate()
+	{
 		return lastLocationUpdate;
 	}
-	
-	
-	public int getEmployeeId(){
+
+
+	public int getEmployeeId()
+	{
 		return employee_id;
 	}
+
 	
 
-	private String name, pictureLink, status, lastStatusUpdate, gender, birthday, department,
-			position, phoneNumber, email, address, currentAddress, currentLongitude, currentLatitude, 
-			lastLocationUpdate;
 	
 	private int employee_id;
-	
-	
-	
+
+
+
 
 
 }
@@ -160,11 +192,11 @@ public class Employee{
 
 
 /**
-* 		
+ * 		
 id	code MUST BE > 100	username	firstname	lastname	gender	dateofbirth	phone	email	
 department	position	picture	addrno	street	suite	city	state	
 zip	website	status	statusUpdate	locationUpdate	birthday	phoneNumber
 latitude	longitude	currentAddrno	currentStreet	currentSuite	
 currentCity	currentState	currentZip	employeeID
 	sendResponse(200, json_encode($employeeBasicData));
-*/
+ */

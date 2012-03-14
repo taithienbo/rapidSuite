@@ -132,6 +132,8 @@ public class EmployeeInfoFragment extends ListFragment{
 			//	bundle.putDouble(CURRENT_EMPLOYEE_LONGITUDE_KEY, longitude * Math.pow(10,6));
 			bundle.putFloat(CURRENT_EMPLOYEE_LATITUDE_KEY, lati);
 			bundle.putFloat(CURRENT_EMPLOYEE_LONGITUDE_KEY, longit);
+			
+			bundle.putSerializable(Employee.RETRIEVAL_KEY, employee);
 			intent.putExtras(bundle);
 
 			startActivity(intent);
