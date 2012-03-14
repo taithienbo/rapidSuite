@@ -34,12 +34,10 @@ public final class R {
         public static final int login_768_1024=0x7f02000c;
         public static final int ns_textured_background=0x7f02000d;
         public static final int rapid=0x7f02000e;
-        public static final int rapidsuite_login_horizontal=0x7f02000f;
-        public static final int rapidsuite_login_vertical=0x7f020010;
-        public static final int reports=0x7f020011;
-        public static final int rounded_corner=0x7f020012;
-        public static final int settings=0x7f020013;
-        public static final int splash_welcome_screen_portrait=0x7f020014;
+        public static final int reports=0x7f02000f;
+        public static final int rounded_corner=0x7f020010;
+        public static final int settings=0x7f020011;
+        public static final int splash_welcome_screen_portrait=0x7f020012;
     }
     public static final class id {
         public static final int approvals_fragment=0x7f080000;
@@ -175,15 +173,11 @@ public final class R {
         public static final int IconStyleReg=0x7f060001;
         public static final int ListStyleLand=0x7f060002;
         public static final int ListStylePort=0x7f060003;
-        public static final int TextStyle=0x7f060008;
+        public static final int TextStyle=0x7f060004;
         /**  Dark blue 
          */
-        public static final int TextStyle_Field=0x7f060009;
-        public static final int TextStyle_Field_Port=0x7f06000b;
-        public static final int TextStyle_Port=0x7f06000a;
-        public static final int custome_theme=0x7f060006;
-        public static final int editText_user_authentication_horizontal=0x7f060004;
-        public static final int editText_user_authentication_vertical=0x7f060005;
-        public static final int module_list_item=0x7f060007;
+        public static final int TextStyle_Field=0x7f060005;
+        public static final int TextStyle_Field_Port=0x7f060007;
+        public static final int TextStyle_Port=0x7f060006;
     }
 }

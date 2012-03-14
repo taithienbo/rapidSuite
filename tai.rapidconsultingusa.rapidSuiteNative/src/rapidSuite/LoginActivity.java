@@ -27,7 +27,7 @@ public class LoginActivity extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_page);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+	//	this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		Button loginButton =  (Button) findViewById(R.id.loginPage_button_login);
 		loginButton.setOnClickListener(submitButtonClistener);
