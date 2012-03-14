@@ -134,8 +134,11 @@ public class EmployeeInfoFragment extends ListFragment{
 			bundle.putFloat(CURRENT_EMPLOYEE_LONGITUDE_KEY, longit);
 			
 			bundle.putSerializable(Employee.RETRIEVAL_KEY, employee);
+		
+			
+			bundle.putString("caller", this.getClass().getName());
 			intent.putExtras(bundle);
-
+			
 			startActivity(intent);
 			return true;
 	
@@ -191,7 +194,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 
 
-			Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
+	//		Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
 			TextView employee_info_value = (TextView)v.findViewById(R.id.textView_employee_value);
 
 			switch(position){
@@ -249,4 +252,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 	private static final String CURRENT_EMPLOYEE_LONGITUDE_KEY = "longitude";
 	private static final String CURRENT_EMPLOYEE_LATITUDE_KEY = "latitude";
+	
+	
+	private static final String CALLER = "caller";
 }

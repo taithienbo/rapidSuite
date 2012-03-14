@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="employee_info_for_map">
+
+        <!-- Status Info -->
+        <item>Status</item>
+        <item>Last Status Update</item>
+    </string-array>
+    
+    
+        <string-array name="inventory_info_for_map">
+
+        <!-- Status Info -->
+        <item>Availability</item>
+        <item>Last Location Update</item>
+    </string-array>
+
+</resources>
+
+

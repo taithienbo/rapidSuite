@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="general_pages.SplashWelcomeScreenActivity"
+            android:name="rapidSuite.SplashWelcomeScreenActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask" >
             <intent-filter>
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="general_pages.LoginActivity"
+            android:name="rapidSuite.LoginActivity"
             android:finishOnTaskLaunch="true"
             android:label="@string/login_to_rapidSuite"
             android:launchMode="singleTask" >

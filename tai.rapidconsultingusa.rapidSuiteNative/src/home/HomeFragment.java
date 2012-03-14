@@ -1,7 +1,7 @@
 package home;
 
-import general_pages.LoginActivity;
 import controller.MainActivity;
+import rapidSuite.LoginActivity;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Fragment;
 import android.content.Intent;

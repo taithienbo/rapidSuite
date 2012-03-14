@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView_map_inventory_field"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" 
+        style = "@style/TextStyle.Map_Field">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView_map_inventory_value"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </TextView>
+
+</LinearLayout>

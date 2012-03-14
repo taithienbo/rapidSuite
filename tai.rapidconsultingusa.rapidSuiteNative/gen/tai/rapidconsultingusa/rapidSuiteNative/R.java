@@ -11,9 +11,10 @@ public final class R {
     public static final class array {
         public static final int approvals_info_array=0x7f040000;
         public static final int employee_info_array=0x7f040001;
-        public static final int employee_info_for_map=0x7f040002;
-        public static final int inventory_info_array=0x7f040003;
-        public static final int modules_array=0x7f040004;
+        public static final int employee_info_for_map=0x7f040003;
+        public static final int inventory_info_array=0x7f040002;
+        public static final int inventory_info_for_map=0x7f040004;
+        public static final int modules_array=0x7f040005;
     }
     public static final class attr {
     }
@@ -43,25 +44,25 @@ public final class R {
     public static final class id {
         public static final int approvals_fragment=0x7f080000;
         public static final int employeesFragment=0x7f080005;
-        public static final int fragment_container=0x7f080016;
+        public static final int fragment_container=0x7f080018;
         public static final int imageView_approvals_icon=0x7f080003;
         public static final int imageView_employee=0x7f08000b;
-        public static final int imageView_inventory=0x7f080010;
+        public static final int imageView_inventory=0x7f080012;
         public static final int imageView_rapid=0x7f08000d;
-        public static final int linearLayout_modules_list_layout=0x7f08001a;
-        public static final int listView_map_info_list=0x7f080019;
-        public static final int loginPage_button_login=0x7f080014;
-        public static final int loginPage_exitText_user_name=0x7f080012;
-        public static final int loginPage_exitText_user_pass=0x7f080013;
-        public static final int mapViewParentLinearLayout=0x7f080017;
-        public static final int mapview=0x7f080018;
-        public static final int menu_approve=0x7f08001d;
-        public static final int menu_location=0x7f080020;
-        public static final int menu_logout=0x7f080021;
-        public static final int menu_reject=0x7f08001e;
-        public static final int menu_set_as_pending=0x7f08001f;
-        public static final int moduleFragment=0x7f080015;
-        public static final int module_icon=0x7f08001b;
+        public static final int linearLayout_modules_list_layout=0x7f08001c;
+        public static final int listView_map_info_list=0x7f08001b;
+        public static final int loginPage_button_login=0x7f080016;
+        public static final int loginPage_exitText_user_name=0x7f080014;
+        public static final int loginPage_exitText_user_pass=0x7f080015;
+        public static final int mapViewParentLinearLayout=0x7f080019;
+        public static final int mapview=0x7f08001a;
+        public static final int menu_approve=0x7f08001f;
+        public static final int menu_location=0x7f080022;
+        public static final int menu_logout=0x7f080023;
+        public static final int menu_reject=0x7f080020;
+        public static final int menu_set_as_pending=0x7f080021;
+        public static final int moduleFragment=0x7f080017;
+        public static final int module_icon=0x7f08001d;
         public static final int searchView_employeeSearchView=0x7f08000a;
         public static final int textView_approvals_info_field=0x7f080001;
         public static final int textView_approvals_info_value=0x7f080002;
@@ -71,10 +72,12 @@ public final class R {
         public static final int textView_employee_value=0x7f080007;
         public static final int textView_inventory_info_field=0x7f08000e;
         public static final int textView_inventory_info_value=0x7f08000f;
-        public static final int textView_inventory_name=0x7f080011;
+        public static final int textView_inventory_name=0x7f080013;
         public static final int textView_map_employee_field=0x7f080008;
         public static final int textView_map_employee_value=0x7f080009;
-        public static final int textView_module_item2=0x7f08001c;
+        public static final int textView_map_inventory_field=0x7f080010;
+        public static final int textView_map_inventory_value=0x7f080011;
+        public static final int textView_module_item2=0x7f08001e;
     }
     public static final class layout {
         public static final int approvals_fragment_layout=0x7f030000;
@@ -91,18 +94,19 @@ public final class R {
         public static final int home_layout=0x7f03000b;
         public static final int inventory_info_list_layout=0x7f03000c;
         public static final int inventory_info_row_layout=0x7f03000d;
-        public static final int inventory_list_layout=0x7f03000e;
-        public static final int inventory_row_layout=0x7f03000f;
-        public static final int login_page=0x7f030010;
-        public static final int main_activity_layout=0x7f030011;
-        public static final int map_layout=0x7f030012;
-        public static final int module_list_layout=0x7f030013;
-        public static final int module_row_layout=0x7f030014;
-        public static final int searchable=0x7f030015;
-        public static final int settings_layout=0x7f030016;
-        public static final int shape_rounded_corner=0x7f030017;
-        public static final int splash_screen_layout=0x7f030018;
-        public static final int test=0x7f030019;
+        public static final int inventory_info_with_map_row_layout=0x7f03000e;
+        public static final int inventory_list_layout=0x7f03000f;
+        public static final int inventory_row_layout=0x7f030010;
+        public static final int login_page=0x7f030011;
+        public static final int main_activity_layout=0x7f030012;
+        public static final int map_layout=0x7f030013;
+        public static final int module_list_layout=0x7f030014;
+        public static final int module_row_layout=0x7f030015;
+        public static final int searchable=0x7f030016;
+        public static final int settings_layout=0x7f030017;
+        public static final int shape_rounded_corner=0x7f030018;
+        public static final int splash_screen_layout=0x7f030019;
+        public static final int test=0x7f03001a;
     }
     public static final class menu {
         public static final int menu_approvals_info=0x7f070000;

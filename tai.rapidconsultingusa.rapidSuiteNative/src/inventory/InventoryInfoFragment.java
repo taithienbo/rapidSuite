@@ -51,8 +51,8 @@ public class InventoryInfoFragment extends ListFragment{
 		return view;
 
 	}
-	
-	
+
+
 
 	@Override
 	public void onResume()
@@ -60,8 +60,8 @@ public class InventoryInfoFragment extends ListFragment{
 		super.onResume();
 		Log.d(LOG_INFO_TAG, "onResume() called");
 	}
-	
-	
+
+
 
 	@Override
 	public void onPause()
@@ -69,16 +69,16 @@ public class InventoryInfoFragment extends ListFragment{
 		super.onPause();
 		Log.d(LOG_INFO_TAG, "onPause() called");
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
@@ -101,7 +101,11 @@ public class InventoryInfoFragment extends ListFragment{
 
 			b.putFloat(INVENTORY_CURRENT_LONGITUDE_KEY, longitude);
 			b.putFloat(INVENTORY_CURRENT_LATITUDE_KEY, latitude);
-
+			
+			b.putSerializable(Inventory.INVENTORY_RETRIEVAL_KEY,inventory);
+			
+			b.putString("caller", this.getClass().getName());
+			
 			intent.putExtras(b);
 			startActivity(intent);
 
