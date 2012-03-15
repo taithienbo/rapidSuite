@@ -5,33 +5,27 @@ package controller;
 import home.HomeFragment;
 import inventory.InventoryFragment;
 
-import java.util.Enumeration;
-
-import employee.Employee;
-import employee.EmployeeInfoFragment;
 import employee.EmployeesFragment;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
+
 import android.app.FragmentTransaction;
-import android.content.Intent;
+
 
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+
 import approval.ApprovalsFragment;
 
-public class MainActivity extends Activity  implements OnModuleItemSelectedListener {
+public class MainActivity extends Activity  implements OnModuleItemSelectedListener 
+{
 
 	@Override
-	public void onCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		
 		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
@@ -94,32 +88,29 @@ public class MainActivity extends Activity  implements OnModuleItemSelectedListe
 
 		Fragment newFragment = null;
 
-		if(module_name.equals(modules.EMPLOYEES.getValue())){
+		if(module_name.equals(modules.EMPLOYEES.getValue()))
+		{
 			newFragment = new EmployeesFragment();
-		//	Intent intent = new Intent(MainActivity.this, EmployeesActivity.class);
-		//	startActivity(intent);
-
 		}
 
-		else if(module_name.equals(modules.INVENTORY.getValue())){
-	//		Log.i(LOG_INFO_TAG, "onModuleItemSelectedListener(): Inventory module clicked.");
+		else if(module_name.equals(modules.INVENTORY.getValue()))
+		{
 			newFragment = new InventoryFragment();
 		}
-		else if(module_name.equals(modules.APPROVALS.getValue())){
-	//		Log.i(LOG_INFO_TAG, "onModuleItemSelectedListener(): Approvals module clicked");
+		else if(module_name.equals(modules.APPROVALS.getValue()))
+		{
 			newFragment = new ApprovalsFragment(PENDING);
 		}
-		else if(module_name.equals(modules.APPROVALS_HISTORY.getValue())){
-	//		Log.i(LOG_INFO_TAG, "onModuleItemSelectedListener(): ApprovalsHistory module clicked");
+		else if(module_name.equals(modules.APPROVALS_HISTORY.getValue()))
+		{
 			newFragment = new ApprovalsFragment(PROCESSED);
 		}
-		else
+		else {}
+
+
+
+		if(newFragment != null)
 		{
-
-		}
-
-
-		if(newFragment != null){
 
 			ft.replace(R.id.fragment_container, newFragment);
 			ft.addToBackStack(null);
@@ -131,22 +122,11 @@ public class MainActivity extends Activity  implements OnModuleItemSelectedListe
 	}
 
 
-/**
-	public void onModuleItemSelectedListener(Employee employee) {
-		// TODO Auto-generated method stub
-
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		ft.replace(R.id.fragment_container, new EmployeeInfoFragment(employee));
-		ft.addToBackStack(null);
-		ft.commit();
-
-	}
-	 **/
 
 
 	
-	private enum modules{
-
+	private enum modules
+	{
 
 		HOME("home"),
 		EMPLOYEES ("Employees"),
@@ -159,12 +139,14 @@ public class MainActivity extends Activity  implements OnModuleItemSelectedListe
 
 		private final String module;
 
-		public String getValue(){
+		public String getValue()
+		{
 			return module;
 		}
 
 
-		modules(String name) {
+		modules(String name)
+		{
 			this.module = name;
 		}
 	}

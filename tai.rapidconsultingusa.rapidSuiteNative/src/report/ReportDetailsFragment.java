@@ -1,12 +1,12 @@
 package report;
 
-import com.google.gson.Gson;
+
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
 
-import android.app.ListFragment;
+
 
 import android.os.Bundle;
 import android.util.Log;

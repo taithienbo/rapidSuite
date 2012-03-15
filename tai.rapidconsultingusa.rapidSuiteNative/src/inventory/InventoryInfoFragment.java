@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class InventoryInfoFragment extends ListFragment{
 
@@ -48,6 +48,7 @@ public class InventoryInfoFragment extends ListFragment{
 
 		lv.setAdapter(new InventoryInfoListAdapter<String>(this.getActivity(), R.layout.inventory_info_row_layout,
 				R.id.textView_inventory_info_field,inventory_info));
+	
 		return view;
 
 	}
@@ -145,23 +146,12 @@ public class InventoryInfoFragment extends ListFragment{
 			}
 
 			TextView field = (TextView) v.findViewById(R.id.textView_inventory_info_field);
-			//	Log.i(LOG_INFO_TAG, "getView(): InventoryInfoList text at position " + position + ": "
-			//			+ inventoryInfoList[position]);		
-
+			
 			field.setText(inventoryInfoList[position].toString());
 
 			TextView value = (TextView)v.findViewById(R.id.textView_inventory_info_value);
-			if(value == null){
-				Log.e(LOG_INFO_TAG, "textView_inventory_info_value is null");
-			}
-			if(inventory == null){
-				Log.e(LOG_INFO_TAG, "inventory is null");
-			}
-			else{
-				Log.i(LOG_INFO_TAG, "inventory is not null," +
-						"\n Name of inventory: " + inventory.getName());
-			}
-
+			
+		
 			switch(position){
 			case 0:			// Name 
 				value.setText(inventory.getName());

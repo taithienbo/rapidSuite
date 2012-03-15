@@ -41,11 +41,8 @@ import approval.ApprovalsDataRetriever;
 import approval.ApprovalsFragment;
 import approval.ApprovalsFragment.ApprovalsListAdapter;
 
-public class ModuleFragment extends ListFragment {
-
-
-
-
+public class ModuleFragment extends ListFragment 
+{
 
 	private static final String LOG_INFO_TAG = "ModuleFragment Info";
 
@@ -62,7 +59,6 @@ public class ModuleFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState){
 
 
-		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		view = inflater.inflate(R.layout.module_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
@@ -95,10 +91,7 @@ public class ModuleFragment extends ListFragment {
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		//	Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
-
-
-
+		
 		outState.putInt(CURRENT_ITEM_POSITION, current_selected_item_position);
 
 	}
@@ -111,9 +104,7 @@ public class ModuleFragment extends ListFragment {
 	{
 		super.onResume();
 
-
 		Log.d(LOG_INFO_TAG, "onResume() called");
-
 
 	}
 
@@ -136,8 +127,7 @@ public class ModuleFragment extends ListFragment {
 
 		if(pos != ListView.INVALID_POSITION)
 			current_selected_item_position = lv.getSelectedItemPosition();
-		Log.i(LOG_INFO_TAG, "onStop() the current position selected is: " + pos);
-
+	
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 
@@ -146,7 +136,7 @@ public class ModuleFragment extends ListFragment {
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+		Log.d(LOG_INFO_TAG, "onDestroy() called");
 	}
 
 
@@ -158,7 +148,8 @@ public class ModuleFragment extends ListFragment {
 		{
 			module_item_listener = (OnModuleItemSelectedListener) activity; 
 		}
-		catch(ClassCastException e){
+		catch(ClassCastException e)
+		{
 			throw new ClassCastException(activity.toString() + " must implement OnModuleItemSelectedLister");
 		}
 
@@ -169,9 +160,7 @@ public class ModuleFragment extends ListFragment {
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
-
 		showDetails(position);
-
 	}
 
 
@@ -187,12 +176,7 @@ public class ModuleFragment extends ListFragment {
 		// stopped and then resumed 
 		current_selected_item_position = position;
 
-		//	TextView menu_item = (TextView) v.findViewById(R.id.textView_module_item2);
-
-		//	String item = (String) menu_item.getText().toString();
-
-
-		//	Fragment module_fragment = (Fragment) getFragmentManager().findFragmentById(R.id.fragment_container);
+	
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 
 
@@ -277,28 +261,7 @@ public class ModuleFragment extends ListFragment {
 	}
 
 
-	private enum modules{
 
-
-		HOME("Home"),
-		EMPLOYEES ("Employees"),
-		INVENTORY("Inventory"),
-		APPROVALS("Approvals"),
-		APPROVALS_HISTORY("Approvals History"),
-		REPORTS("Reports"),
-		SETTINGS("Settings");
-
-
-		private final String module;
-
-		public String getValue(){
-			return module;
-		}
-
-		modules(String name) {
-			this.module = name;
-		}
-	}
 
 
 	private static final String PENDING = "Pending";

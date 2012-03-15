@@ -150,8 +150,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 			Bundle bundle = new Bundle();
 
-			//bundle.putDouble(CURRENT_EMPLOYEE_LATITUDE_KEY, latitude * Math.pow(10, 6));
-			//	bundle.putDouble(CURRENT_EMPLOYEE_LONGITUDE_KEY, longitude * Math.pow(10,6));
+			
 			bundle.putFloat(CURRENT_EMPLOYEE_LATITUDE_KEY, lati);
 			bundle.putFloat(CURRENT_EMPLOYEE_LONGITUDE_KEY, longit);
 			

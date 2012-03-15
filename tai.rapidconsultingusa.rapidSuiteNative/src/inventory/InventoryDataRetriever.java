@@ -64,7 +64,8 @@ public class InventoryDataRetriever extends DBManager{
 
 		InputStream is = null;
 		//http post
-		try{
+		try
+		{
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(PHP_INVENTORY_DATA_FILE_LINK);
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -72,7 +73,8 @@ public class InventoryDataRetriever extends DBManager{
 			HttpEntity entity = response.getEntity();
 			is = entity.getContent();		
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e(LOG_INFO_TAG, "getInventoryDate(): An error occured while trying " +
 					"to communicate with the database. \n " +
 					"Erorr Description: " + e.toString());
@@ -85,9 +87,10 @@ public class InventoryDataRetriever extends DBManager{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
 			StringBuilder sb = new StringBuilder();
 			String line = null;
-			while ((line = reader.readLine()) != null){
+			while ((line = reader.readLine()) != null)
+			{
 				sb.append(line + "\n");
-				Log.i(LOG_INFO_TAG, "getInventoryData().line value: " + line);
+
 			}
 
 			is.close();
@@ -95,7 +98,8 @@ public class InventoryDataRetriever extends DBManager{
 			reader.close();
 		//	Log.i(LOG_INFO_TAG, "InventoryDataRetriver.getInventoryData() succedded");
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e(LOG_INFO_TAG, "Error converting result " + e.toString());
 		}
 
@@ -103,21 +107,21 @@ public class InventoryDataRetriever extends DBManager{
 	}
 
 
-	public static ArrayList<Inventory> getListOfInventoriess() {
+	public static ArrayList<Inventory> getListOfInventoriess()
+{
 		if(!inventory_list.isEmpty())
 			return inventory_list;
 
 		try {
 			JSONArray inventory_data_array = new JSONArray(getInventoryData());
-		//	Log.i(LOG_INFO_TAG, "getListOfInventory(): Number of inventory found: " + inventory_data_array.length());
-
-			for(int i = 0; i < inventory_data_array.length(); i++){
+		
+			for(int i = 0; i < inventory_data_array.length(); i++)
+			
 				inventory_list.add(getInventoryObject(inventory_data_array.getJSONObject(i)));
+			
 
-
-			}
-
-		} catch (JSONException e) {
+		} catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			Log.e(LOG_INFO_TAG, "An error occurred while trying to parse Inventory Json Data. \n "
 					+ "Error Description: " + e.getMessage());
@@ -134,7 +138,8 @@ public class InventoryDataRetriever extends DBManager{
 		// id, code, name, category, lastUpdate, manufacturer, wholesalePrice,
 		// msrp, availability, addrno, street, suite, city, state, zip, 
 		// latitude, longitude 
-		try{
+		try
+		{
 
 			int id = jsonObject.getInt(ID);
 
@@ -154,13 +159,12 @@ public class InventoryDataRetriever extends DBManager{
 			String longitude = jsonObject.getString(LONGITUDE);
 			String latitude = jsonObject.getString(LATITUDE);
 			
-	//		Log.i(LOG_INFO_TAG, "getInventoryObject: longitude parsed as tring: " + longitude);
-	//		Log.i(LOG_INFO_TAG, "getInventoryObject: latitude parsed as tring: " + latitude);
-			
 			inv = new Inventory(id, code, name, category, lastUpdate, manufacturer, wholesalePrice, 
 					msrp, availability,	address, latitude, longitude);
 		}
-		catch(JSONException e){
+		
+		catch(JSONException e)
+		{
 			Log.e(LOG_INFO_TAG, "An error occurs why trying to create Inventory object. \n" +
 					"Error Description: " + e.toString());
 		}

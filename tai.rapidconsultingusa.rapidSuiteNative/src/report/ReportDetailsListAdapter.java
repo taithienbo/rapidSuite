@@ -3,13 +3,12 @@ package report;
 
 
 
-import java.util.List;
+
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 
 import android.content.Context;
-import android.database.DataSetObserver;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +18,15 @@ import android.widget.TextView;
 
 public class ReportDetailsListAdapter extends BaseAdapter
 {
-	
+
 	private Context context;
 	private LayoutInflater mInflater;
 	private String[] report_fields;
-	
+
 	private Report report;
-	
+
 	private static final String LOG_INFO_TAG = "ReportDetailsAdapter";
-	
+
 	public ReportDetailsListAdapter (Context context, Report report) 
 	{
 		this.context = context;
@@ -35,7 +34,7 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		this.report_fields = context.getResources().getStringArray(R.array.reports_details_array);
 		this.report = report;
 	}
-	
+
 
 	public int getCount() 
 	{
@@ -58,9 +57,9 @@ public class ReportDetailsListAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
 		ViewHolder holder;
-		
+
 		View v = convertView;
-		
+
 		if ( v == null )
 		{
 
@@ -74,12 +73,12 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		{
 			holder = (ViewHolder) v.getTag ( );
 		}
-		
-		
+
+
 		holder.field.setText(report_fields[position]);
-		
+
 		StringBuilder value = new StringBuilder ("$");
-		
+
 		switch (position)
 		{
 		case 0:		// January 
@@ -124,13 +123,13 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		}
 
 		holder.value.setText(value);
-		
+
 		// TODO Auto-generated method stub
 		return v;
 	}
 
-	
-	
+
+
 	private class ViewHolder 
 	{
 		private TextView field;
@@ -141,9 +140,6 @@ public class ReportDetailsListAdapter extends BaseAdapter
 			this.field = field;
 			this.value = value;
 		}
-		
-		
-	
 	}
 
 }

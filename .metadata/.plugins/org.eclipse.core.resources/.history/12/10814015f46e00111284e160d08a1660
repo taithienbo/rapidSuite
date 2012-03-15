@@ -1,0 +1,202 @@
+package employee;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import databaseManager.DBManager;
+
+
+import android.util.Log;
+
+public class EmployeeDataRetriever extends DBManager{
+
+
+	private static final String LOGINFOTAG = "EmployeeDataRetriever Info";
+
+
+	private static final String PHP_EMPLOYEE_DATA_FILE_LINK = "http://www.rapidconsultingusa.com/html5/tai_bo/rapidSuiteNative/employeeBasicData.php";
+
+
+
+
+	// Employee Database Field 
+	private static final String ID = "id";
+	private static final String PICTURE_LINK = "picture";
+	private static final String FIRSTNAME = "firstname";
+	private static final String LASTNAME = "lastname";
+	private static final String GENDER = "gender";
+	private static final String BIRTHDAY = "birthday";
+	private static final String PHONE = "phone";
+	private static final String EMAIL = "email";
+	private static final String DEPARTMENT = "department";
+	private static final String POSITION = "position";
+	private static final String ADDRNO = "addrno";
+	private static final String STREET = "street";
+	private static final String SUITE = "suite";
+	private static final String CITY = "city";
+	private static final String STATE = "state";
+	private static final String ZIP = "zip";
+	private static final String STATUS = "status";
+	private static final String STATUS_UPDATE = "statusUpdate";
+	private static final String LOCATION_UPDATE = "locationUpdate";
+	private static final String LATITUDE = "latitude";
+	private static final String LONGITUDE = "longitude";
+	private static final String CURRENT_ADDRNO = "currentAddrno";
+	private static final String CURRENT_STREET = "currentStreet";
+	private static final String CURRENT_CITY = "currentCity";
+	private static final String CURRENT_STATE = "currentState";
+	private static final String CURRENT_ZIP = "currentZip";
+	private static final String EMPLOYEE_ID = "employeeID";
+
+	private static ArrayList<Employee> employee_list = new ArrayList<Employee>();
+
+
+	private static  String getEmployeeData(){
+
+		ArrayList<NameValuePair> nameValuePairs = get_database_settings();
+
+
+		InputStream is = null;
+		//http post
+		try
+		{
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpPost httppost = new HttpPost(PHP_EMPLOYEE_DATA_FILE_LINK);
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();		
+		}
+		catch(Exception e)
+		{
+			Log.e("log_tag", "Error getting result " + e.toString());
+		}
+
+		String result = "";
+
+		//convert response to string
+		try
+		{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null)
+				sb.append(line + "\n");
+
+			is.close();
+			result = sb.toString();		
+			reader.close();
+
+		}
+		catch(Exception e)
+		{
+			Log.e(LOGINFOTAG, "Error converting result " + e.toString());
+		}
+
+		return result;
+	}
+
+
+
+	public static ArrayList<Employee> getListOfEmployees() 
+	{
+		if(!employee_list.isEmpty())
+			return employee_list;
+
+		try 
+		{
+			JSONArray emp_data_array = new JSONArray(getEmployeeData());
+		
+			for(int i = 0; i < emp_data_array.length(); i++)
+				employee_list.add(getEmployeeObject(emp_data_array.getJSONObject(i)));
+
+		}
+		catch (JSONException e) 
+		{
+			// TODO Auto-generated catch block
+			Log.e(LOGINFOTAG, "An error occurred while trying to parse Employee Json Data. \n "
+					+ "Error Description: " + e.getMessage());
+		}
+		return employee_list;
+	}
+
+
+
+	private static Employee getEmployeeObject(JSONObject jsonObject) 
+	{
+		// TODO Auto-generated method stub
+		Employee emp = null;
+		try {
+			String name = jsonObject.getString(FIRSTNAME) + " " + jsonObject.getString(LASTNAME);
+			int employee_id = jsonObject.getInt(EMPLOYEE_ID);
+
+			String pictureLink = jsonObject.getString(PICTURE_LINK);
+			String status = jsonObject.getString(STATUS);
+			String lastStatusUpdate = jsonObject.getString(STATUS_UPDATE);
+			String gender = jsonObject.getString(GENDER);
+			String birthday = jsonObject.getString(BIRTHDAY);
+			String department = jsonObject.getString(DEPARTMENT);
+			String position = jsonObject.getString(POSITION);
+			String phoneNumber = jsonObject.getString(PHONE);
+			String email = jsonObject.getString(EMAIL);
+
+			StringBuilder address = new StringBuilder ();
+			address.append(jsonObject.getString(ADDRNO) + " " + jsonObject.getString(STREET)
+					+ " " + jsonObject.getString(SUITE) + "," + jsonObject.getString(CITY) 
+					+ " " + jsonObject.getString(STATE) + " " + jsonObject.getString(ZIP));
+
+			StringBuilder currentAddress = new StringBuilder();
+			currentAddress.append(jsonObject.getString(CURRENT_ADDRNO) + " " + jsonObject.getString(CURRENT_STREET)
+					+ " " + jsonObject.getString(CURRENT_CITY) + " " + jsonObject.getString(CURRENT_STATE) 
+					+ " " + jsonObject.getString(CURRENT_ZIP));
+
+		
+		
+			String longitude = jsonObject.getString(LONGITUDE);
+			
+			String latitude = jsonObject.getString(LATITUDE);
+			
+		//	String currentCoordinate = jsonObject.getString(LONGITUDE) + "," + jsonObject.getString(LATITUDE);
+			String lastLocationUpdate = jsonObject.getString(LOCATION_UPDATE);
+
+			emp = new Employee(name, employee_id,//employee_id,
+					pictureLink, status, lastStatusUpdate, gender, birthday,
+					department, position, phoneNumber, email, address.toString(), currentAddress.toString(), longitude, latitude,
+					lastLocationUpdate);
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			Log.e(LOGINFOTAG, "An error occurs why trying to create employee object. \n" +
+					"Error Description: " + e.toString());
+		}
+
+
+
+		return emp;
+
+	}
+
+
+
+
+}

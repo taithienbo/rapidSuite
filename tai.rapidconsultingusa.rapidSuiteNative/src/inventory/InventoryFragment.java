@@ -1,15 +1,10 @@
 package inventory;
 
-import imageDownloader.UrlImageViewHelper;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.OnModuleItemSelectedListener;
-
-import employee.Employee;
-import employee.EmployeeDataRetriever;
-import employee.EmployeesFragment.EmployeeListAdapter;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.FragmentManager;
@@ -22,11 +17,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
-import approval.Approvals;
-import approval.ApprovalsDataRetriever;
+
 
 public class InventoryFragment extends ListFragment{
 
@@ -35,9 +29,8 @@ public class InventoryFragment extends ListFragment{
 
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState){
-
-		
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
+	{
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.inventory_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
@@ -45,6 +38,7 @@ public class InventoryFragment extends ListFragment{
 		List<Inventory> inventory_list = InventoryDataRetriever.getListOfInventoriess();
 		lv.setAdapter(new InvventoryListAdapter<Inventory>(getActivity().getBaseContext(), R.layout.inventory_row_layout,
 				R.id.textView_inventory_name,inventory_list));
+		
 		return view;
 	}
 
@@ -133,7 +127,7 @@ public class InventoryFragment extends ListFragment{
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.inventory_list = (ArrayList<Inventory>) inventory_list;
-	//		Log.d(LOG_INFO_TAG, "InventoryistAdapter.constructor called");
+
 		}
 
 	
@@ -141,10 +135,11 @@ public class InventoryFragment extends ListFragment{
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
-		//	Log.d(LOG_INFO_TAG, "InventoryListAdapter.getView() called");
+	
 			View v = convertView;
 
-			if(v == null){
+			if(v == null)
+			{
 				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = li.inflate(R.layout.inventory_row_layout, null);
 			}

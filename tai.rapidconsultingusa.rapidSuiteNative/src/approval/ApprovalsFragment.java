@@ -1,13 +1,10 @@
 package approval;
 
-import inventory.Inventory;
-import inventory.InventoryDataRetriever;
-import inventory.InventoryFragment.InvventoryListAdapter;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.OnModuleItemSelectedListener;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.FragmentManager;
@@ -24,13 +21,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ApprovalsFragment extends ListFragment{
+public class ApprovalsFragment extends ListFragment
+{
 
-	
-	
 	public ApprovalsFragment(){}
 	
-	public ApprovalsFragment(String itemStatus){
+	public ApprovalsFragment(String itemStatus)
+	{
 		this.itemStatus = itemStatus;
 	}
 
@@ -86,7 +83,8 @@ public class ApprovalsFragment extends ListFragment{
 	
 	
 	@Override
-	public void onListItemClick(ListView l, View v, int position, long id){
+	public void onListItemClick(ListView l, View v, int position, long id)
+	{
 		ListView lv = getListView();
 		lv.setItemChecked(position, true);
 		lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -108,7 +106,8 @@ public class ApprovalsFragment extends ListFragment{
 
 
 
-	public class ApprovalsListAdapter<T> extends ArrayAdapter<T> {
+	public class ApprovalsListAdapter<T> extends ArrayAdapter<T> 
+	{
 
 		private List<Approvals> approvals_list;
 		private int textViewResourceId;
@@ -118,7 +117,8 @@ public class ApprovalsFragment extends ListFragment{
 
 
 		public ApprovalsListAdapter(Context context, int resource,
-				int textViewResourceId, List<T> approvals_list) {
+				int textViewResourceId, List<T> approvals_list) 
+		{
 			
 			super(context, resource, textViewResourceId, approvals_list);
 			// TODO Auto-generated constructor stub
@@ -127,13 +127,13 @@ public class ApprovalsFragment extends ListFragment{
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.approvals_list = (ArrayList<Approvals>) approvals_list;
-		//	Log.d(LOG_INFO_TAG, "ApprovalsistAdapter.constructor called");
+		
 		}
 
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent){
-		//	Log.d(LOG_INFO_TAG, "ApprovalsListAdapter.getView() called");
+		public View getView(int position, View convertView, ViewGroup parent)
+		{
 			View v = convertView;
 
 			if(v == null){

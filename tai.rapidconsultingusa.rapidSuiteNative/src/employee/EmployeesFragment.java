@@ -102,7 +102,7 @@ public class EmployeesFragment extends ListFragment {
 		
 		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
 		
-	//	module_item_listener.onModuleItemSelectedListener(e);
+
 		FragmentManager fm = this.getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		
@@ -151,6 +151,7 @@ public class EmployeesFragment extends ListFragment {
 		super.onDetach();
 		Log.d(LOG_INFO_TAG, "onDetach() called");
 	}
+	
 	
 	@Override
 	public void onActivityCreated (Bundle savedInstanceState)
@@ -249,7 +250,7 @@ public class EmployeesFragment extends ListFragment {
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.employee_list = (ArrayList<Employee>) employee_list;
-		//	Log.i("EmployeeFragment Info", "EmployeeListAdapter.constructor called");
+	
 		}
 
 

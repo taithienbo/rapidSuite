@@ -6,19 +6,13 @@ import inventory.Inventory;
 import java.util.List;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
-import android.content.Context;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
+
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -100,12 +94,7 @@ public class MapViewActivity extends MapActivity{
 			
 			
 		}
-		
-	
-		//	Log.d(LOG_INFO_TAG, "Testing Serialized Employee, The name is: " + employee.getName());
 
-
-		//	Log.d(LOG_INFO_TAG, "testing employee_fields, it is nulll? " + employee_fields == null ? "yes" : "no");
 	}
 
 

@@ -90,7 +90,8 @@ public class ApprovalsDataRetriever extends DBManager{
 			reader.close();
 			Log.i(LOGINFOTAG, "getApprovalseData() succedded");
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e(LOGINFOTAG, "Error converting result " + e.toString());
 		}
 
@@ -98,24 +99,27 @@ public class ApprovalsDataRetriever extends DBManager{
 	}
 	
 	
-	public static ArrayList<Approvals> getListOfApprovals(String itemStatus){
+	public static ArrayList<Approvals> getListOfApprovals(String itemStatus)
+	{
 	
 		approvals_list.clear();
 		
 		
 		try{
 			JSONArray approvals_data_array = new JSONArray(getApprovalsData(itemStatus));
-			Log.i(LOGINFOTAG, "getListOfApprovals(): Number of approvals found: " + approvals_data_array.length());
-
-			for(int i = 0; i < approvals_data_array.length(); i++){
+		
+			for(int i = 0; i < approvals_data_array.length(); i++)
+			
 				approvals_list.add(getApprovalsObject(approvals_data_array.getJSONObject(i)));
-			}
-
-		} catch (JSONException e) {
+			
+		} 
+		catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			Log.e(LOGINFOTAG, "An error occurred while trying to parse Approvals Json Data. \n "
 					+ "Error Description: " + e.getMessage());
 		}
+		
 		return approvals_list;
 	}
 

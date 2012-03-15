@@ -20,29 +20,29 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ApprovalsInfoFragment extends ListFragment{
-	
+
 	private static final String APPROVAL_JSON_OBJECT = "approval_json_object";
 
 	public ApprovalsInfoFragment(){};
-	
-	
+
+
 	public ApprovalsInfoFragment(Approvals approval)
 	{
 		ApprovalsInfoFragment.approval = approval;
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-	
+
+
 		super.setHasOptionsMenu(true);
 	}
-	
-	
+
+
 
 	@Override
 	public void onResume()
@@ -50,8 +50,8 @@ public class ApprovalsInfoFragment extends ListFragment{
 		super.onResume();
 		Log.d(LOG_INFO_TAG, "onResume() called");
 	}
-	
-	
+
+
 
 	@Override
 	public void onPause()
@@ -59,25 +59,25 @@ public class ApprovalsInfoFragment extends ListFragment{
 		super.onPause();
 		Log.d(LOG_INFO_TAG, "onPause() called");
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
 		Log.d(LOG_INFO_TAG, "onResume() called");
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Called to ask the fragment to save its current dynamic state, so it 
 	 * can later be reconstructed in a new instance of its process is 
@@ -92,92 +92,94 @@ public class ApprovalsInfoFragment extends ListFragment{
 		Log.i(LOG_INFO_TAG, "onSavedInstanceState is called");
 		Gson gson = new Gson();
 		String approval_object_gson = gson.toJson(approval);
-	
+
 		outState.putString(APPROVAL_JSON_OBJECT, approval_object_gson);
 	}
-	
-	
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	        case R.id.menu_approve:
-	        	ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.APPROVE.getValue());
-	            return true;
-	        case R.id.menu_reject:
-	        	ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.REJECT.getValue());
-	        	FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
-	        
-	        	Toast.makeText(getActivity(), "Reject clicked", Toast.LENGTH_LONG).show();
-	            return true;
-	        	
-	     
-	        case R.id.menu_set_as_pending:
-	        	ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.SET_AS_PENDING.getValue());
-	        	
-	        	Toast.makeText(getActivity(), "Set As Pending clicked", Toast.LENGTH_LONG).show();
-	        	
-	        	return true;
-	        	
-	    
-	        default:
-	        	Toast.makeText(getActivity(), "Something wrong", Toast.LENGTH_LONG).show();
-	            return super.onOptionsItemSelected(item);
-	    }
+		switch (item.getItemId()) {
+		case R.id.menu_approve:
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.APPROVE.getValue());
+			return true;
+
+		case R.id.menu_reject:
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.REJECT.getValue());
+			FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
+
+			Toast.makeText(getActivity(), "Reject clicked", Toast.LENGTH_LONG).show();
+			return true;
+
+		case R.id.menu_set_as_pending:
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.SET_AS_PENDING.getValue());
+
+			Toast.makeText(getActivity(), "Set As Pending clicked", Toast.LENGTH_LONG).show();
+
+			return true;
+
+		default:
+			Toast.makeText(getActivity(), "Something wrong", Toast.LENGTH_LONG).show();
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 
 	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-		
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
 		super.onCreateOptionsMenu(menu, inflater);
-		 
-		 inflater.inflate(R.menu.menu_approvals_info, menu);
-	}
-	
-	
-	@Override
-	public void onPrepareOptionsMenu(Menu menu) {
-	    super.onPrepareOptionsMenu(menu);
-	    
-	    menu.removeItem(R.id.menu_logout);
-	    String status = approval.getStatus();
-	    
-	    if(status.equals(APPROVED) || status.equals(REJECTED)){
-			 menu.removeItem(R.id.menu_approve);
-			 menu.removeItem(R.id.menu_reject);
-		 }
-		 else if (status.equals(PENDING)){
-			 menu.removeItem(R.id.menu_set_as_pending);
-		 }
-	 
-	}
-	
-	
 
-	
-	
+		inflater.inflate(R.menu.menu_approvals_info, menu);
+	}
+
+
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) 
+	{
+		super.onPrepareOptionsMenu(menu);
+
+		menu.removeItem(R.id.menu_logout);
+		String status = approval.getStatus();
+
+		if(status.equals(APPROVED) || status.equals(REJECTED))
+		{
+			menu.removeItem(R.id.menu_approve);
+			menu.removeItem(R.id.menu_reject);
+		}
+		else if (status.equals(PENDING))
+		{
+			menu.removeItem(R.id.menu_set_as_pending);
+		}
+
+	}
+
+
+
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, 
-							Bundle savedInstanceState){
-		
-	
+			Bundle savedInstanceState){
+
+
 		if(savedInstanceState != null && !savedInstanceState.isEmpty()){
 			Gson gson = new Gson();
 			approval = gson.fromJson(savedInstanceState.getString(APPROVAL_JSON_OBJECT), Approvals.class);
 		}
-		
+
 		View view = inflater.inflate(R.layout.approvals_info_list_layout, null);
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
-		
+
 		String[] approvals_info = view.getResources().getStringArray(R.array.approvals_info_array);
-		
+
 		lv.setAdapter(new ApprovalsInfoListAdapter<String>(this.getActivity(), R.layout.approvals_info_row_layout,
-															R.id.textView_approvals_info_field, approvals_info));
+				R.id.textView_approvals_info_field, approvals_info));
 		return view;
-		
+
 	}
-	
-	
+
+
 	private class ApprovalsInfoListAdapter<T> extends ArrayAdapter<T>{
 
 		public ApprovalsInfoListAdapter(Context context, int resource,
@@ -187,28 +189,28 @@ public class ApprovalsInfoFragment extends ListFragment{
 			this.approvalsInfoList = approvalsInfoList;
 			// TODO Auto-generated constructor stub
 		}
-		
-		
+
+
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
-			
+
 			View v = convertView;
 			if(v == null){
 				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = li.inflate(R.layout.approvals_info_row_layout,null);
 			}
-			
+
 			TextView field = (TextView) v.findViewById(R.id.textView_approvals_info_field);
 			field.setText(approvalsInfoList[position].toString());
-			
+
 			TextView value = (TextView)v.findViewById(R.id.textView_approvals_info_value);
-			
-			
+
+
 			String status = null;
 			switch(position){
 			case 0:			// Item Name 
 				value.setText(approval.getItemName());
-			//	Log.i(LOG_INFO_TAG, "getView(): name of item is: " + value.getText().toString());
+				//	Log.i(LOG_INFO_TAG, "getView(): name of item is: " + value.getText().toString());
 				break;
 			case 1:			// code 
 				value.setText(approval.getCode());
@@ -233,45 +235,43 @@ public class ApprovalsInfoFragment extends ListFragment{
 				value.setText(status);
 				break;
 			}
-			
-			
 
-			
-			
-			
-			
 			return v;
-			
+
 		}
+		
 		private Context context;
 		private T[] approvalsInfoList;
-	}
-	
-	
-private enum actions{
 		
+	}
+
+
+	private enum actions
+	{
 		
 		APPROVE("approve"),
 		REJECT ("reject"),
 		SET_AS_PENDING("set_as_pending");
-	
-		 
-	    private final String action;
-	    
-	    public String getValue(){
-	    	return action;
-	    }
-	    
-	    
-	    actions(String action) {
-	        this.action = action;
-	    }
+
+
+		private final String action;
+
+		public String getValue()
+		{
+			return action;
+		}
+
+
+		actions(String action) 
+		{
+			this.action = action;
+		}
 	}
-	
+
 	private static final String LOG_INFO_TAG = "ApprovalsInfoFragment info:";
-	
+
 	private static Approvals approval;
-	
+
 	private static final String PENDING = "Pending";
 	private static final String APPROVED = "Approved";
 	private static final String REJECTED = "Rejected";

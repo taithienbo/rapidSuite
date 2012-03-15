@@ -35,8 +35,7 @@ public class EmployeeDataRetriever extends DBManager{
 
 
 	private static final String PHP_EMPLOYEE_DATA_FILE_LINK = "http://www.rapidconsultingusa.com/html5/tai_bo/rapidSuiteNative/employeeBasicData.php";
-	private static final String REQUEST_KEY = "request";
-	private static final String REQUEST_VALUE_EMPLOYEE_DATA = "employeeData";
+
 
 
 
@@ -79,7 +78,8 @@ public class EmployeeDataRetriever extends DBManager{
 
 		InputStream is = null;
 		//http post
-		try{
+		try
+		{
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(PHP_EMPLOYEE_DATA_FILE_LINK);
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
@@ -87,28 +87,29 @@ public class EmployeeDataRetriever extends DBManager{
 			HttpEntity entity = response.getEntity();
 			is = entity.getContent();		
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e("log_tag", "Error getting result " + e.toString());
 		}
 
 		String result = "";
 
 		//convert response to string
-		try{
+		try
+		{
 			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"));
 			StringBuilder sb = new StringBuilder();
 			String line = null;
-			while ((line = reader.readLine()) != null){
+			while ((line = reader.readLine()) != null)
 				sb.append(line + "\n");
-		//		Log.i(LOGINFOTAG, "getEmployeeData().line value: " + line);
-			}
 
 			is.close();
 			result = sb.toString();		
 			reader.close();
-		//	Log.i(LOGINFOTAG, "getEmployeeData() succedded");
+
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e(LOGINFOTAG, "Error converting result " + e.toString());
 		}
 
@@ -117,21 +118,21 @@ public class EmployeeDataRetriever extends DBManager{
 
 
 
-	public static ArrayList<Employee> getListOfEmployees() {
+	public static ArrayList<Employee> getListOfEmployees() 
+	{
 		if(!employee_list.isEmpty())
 			return employee_list;
 
-		try {
+		try 
+		{
 			JSONArray emp_data_array = new JSONArray(getEmployeeData());
-			Log.i(LOGINFOTAG, "getListOfEmployee(): Number of employees found: " + emp_data_array.length());
-
-			for(int i = 0; i < emp_data_array.length(); i++){
+		
+			for(int i = 0; i < emp_data_array.length(); i++)
 				employee_list.add(getEmployeeObject(emp_data_array.getJSONObject(i)));
 
-
-			}
-
-		} catch (JSONException e) {
+		}
+		catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			Log.e(LOGINFOTAG, "An error occurred while trying to parse Employee Json Data. \n "
 					+ "Error Description: " + e.getMessage());
@@ -141,16 +142,13 @@ public class EmployeeDataRetriever extends DBManager{
 
 
 
-	private static Employee getEmployeeObject(JSONObject jsonObject) {
+	private static Employee getEmployeeObject(JSONObject jsonObject) 
+	{
 		// TODO Auto-generated method stub
 		Employee emp = null;
 		try {
 			String name = jsonObject.getString(FIRSTNAME) + " " + jsonObject.getString(LASTNAME);
 			int employee_id = jsonObject.getInt(EMPLOYEE_ID);
-
-
-			//	Log.i(LOGINFOTAG, "getEmployeeObject(): keys in jsonObject: " + jsonObject.names().toString()); 
-
 
 			String pictureLink = jsonObject.getString(PICTURE_LINK);
 			String status = jsonObject.getString(STATUS);
@@ -162,19 +160,19 @@ public class EmployeeDataRetriever extends DBManager{
 			String phoneNumber = jsonObject.getString(PHONE);
 			String email = jsonObject.getString(EMAIL);
 
-			String address = jsonObject.getString(ADDRNO) + " " + jsonObject.getString(STREET)
+			StringBuilder address = new StringBuilder ();
+			address.append(jsonObject.getString(ADDRNO) + " " + jsonObject.getString(STREET)
 					+ " " + jsonObject.getString(SUITE) + "," + jsonObject.getString(CITY) 
-					+ " " + jsonObject.getString(STATE) + " " + jsonObject.getString(ZIP);
+					+ " " + jsonObject.getString(STATE) + " " + jsonObject.getString(ZIP));
 
-			String currentAddress = jsonObject.getString(CURRENT_ADDRNO) + " " + jsonObject.getString(CURRENT_STREET)
+			StringBuilder currentAddress = new StringBuilder();
+			currentAddress.append(jsonObject.getString(CURRENT_ADDRNO) + " " + jsonObject.getString(CURRENT_STREET)
 					+ " " + jsonObject.getString(CURRENT_CITY) + " " + jsonObject.getString(CURRENT_STATE) 
-					+ " " + jsonObject.getString(CURRENT_ZIP);
+					+ " " + jsonObject.getString(CURRENT_ZIP));
 
 		
 		
-			
 			String longitude = jsonObject.getString(LONGITUDE);
-			
 			
 			String latitude = jsonObject.getString(LATITUDE);
 			
@@ -183,10 +181,12 @@ public class EmployeeDataRetriever extends DBManager{
 
 			emp = new Employee(name, employee_id,//employee_id,
 					pictureLink, status, lastStatusUpdate, gender, birthday,
-					department, position, phoneNumber, email, address, currentAddress, longitude, latitude,
+					department, position, phoneNumber, email, address.toString(), currentAddress.toString(), longitude, latitude,
 					lastLocationUpdate);
 
-		} catch (JSONException e) {
+		} 
+		catch (JSONException e) 
+		{
 			// TODO Auto-generated catch block
 			Log.e(LOGINFOTAG, "An error occurs why trying to create employee object. \n" +
 					"Error Description: " + e.toString());

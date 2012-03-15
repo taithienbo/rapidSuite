@@ -1,10 +1,9 @@
 package approval;
 
-import java.io.InputStream;
+
 import java.util.ArrayList;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -15,8 +14,6 @@ import org.apache.http.message.BasicNameValuePair;
 import android.util.Log;
 
 public class ApprovalsItemStatusUpdater extends ApprovalsDataRetriever{
-
-
 
 
 	private static final String PARMATER_ID = "id";
@@ -36,14 +33,16 @@ public class ApprovalsItemStatusUpdater extends ApprovalsDataRetriever{
 		nameValuePairs.add(new BasicNameValuePair(PARMATER_ID,  Integer.toString(item_id)));
 
 		//http post
-		try{
+		try
+		{
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(PHP_APPROVALS_DATA_FILE_LINK);
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			httpclient.execute(httppost);
 
 		}
-		catch(Exception e){
+		catch(Exception e)
+		{
 			Log.e(LOG_INFO_TAG, "An error occured while trying to " + action + " the item which has the id " + item_id + "\n"
 					+ "Error description: " + e.toString());
 		}

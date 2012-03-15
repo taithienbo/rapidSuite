@@ -48,67 +48,76 @@ public class Inventory implements Serializable
 		this.latitude 			= 		latitude;
 		this.address 			= 		address;
 		
-
-
-
 	}
 
 
-	public int getId(){
+	public int getId()
+	{
 		return id;
 	}
 
 
-	public String getName(){
+	public String getName()
+	{
 		return name;
 	}
 
 
-	public String getCode(){
+	public String getCode()
+	{
 		return code;
 	}
 
 
-	public String getCategory(){
+	public String getCategory()
+	{
 		return category;
 	}
 
 
-	public String getLastLocationUpdate(){
+	public String getLastLocationUpdate()
+	{
 		return lastUpdate;
 	}
 
 
-	public String getManufacturer(){
+	public String getManufacturer()
+	{
 		return manufacturer;
 	}
 
 
-	public String getWholesalePrice(){
+	public String getWholesalePrice()
+	{
 		return wholesalePrice;
 	}
 
-	public String getMSRP(){
+	public String getMSRP()
+	{
 		return msrp;
 	}
 
 
-	public String getAvailability(){
+	public String getAvailability()
+	{
 		return availability;
 	}
 
 
-	public String getAddress(){
+	public String getAddress()
+	{
 		return address;
 	}
 
 
-	public String getCurrentLongitude(){
+	public String getCurrentLongitude()
+	{
 		return longitude;
 	}
 
 
-	public String getCurrentLatitude(){
+	public String getCurrentLatitude()
+	{
 		return latitude;
 	}
 
