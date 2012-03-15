@@ -13,7 +13,7 @@
         style="@style/TextStyle.Field"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_weight="30" >
+        android:layout_weight="25" >
     </TextView>
 
     <TextView
@@ -21,7 +21,7 @@
         style="@style/TextStyle"
         android:layout_width="0sp"
         android:layout_height="wrap_content" 
-        android:layout_weight="40">
+        android:layout_weight="60">
     </TextView>
 
 </LinearLayout>

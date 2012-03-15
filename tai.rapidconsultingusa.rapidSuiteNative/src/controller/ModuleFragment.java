@@ -13,6 +13,7 @@ import employee.EmployeesFragment;
 
 
 
+import report.ReportFragment;
 import settings.SettingsFragment;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
@@ -72,21 +73,21 @@ public class ModuleFragment extends ListFragment {
 
 		return view;
 	}
-	
+
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-	//	Log.d(LOG_INFO_TAG, "onActivityCreated() called");
-		
+		//	Log.d(LOG_INFO_TAG, "onActivityCreated() called");
+
 		if(savedInstanceState != null)
 		{
 			current_selected_item_position = savedInstanceState.getInt(CURRENT_ITEM_POSITION, 0);
-			
+
 			showDetails(current_selected_item_position);
 		}
-			
+
 	}
 
 
@@ -94,7 +95,7 @@ public class ModuleFragment extends ListFragment {
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-	//	Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
+		//	Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
 
 
 
@@ -110,7 +111,7 @@ public class ModuleFragment extends ListFragment {
 	{
 		super.onResume();
 
-		
+
 		Log.d(LOG_INFO_TAG, "onResume() called");
 
 
@@ -132,11 +133,11 @@ public class ModuleFragment extends ListFragment {
 		super.onStop();
 		ListView lv = getListView();
 		int pos = getListView().getSelectedItemPosition();
-		
+
 		if(pos != ListView.INVALID_POSITION)
 			current_selected_item_position = lv.getSelectedItemPosition();
 		Log.i(LOG_INFO_TAG, "onStop() the current position selected is: " + pos);
-		
+
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 
@@ -168,9 +169,9 @@ public class ModuleFragment extends ListFragment {
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
-		
+
 		showDetails(position);
-		
+
 	}
 
 
@@ -186,9 +187,9 @@ public class ModuleFragment extends ListFragment {
 		// stopped and then resumed 
 		current_selected_item_position = position;
 
-	//	TextView menu_item = (TextView) v.findViewById(R.id.textView_module_item2);
+		//	TextView menu_item = (TextView) v.findViewById(R.id.textView_module_item2);
 
-	//	String item = (String) menu_item.getText().toString();
+		//	String item = (String) menu_item.getText().toString();
 
 
 		//	Fragment module_fragment = (Fragment) getFragmentManager().findFragmentById(R.id.fragment_container);
@@ -196,9 +197,9 @@ public class ModuleFragment extends ListFragment {
 
 
 		Fragment fragment = getFragmentManager().findFragmentById((R.id.fragment_container));
-		
-		
-		
+
+
+
 		switch(position)
 		{
 		case 0:		// Home
@@ -209,7 +210,7 @@ public class ModuleFragment extends ListFragment {
 				ft.addToBackStack(null);
 				ft.commit();
 			}
-				
+
 			break;
 		case 1: 	// Modules
 
@@ -251,10 +252,16 @@ public class ModuleFragment extends ListFragment {
 				ft.commit();
 			}
 			break;
-		//case 6:		// Reports	Temporary disabled
-		
-		//	break;
-		case 6 ://7:
+		case 6:		// Reports
+			if(fragment == null || fragment.getClass().getName() != ReportFragment.class.getName())
+			{
+				fragment = new ReportFragment();
+				ft.replace(R.id.fragment_container, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+			}
+			break;
+		case 7 : 	// Settings
 			if(fragment == null || fragment.getClass().getName() != SettingsFragment.class.getName())
 			{
 				fragment = new SettingsFragment();
@@ -264,9 +271,9 @@ public class ModuleFragment extends ListFragment {
 			}
 			break;
 		}
-		
-		
-		
+
+
+
 	}
 
 

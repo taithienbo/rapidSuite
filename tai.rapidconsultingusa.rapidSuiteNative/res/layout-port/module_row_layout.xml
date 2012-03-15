@@ -10,7 +10,6 @@
         android:id="@+id/module_icon"
         style="@style/IconStyleReg"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="30"
         android:focusable="false" >
     </ImageView>
@@ -19,10 +18,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/textView_module_item2"
         style="@style/TextStyle.Port"
-        android:layout_width="0sp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="70" >
+        android:layout_width ="0sp"
+        android:layout_height ="wrap_content"
+        android:layout_gravity ="center_vertical"
+        android:layout_weight ="70" >
     </TextView>
 
 </LinearLayout> <!-- android:layout_gravity="center" -->

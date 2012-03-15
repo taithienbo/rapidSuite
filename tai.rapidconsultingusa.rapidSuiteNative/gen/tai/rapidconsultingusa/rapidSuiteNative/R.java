@@ -37,7 +37,8 @@ public final class R {
         public static final int reports=0x7f02000f;
         public static final int rounded_corner=0x7f020010;
         public static final int settings=0x7f020011;
-        public static final int splash_welcome_screen_portrait=0x7f020012;
+        public static final int splash_welcome_screen_landscape=0x7f020012;
+        public static final int splash_welcome_screen_portrait=0x7f020013;
     }
     public static final class id {
         public static final int approvals_fragment=0x7f080000;
@@ -47,6 +48,7 @@ public final class R {
         public static final int imageView_employee=0x7f08000b;
         public static final int imageView_inventory=0x7f080012;
         public static final int imageView_rapid=0x7f08000d;
+        public static final int imageView_report_icon=0x7f08001f;
         public static final int linearLayout_modules_list_layout=0x7f08001c;
         public static final int listView_map_info_list=0x7f08001b;
         public static final int loginPage_button_login=0x7f080016;
@@ -54,11 +56,11 @@ public final class R {
         public static final int loginPage_exitText_user_pass=0x7f080015;
         public static final int mapViewParentLinearLayout=0x7f080019;
         public static final int mapview=0x7f08001a;
-        public static final int menu_approve=0x7f08001f;
-        public static final int menu_location=0x7f080022;
-        public static final int menu_logout=0x7f080023;
-        public static final int menu_reject=0x7f080020;
-        public static final int menu_set_as_pending=0x7f080021;
+        public static final int menu_approve=0x7f080021;
+        public static final int menu_location=0x7f080024;
+        public static final int menu_logout=0x7f080025;
+        public static final int menu_reject=0x7f080022;
+        public static final int menu_set_as_pending=0x7f080023;
         public static final int moduleFragment=0x7f080017;
         public static final int module_icon=0x7f08001d;
         public static final int searchView_employeeSearchView=0x7f08000a;
@@ -76,6 +78,7 @@ public final class R {
         public static final int textView_map_inventory_field=0x7f080010;
         public static final int textView_map_inventory_value=0x7f080011;
         public static final int textView_module_item2=0x7f08001e;
+        public static final int textView_report_item_name=0x7f080020;
     }
     public static final class layout {
         public static final int approvals_fragment_layout=0x7f030000;
@@ -100,11 +103,13 @@ public final class R {
         public static final int map_layout=0x7f030013;
         public static final int module_list_layout=0x7f030014;
         public static final int module_row_layout=0x7f030015;
-        public static final int searchable=0x7f030016;
-        public static final int settings_layout=0x7f030017;
-        public static final int shape_rounded_corner=0x7f030018;
-        public static final int splash_screen_layout=0x7f030019;
-        public static final int test=0x7f03001a;
+        public static final int report_list_layout=0x7f030016;
+        public static final int report_row_layout=0x7f030017;
+        public static final int searchable=0x7f030018;
+        public static final int settings_layout=0x7f030019;
+        public static final int shape_rounded_corner=0x7f03001a;
+        public static final int splash_screen_layout=0x7f03001b;
+        public static final int test=0x7f03001c;
     }
     public static final class menu {
         public static final int menu_approvals_info=0x7f070000;
@@ -124,60 +129,85 @@ public final class R {
          */
         public static final int action_view_location=0x7f050019;
         public static final int address=0x7f05000c;
-        public static final int app_label=0x7f05001a;
+        public static final int app_label=0x7f050029;
         public static final int app_name=0x7f050000;
+        public static final int apr=0x7f05001f;
+        public static final int aug=0x7f050023;
         public static final int currentLocation=0x7f05000d;
-        public static final int database_configurations=0x7f05001c;
+        public static final int database_configurations=0x7f05002b;
         /**  Database Host Information 
          */
-        public static final int database_host=0x7f05001d;
-        public static final int database_host_dialog_title=0x7f05001f;
-        public static final int database_host_summary=0x7f05001e;
+        public static final int database_host=0x7f05002c;
+        public static final int database_host_dialog_title=0x7f05002e;
+        public static final int database_host_summary=0x7f05002d;
         /**  Database Name 
          */
-        public static final int database_name=0x7f050020;
-        public static final int database_name_dialog_title=0x7f050022;
-        public static final int database_name_summary=0x7f050021;
+        public static final int database_name=0x7f05002f;
+        public static final int database_name_dialog_title=0x7f050031;
+        public static final int database_name_summary=0x7f050030;
         /**  Database Password 
          */
-        public static final int database_pass=0x7f050026;
-        public static final int database_pass_dialog_title=0x7f050028;
-        public static final int database_pass_summary=0x7f050027;
+        public static final int database_pass=0x7f050035;
+        public static final int database_pass_dialog_title=0x7f050037;
+        public static final int database_pass_summary=0x7f050036;
         /**  Database User 
          */
-        public static final int database_user=0x7f050023;
-        public static final int database_user_dialog_title=0x7f050025;
-        public static final int database_user_summary=0x7f050024;
+        public static final int database_user=0x7f050032;
+        public static final int database_user_dialog_title=0x7f050034;
+        public static final int database_user_summary=0x7f050033;
         public static final int dateOfBirth=0x7f050007;
+        public static final int dec=0x7f050027;
         public static final int department=0x7f050008;
         public static final int email=0x7f05000b;
         public static final int employee_id=0x7f050002;
+        public static final int feb=0x7f05001d;
         public static final int gender=0x7f050006;
+        public static final int jan=0x7f05001c;
+        public static final int july=0x7f050022;
+        public static final int jun=0x7f050021;
         public static final int lastStatusUpdate=0x7f050005;
         public static final int login_button=0x7f050012;
         public static final int login_to_rapidSuite=0x7f05000f;
         public static final int logout=0x7f050013;
         public static final int mapApiKey=0x7f050014;
+        public static final int mar=0x7f05001e;
+        public static final int may=0x7f050020;
         public static final int module_activity=0x7f050001;
         public static final int name=0x7f050003;
+        public static final int nov=0x7f050026;
+        public static final int oct=0x7f050025;
         public static final int phoneNumber=0x7f05000a;
         public static final int position=0x7f050009;
         public static final int rapid=0x7f05000e;
-        public static final int search_hint=0x7f05001b;
+        public static final int report_icon_description=0x7f05001a;
+        public static final int search_hint=0x7f05002a;
+        public static final int sep=0x7f050024;
         public static final int status=0x7f050004;
+        public static final int totalRevenue=0x7f050028;
         public static final int user_name=0x7f050010;
         public static final int user_pass=0x7f050011;
+        public static final int year=0x7f05001b;
     }
     public static final class style {
-        public static final int IconStylePic=0x7f060000;
-        public static final int IconStyleReg=0x7f060001;
-        public static final int ListStyleLand=0x7f060002;
-        public static final int ListStylePort=0x7f060003;
-        public static final int TextStyle=0x7f060004;
+        /**  the theme applied to the application or activity 
+ other activity and action bar styles here 
+         */
+        public static final int ActionBarStyle=0x7f060000;
+        public static final int IconStylePic=0x7f060002;
+        public static final int IconStyleReg=0x7f060003;
+        public static final int ListStyleLand=0x7f060004;
+        public static final int ListStylePort=0x7f060005;
+        /**  style for the action bar backgrounds 
+ <item name="android:background">@drawable/ab_background</item> 
+ <item name="android:backgroundStacked">@drawable/ab_background</item> 
+ <item name="android:backgroundSplit">@drawable/ab_split_background</item> 
+         */
+        public static final int MyActionBar=0x7f060001;
+        public static final int TextStyle=0x7f060006;
         /**  Dark blue 
          */
-        public static final int TextStyle_Field=0x7f060005;
-        public static final int TextStyle_Field_Port=0x7f060007;
-        public static final int TextStyle_Port=0x7f060006;
+        public static final int TextStyle_Field=0x7f060007;
+        public static final int TextStyle_Field_Port=0x7f060009;
+        public static final int TextStyle_Port=0x7f060008;
     }
 }

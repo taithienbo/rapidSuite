@@ -18,6 +18,7 @@ import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 		return f;
 	}
+	
 
 	public EmployeeInfoFragment( Employee employee)
 	{
@@ -143,9 +146,6 @@ public class EmployeeInfoFragment extends ListFragment{
 			// Use float for precision,
 			Float lati = new Float(employee.getCurrentLatitude());
 			Float longit = new Float(employee.getCurrentLongitude());
-			
-	//		Log.i(LOG_INFO_TAG, "current lati as float: " + lati);
-	//		Log.i(LOG_INFO_TAG, "currnet lonit as float: " + longit);
 
 
 			Bundle bundle = new Bundle();
@@ -220,6 +220,8 @@ public class EmployeeInfoFragment extends ListFragment{
 	//		Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
 			TextView employee_info_value = (TextView)v.findViewById(R.id.textView_employee_value);
 
+			Intent intent = null;
+			
 			switch(position){
 			case 0:		// Employee Id
 				employee_info_value.setText(" " + employee.getEmployeeId());//employee.getEmployeeId());
@@ -247,9 +249,24 @@ public class EmployeeInfoFragment extends ListFragment{
 				break;
 			case 8: 	// Phone Number
 				employee_info_value.setText(employee.getPhoneNumber());
+				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
+				
+				Intent dial_intent = new Intent (Intent.ACTION_DIAL);
+			
+				dial_intent.setData(Uri.parse("tel:" + employee.getPhoneNumber()));
+				intent.putExtra(android.content.Intent.EXTRA_INTENT, dial_intent);
 				break;
 			case 9: 	// Email
 				employee_info_value.setText(employee.getEmail());
+				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
+				
+
+				Intent send_intent = new Intent (Intent.ACTION_SEND);
+				send_intent.setType("plain/text");
+				
+				send_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{employee.getEmail()});
+			
+				intent.putExtra(android.content.Intent.EXTRA_INTENT, send_intent);
 				break;
 			case 10: 	// Address
 				employee_info_value.setText(employee.getAddress());
@@ -259,9 +276,30 @@ public class EmployeeInfoFragment extends ListFragment{
 				break;
 			}
 
-
+			
+			if (intent != null)
+				v.setOnClickListener(new EmployeeOnClickListener(intent, context));
+			
 			return v;
 		}
+	}
+	
+	
+	private class EmployeeOnClickListener implements OnClickListener
+	{
+		private Intent intent;
+
+		public EmployeeOnClickListener (Intent intent, Context context)
+		{
+			this.intent = intent;
+		}
+		
+		public void onClick(View v) 
+		{
+			startActivity(intent);
+			
+		}
+		
 	}
 
 
