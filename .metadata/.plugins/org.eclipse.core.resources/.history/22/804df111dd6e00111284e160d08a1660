@@ -1,0 +1,100 @@
+package report;
+
+
+
+
+import java.util.List;
+
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+
+import android.content.Context;
+import android.database.DataSetObserver;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+
+public class ReportDetailsListAdapter extends BaseAdapter
+{
+	
+	private Context context;
+	private LayoutInflater mInflater;
+	private String[] report_fields;
+	
+	private static final String LOG_INFO_TAG = "ReportDetailsAdapter";
+	
+	public ReportDetailsListAdapter (Context context, List<Report> report_list) 
+	{
+		this.context = context;
+		this.mInflater = LayoutInflater.from( context );
+		this.report_fields = context.getResources().getStringArray(R.array.reports_details_array);
+	}
+	
+
+	public int getCount() 
+	{
+		// TODO Auto-generated method stub
+		return report_fields.length;
+	}
+
+	public Object getItem(int position) 
+	{
+		// TODO Auto-generated method stub
+		return report_fields[position];
+	}
+
+	public long getItemId(int position) 
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) 
+	{
+		ViewHolder holder;
+		
+		View v = convertView;
+		
+		if ( v == null )
+		{
+
+			v = mInflater.inflate ( tai.rapidconsultingusa.rapidSuiteNative.R.layout.report_details_row_layout, null );
+			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_report_detail_field), 
+					(TextView) v.findViewById(R.id.textView_report_details_value));
+
+			v.setTag ( holder );
+		}
+		else
+		{
+			holder = (ViewHolder) v.getTag ( );
+		}
+		
+		
+		
+		holder.field.setText(report_fields[position]);
+
+		// TODO Auto-generated method stub
+		return v;
+	}
+
+	
+	
+	private class ViewHolder 
+	{
+		private TextView field;
+		private TextView value;
+
+		public ViewHolder ( TextView field, TextView value )
+		{
+			this.field = field;
+			this.value = value;
+		}
+		
+		
+	
+	}
+
+}

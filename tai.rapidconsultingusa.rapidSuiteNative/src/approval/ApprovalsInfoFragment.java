@@ -88,6 +88,7 @@ public class ApprovalsInfoFragment extends ListFragment{
 	 */
 	@Override
 	public void onSaveInstanceState(Bundle outState){
+		super.onSaveInstanceState(outState);
 		Log.i(LOG_INFO_TAG, "onSavedInstanceState is called");
 		Gson gson = new Gson();
 		String approval_object_gson = gson.toJson(approval);

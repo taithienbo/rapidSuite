@@ -1,34 +1,24 @@
 package report;
 
-import imageDownloader.UrlImageViewHelper;
+
 
 import java.util.ArrayList;
-import java.util.List;
 
-import controller.OnModuleItemSelectedListener;
-
-import employee.Employee;
-import employee.EmployeeDataRetriever;
-import employee.EmployeesFragment.EmployeeListAdapter;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
-import android.content.Context;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+
+
 import android.widget.ListView;
-import android.widget.TextView;
-import approval.Approvals;
-import approval.ApprovalsDataRetriever;
+
+
 
 public class ReportFragment extends Fragment
 {
@@ -53,7 +43,8 @@ public class ReportFragment extends Fragment
 	}
 
 	
-	// onCreateView() creates and returns the view hierarchy associated with the fragment.
+	// onCreateView() creates and returns the view hierarchy associated with
+	// the fragment.
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,13 +56,10 @@ public class ReportFragment extends Fragment
 		
 		ListView reportListView = (ListView) v.findViewById(android.R.id.list);
 		
-	//	ArrayList<Report> report_list = new ArrayList<Report>();
-	//	report_list.add(new Report (1998, 200, 200, 200, 2000, 22000, 2000, 
-	//			5555, 4444, 7777,333333,777777,436353553));
-		
+	
 		ArrayList<Report> report_list = ReportDataRetriever.getReportList();
 		
-		reportListView.setAdapter(new ReportListAdapter(this.getActivity(), report_list));
+		reportListView.setAdapter(new ReportListAdapter(this, report_list));
 		
         return v;
     }
@@ -125,7 +113,8 @@ public class ReportFragment extends Fragment
 	}
 	
 	
-	// onDestroyView() allows the fragment to clean up resources associated with its View.
+	// onDestroyView() allows the fragment to clean up resources associated
+	// with its View.
 	@Override 
 	public void onDestroyView()
 	{

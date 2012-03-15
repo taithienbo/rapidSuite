@@ -7,54 +7,59 @@ public class Report implements Serializable
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int year;
 
-	private float feb_revenue;
+	private float feb_rev;
 
-	private float jan_revenue;
+	private float jan_rev;
 
-	private float apr_revenue;
+	private float apr_rev;
 
-	private float mar_revenue;
+	private float mar_rev;
 
-	private float jul_revenue;
+	private float jul_rev;
 
-	private float may_revenue;
+	private float may_rev;
 
-	private float jun_revenue;
+	private float jun_rev;
 
-	private float aug_revenue;
+	private float aug_rev;
 
-	private float sep_revenue;
+	private float sep_rev;
 
-	private float oct_revenue;
+	private float oct_rev;
 
-	private float nov_revenue;
+	private float nov_rev;
 
-	private float dec_revenue;
+	private float dec_rev;
 	
 	public static final String Report_RETRIEVAL_KEY = "Report object";
 
 
 	
-	public Report ( int year, float jan_revenue, float feb_revenue, float mar_revenue, float apr_revenue,
-			float may_revenue, float jun_revenue, float jul_revenue, float aug_revenue, float sep_revenue,
-			float oct_revenue, float nov_revenue, float dec_revenue)
+	public Report ( int year, float jan_rev, float feb_rev, float mar_rev, float apr_rev,
+			float may_rev, float jun_rev, float jul_rev, float aug_rev, float sep_rev,
+			float oct_rev, float nov_rev, float dec_rev)
 			{
 
 		this.year				=	 	year;
-		this.jan_revenue 		=	 	jan_revenue;
-		this.feb_revenue		= 		feb_revenue;
-		this.mar_revenue		= 		mar_revenue;
-		this.apr_revenue		= 		apr_revenue;
-		this.may_revenue 		= 		may_revenue; 
-		this.jun_revenue	 	= 		jun_revenue;
-		this.jul_revenue		= 		jul_revenue;
-		this.aug_revenue 		= 		aug_revenue;
-		this.sep_revenue		= 		sep_revenue;
-		this.oct_revenue 		= 		oct_revenue;
-		this.nov_revenue		= 		nov_revenue;
-		this.dec_revenue		= 		dec_revenue;
+		this.jan_rev 		=	 	jan_rev;
+		this.feb_rev		= 		feb_rev;
+		this.mar_rev		= 		mar_rev;
+		this.apr_rev		= 		apr_rev;
+		this.may_rev 		= 		may_rev; 
+		this.jun_rev	 	= 		jun_rev;
+		this.jul_rev		= 		jul_rev;
+		this.aug_rev 		= 		aug_rev;
+		this.sep_rev		= 		sep_rev;
+		this.oct_rev 		= 		oct_rev;
+		this.nov_rev		= 		nov_rev;
+		this.dec_rev		= 		dec_rev;
 		
 	}
 
@@ -67,73 +72,80 @@ public class Report implements Serializable
 
 	public float getJanRev()
 	{
-		return jan_revenue;
+		return jan_rev;
 	}
 
 
 	public float getFebRev()
 	{
-		return feb_revenue;
+		return feb_rev;
 	}
 
 
 	public float getMarRev()
 	{
-		return mar_revenue;
+		return mar_rev;
 	}
 
 	
 	
 	public float getAprRev()
 	{
-		return apr_revenue;
+		return apr_rev;
 	}
 	
 	
 	public float getMayRev()
 	{
-		return may_revenue;
+		return may_rev;
 	}
 
 
 	public float getJunRev()
 	{
-		return jun_revenue;
+		return jun_rev;
 	}
 	
 	
 	public float getJulRev()
 	{
-		return jul_revenue;
+		return jul_rev;
 	}
 	
 	
 	public float getAugRev()
 	{
-		return aug_revenue;
+		return aug_rev;
 	}
 	
 	
 	public float getSepRev()
 	{
-		return sep_revenue;
+		return sep_rev;
 	}
 	
 	
 	public float getOctRev()
 	{
-		return oct_revenue;
+		return oct_rev;
 	}
 	
 	
 	public float getNovRev()
 	{
-		return nov_revenue;
+		return nov_rev;
 	}
 	
 	
-	public float getdecRev()
+	public float getDecRev()
 	{
-		return dec_revenue;
+		return dec_rev;
+	}
+	
+	
+	public float getTotalrev()
+	{
+		return jan_rev + feb_rev + mar_rev + apr_rev + may_rev + jun_rev 
+				+ jul_rev + aug_rev + sep_rev + oct_rev + nov_rev + dec_rev;
 	}
 }	

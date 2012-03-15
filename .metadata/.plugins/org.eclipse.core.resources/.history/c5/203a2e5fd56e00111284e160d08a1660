@@ -1,0 +1,142 @@
+package report;
+
+import com.google.gson.Gson;
+
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.FragmentTransaction;
+import android.app.ListFragment;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ReportDetailsFragment extends ListFragment{
+
+
+
+	private static final String LOG_INFO_TAG = "ReportDetailsFragment info:";
+
+	private static Report report;
+
+	private static final String PENDING = "Pending";
+	private static final String APPROVED = "Approved";
+	private static final String REJECTED = "Rejected";
+
+
+	public ReportDetailsFragment(){};
+
+
+	public ReportDetailsFragment(Report report)
+	{
+		ReportDetailsFragment.report = report;
+	}
+
+
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+
+		super.setHasOptionsMenu(true);
+	}
+
+
+
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		Log.d(LOG_INFO_TAG, "onResume() called");
+	}
+
+
+
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Log.d(LOG_INFO_TAG, "onPause() called");
+	}
+
+
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		Log.d(LOG_INFO_TAG, "onStop() called");
+	}
+
+
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		Log.d(LOG_INFO_TAG, "onResume() called");
+	}
+
+
+
+	/**
+	 * Called to ask the fragment to save its current dynamic state, so it 
+	 * can later be reconstructed in a new instance of its process is 
+	 * restarted. If a new instance of the fragment later needs to be created,
+	 * the data you place in the Bundle here will be available in the Bundle 
+	 * given to onCreate(Bundle), onCreateView(LayoutInflater, ViewGroup, 
+	 * Bundle), and onActivityCreated(Bundle).
+	 */
+	@Override
+	public void onSaveInstanceState(Bundle outState){
+		super.onSaveInstanceState(outState);
+	}
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{	
+		return super.onOptionsItemSelected(item);
+	}
+
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
+
+		super.onCreateOptionsMenu(menu, inflater);
+
+	}
+
+
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) 
+	{
+		super.onPrepareOptionsMenu(menu);
+	}
+
+
+
+
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, 
+			Bundle savedInstanceState)
+	{
+
+		return super.onCreateView(inflater, viewgroup, savedInstanceState);
+
+	}
+
+
+
+
+
+}

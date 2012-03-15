@@ -1,0 +1,280 @@
+package report;
+
+import com.google.gson.Gson;
+
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.FragmentTransaction;
+import android.app.ListFragment;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ReportDetailsFragment extends ListFragment{
+
+	private static final String report_JSON_OBJECT = "report_json_object";
+
+	private static final String LOG_INFO_TAG = "ReportDetailsFragment info:";
+
+	private static Report report;
+
+	private static final String PENDING = "Pending";
+	private static final String APPROVED = "Approved";
+	private static final String REJECTED = "Rejected";
+
+
+	public ReportDetailsFragment(){};
+
+
+	public ReportDetailsFragment(Report report)
+	{
+		ReportDetailsFragment.report = report;
+	}
+
+
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+
+
+		super.setHasOptionsMenu(true);
+	}
+
+
+
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		Log.d(LOG_INFO_TAG, "onResume() called");
+	}
+
+
+
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Log.d(LOG_INFO_TAG, "onPause() called");
+	}
+
+
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		Log.d(LOG_INFO_TAG, "onStop() called");
+	}
+
+
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		Log.d(LOG_INFO_TAG, "onResume() called");
+	}
+
+
+
+	/**
+	 * Called to ask the fragment to save its current dynamic state, so it 
+	 * can later be reconstructed in a new instance of its process is 
+	 * restarted. If a new instance of the fragment later needs to be created,
+	 * the data you place in the Bundle here will be available in the Bundle 
+	 * given to onCreate(Bundle), onCreateView(LayoutInflater, ViewGroup, 
+	 * Bundle), and onActivityCreated(Bundle).
+	 */
+	@Override
+	public void onSaveInstanceState(Bundle outState){
+		Log.i(LOG_INFO_TAG, "onSavedInstanceState is called");
+		Gson gson = new Gson();
+		String report_object_gson = gson.toJson(report);
+
+		outState.putString(report_JSON_OBJECT, report_object_gson);
+	}
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_approve:
+			ReportItemStatusUpdater.updateItem(report.getId(), actions.APPROVE.getValue());
+			return true;
+		case R.id.menu_reject:
+			ReportItemStatusUpdater.updateItem(report.getId(), actions.REJECT.getValue());
+			FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
+
+			Toast.makeText(getActivity(), "Reject clicked", Toast.LENGTH_LONG).show();
+			return true;
+
+
+		case R.id.menu_set_as_pending:
+			ReportItemStatusUpdater.updateItem(report.getId(), actions.SET_AS_PENDING.getValue());
+
+			Toast.makeText(getActivity(), "Set As Pending clicked", Toast.LENGTH_LONG).show();
+
+			return true;
+
+
+		default:
+			Toast.makeText(getActivity(), "Something wrong", Toast.LENGTH_LONG).show();
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+
+		super.onCreateOptionsMenu(menu, inflater);
+
+		inflater.inflate(R.menu.menu_Report_info, menu);
+	}
+
+
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+
+		menu.removeItem(R.id.menu_logout);
+		String status = report.getStatus();
+
+		if(status.equals(APPROVED) || status.equals(REJECTED)){
+			menu.removeItem(R.id.menu_approve);
+			menu.removeItem(R.id.menu_reject);
+		}
+		else if (status.equals(PENDING)){
+			menu.removeItem(R.id.menu_set_as_pending);
+		}
+
+	}
+
+
+
+
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, 
+			Bundle savedInstanceState){
+
+
+		if(savedInstanceState != null && !savedInstanceState.isEmpty()){
+			Gson gson = new Gson();
+			report = gson.fromJson(savedInstanceState.getString(report_JSON_OBJECT), Report.class);
+		}
+
+		View view = inflater.inflate(R.layout.Report_info_list_layout, null);
+		ListView lv = (ListView) view.findViewById(android.R.id.list);
+
+		String[] Report_info = view.getResources().getStringArray(R.array.Report_info_array);
+
+		lv.setAdapter(new ReportDetailsListAdapter<String>(this.getActivity(), R.layout.Report_info_row_layout,
+				R.id.textView_Report_info_field, Report_info));
+		return view;
+
+	}
+
+
+	private class ReportDetailsListAdapter<T> extends ArrayAdapter<T>{
+
+		public ReportDetailsListAdapter(Context context, int resource,
+				int textViewResourceId, T[] ReportDetailsList) {
+			super(context, resource, textViewResourceId, ReportDetailsList);
+			this.context = context;
+			this.ReportDetailsList = ReportDetailsList;
+			// TODO Auto-generated constructor stub
+		}
+
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent){
+
+			View v = convertView;
+			if(v == null){
+				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				v = li.inflate(R.layout.Report_info_row_layout,null);
+			}
+
+			TextView field = (TextView) v.findViewById(R.id.textView_Report_info_field);
+			field.setText(ReportDetailsList[position].toString());
+
+			TextView value = (TextView)v.findViewById(R.id.textView_Report_info_value);
+
+
+			String status = null;
+			switch(position){
+			case 0:			// Item Name 
+				value.setText(report.getItemName());
+				//	Log.i(LOG_INFO_TAG, "getView(): name of item is: " + value.getText().toString());
+				break;
+			case 1:			// code 
+				value.setText(report.getCode());
+				break;
+			case 2:			// Date 
+				value.setText(report.getDate());
+				break;
+			case 3:			// Requestor 
+				value.setText(report.getRequestorName());
+				break;
+			case 4:			// Quantity 
+				value.setText(report.getQuantity());
+				break;
+			case 5:			// Cost
+				value.setText(report.getCost());
+				break;
+			case 6:			// Note 
+				value.setText(report.getNote());
+				break;
+			case 7:			// Status 
+				status = report.getStatus();
+				value.setText(status);
+				break;
+			}
+
+
+
+
+
+
+
+			return v;
+
+		}
+		private Context context;
+		private T[] ReportDetailsList;
+	}
+
+
+	private enum actions{
+
+
+		APPROVE("approve"),
+		REJECT ("reject"),
+		SET_AS_PENDING("set_as_pending");
+
+
+		private final String action;
+
+		public String getValue(){
+			return action;
+		}
+
+
+		actions(String action) {
+			this.action = action;
+		}
+	}
+
+
+}
