@@ -1,6 +1,7 @@
 package approval;
 
-public class Approvals {
+public class Approvals
+{
 
 	// Approvals Database fields:
 	/**

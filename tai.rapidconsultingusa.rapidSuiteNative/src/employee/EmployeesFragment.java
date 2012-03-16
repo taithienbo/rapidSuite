@@ -4,13 +4,12 @@ package employee;
 
 import imageDownloader.UrlImageViewHelper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
 
-import controller.OnModuleItemSelectedListener;
-
+import controller.OnItemSelectedListener;
 
 
 
@@ -22,93 +21,209 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.IInterface;
+
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class EmployeesFragment extends ListFragment {
+
+public class EmployeesFragment extends ListFragment implements Serializable
+{
 
 
 	
-	private OnModuleItemSelectedListener module_item_listener;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private OnItemSelectedListener module_item_listener;
 
 	private static final String CURRENT_SELECTED_EMPLOYEE = "current_selected_employee";
 	
-	private static int current_item_position_selected = 0;
+	private static int current_item_position_selected = -1;
 	
 	private static final String LOG_INFO_TAG = "EmployeesFragment";
 
 
+	private OnItemSelectedListener mListener;
 	
+	@Override
+	public void onViewCreated (View view, Bundle savedInstanceState)
+	{
+		super.onViewCreated(view,  savedInstanceState);
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onViewCreated() called");
+	}
+	
+	
+	@Override
+	public void onAttach(Activity activity)
+	{
+		super.onAttach(activity);
+		
+		mListener = (OnItemSelectedListener) activity;
+		
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onAttach() called");
+
+	}
+	
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
+		
+		
+	}
 	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, viewgroup, savedInstanceState);
-
+		
+		Log.d (LOG_INFO_TAG, "EmployeesFragment.onCreateView() called");
+		
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.employee_list_layout, null);
-		ListView lv = (ListView)view.findViewById(android.R.id.list);
+		ListView lv = (ListView) view.findViewById(android.R.id.list);
 		
-	
 		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();
 		
 		lv.setAdapter(new EmployeeListAdapter<Employee>(getActivity().getBaseContext(), R.layout.employee_row_layout, R.id.textView_employee_row, 
 				employee_list));
-		
-		Log.d (LOG_INFO_TAG, "onCreateView() called");
-	
-	
-		if ( savedInstanceState != null)
-		{
-			current_item_position_selected = savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE);
-			showDetails(current_item_position_selected);
-		}
 
+		if (savedInstanceState != null)
+		{
+			lv.setItemChecked(savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE), true);
+		}
 		return view;
 	}
+	
+	
+	@Override
+	public void onActivityCreated (Bundle savedInstanceState)
+	{
+		super.onActivityCreated (savedInstanceState);
+	
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onActivityCreated called");
+	}
+	
+	
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStart() called");
+	}
+	
+	
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		
+		int temp = current_item_position_selected;
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onResume() called");
+		
+	}
+	
+	
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onPause() called");
+	}
+	
+	
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStop() called");
+		
+		
+	}
+	
+	
+	
+	@Override
+	public void onDestroyView()
+	{
+		super.onDestroyView();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroyView() called");
+	}
+	
+	
+	
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroy() called");
+		
+	}
+	
+	
+
+	
+	
+	@Override
+	public void onDetach()
+	{
+		super.onDetach();
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDetach() called");
+		
+	}
+	
 	
 	
 
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
-		showDetails(position);
+		//	showDetails(position);
+		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
+		mListener.onFragmentSelectedListener(new EmployeeInfoFragment (e));
+		
 	}
 
 
 	private void showDetails(int position)
 	{
+		
+		Log.d(LOG_INFO_TAG, "EmployeesFragment.showDetails() called");
 		// Remember the current selected position to restore state if the view
 		// is changed 
 		
-		current_item_position_selected = position;
+	//	current_item_position_selected = position;
+		
+	///	Bundle saved_state = new Bundle();
+	//	onSaveInstanceState (saved_state);
+	
 		
 		ListView lv = getListView();
 		lv.setItemChecked(position, true);
 
-		
 		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
 		
 
 		FragmentManager fm = this.getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		
-		// We know that when this method is called, the container is either 
-		// null or it is an instance of EmployeesInfoFragment
-	//	EmployeeInfoFragment fragment =  (EmployeeInfoFragment) fm.findFragmentById(R.id.fragment_container);
+		
 		
 		Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 		
@@ -117,6 +232,7 @@ public class EmployeesFragment extends ListFragment {
 			fragment = EmployeeInfoFragment.getEmployeesFragmentInstance(e);
 			ft.replace(R.id.fragment_container, fragment);
 			ft.setTransition ( FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			ft.addToBackStack(null);
 			ft.commit();
 		
 		}
@@ -124,48 +240,11 @@ public class EmployeesFragment extends ListFragment {
 		
 
 		
-		Log.d(LOG_INFO_TAG, "showDetails() called");
+
 	}
 
 
-	@Override
-	public void onViewCreated (View view, Bundle savedInstanceState)
-	{
-		super.onViewCreated(view,  savedInstanceState);
-		Log.d(LOG_INFO_TAG, "onViewCreated() called");
 
-	}
-	
-	
-	@Override
-	public void onDestroyView()
-	{
-		super.onDestroyView();
-		Log.d(LOG_INFO_TAG, "onDestroyView() cakked");
-	}
-	
-	
-	@Override
-	public void onDetach()
-	{
-		super.onDetach();
-		Log.d(LOG_INFO_TAG, "onDetach() called");
-	}
-	
-	
-	@Override
-	public void onActivityCreated (Bundle savedInstanceState)
-	{
-		super.onActivityCreated (savedInstanceState);
-		
-		if ( savedInstanceState != null)
-		{
-			current_item_position_selected = savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE, 0);
-			showDetails ( current_item_position_selected );
-		}
-		
-		Log.d(LOG_INFO_TAG, "onActivityCreated called");
-	}
 	
 
 	
@@ -182,54 +261,11 @@ public class EmployeesFragment extends ListFragment {
 	
 	
 	
-	@Override
-	public void onAttach(Activity activity)
-	{
-		super.onAttach(activity);
-		Log.d(LOG_INFO_TAG, "onAttach() called");
-		try{
-			module_item_listener = (OnModuleItemSelectedListener) activity;
-		}
-		catch(ClassCastException e){
-			throw new ClassCastException(activity.toString() + " must implement OnModuleItemSelectedLister");
-		}
 
-	}
+	
 	
 
 
-	@Override
-	public void onResume()
-	{
-		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
-	}
-	
-	
-
-	@Override
-	public void onPause()
-	{
-		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
-	}
-	
-	
-	@Override
-	public void onStop()
-	{
-		super.onStop();
-		Log.d(LOG_INFO_TAG, "onStop() called");
-	}
-	
-	
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
-	}
-	
 
 	public class EmployeeListAdapter<T> extends ArrayAdapter<T> {
 

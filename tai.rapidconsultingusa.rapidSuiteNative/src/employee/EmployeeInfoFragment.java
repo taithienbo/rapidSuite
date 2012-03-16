@@ -1,20 +1,18 @@
 package employee;
 
-import inventory.Inventory;
-import inventory.InventoryDataRetriever;
-import inventory.InventoryFragment.InvventoryListAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.io.Serializable;
+
 
 import map.MapViewActivity;
 
 
-import controller.OnModuleItemSelectedListener;
 
 
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -30,14 +28,20 @@ import android.view.View.OnClickListener;
 
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.TextView;
-import approval.Approvals;
-import approval.ApprovalsDataRetriever;
 
-public class EmployeeInfoFragment extends ListFragment{
 
+public class EmployeeInfoFragment extends ListFragment implements Serializable
+{
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 
 	public EmployeeInfoFragment(){}
@@ -65,51 +69,33 @@ public class EmployeeInfoFragment extends ListFragment{
 	public EmployeeInfoFragment( Employee employee)
 	{
 		this.employee = employee;
+		this.setRetainInstance(true);
 	}
 
+	
+	@Override
+	public void onAttach(Activity activity)
+	{
+		super.onAttach(activity);
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onAttach() called");
+	
 
+	}
+	
+	
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		super.setHasOptionsMenu(true);
+		
 	}
 	
 	
-
 	@Override
-	public void onResume()
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
 	{
-		super.onResume();
-		////(LOG_INFO_TAG, "onResume() called");
-	}
-	
-	
-
-	@Override
-	public void onPause()
-	{
-		super.onPause();
-		//(LOG_INFO_TAG, "onPause() called");
-	}
-	
-	
-	@Override
-	public void onStop()
-	{
-		super.onStop();
-		//Log.d(LOG_INFO_TAG, "onStop() called");
-	}
-	
-	
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-		//(LOG_INFO_TAG, "onResume() called");
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState){
 
 
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
@@ -123,7 +109,84 @@ public class EmployeeInfoFragment extends ListFragment{
 
 		return view;
 	}
+	
+	
+	@Override
+	public void onActivityCreated( Bundle savedInstanceState)
+	{
+		super.onActivityCreated (savedInstanceState);
+		
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onActivityCreated called");
+	}
+	
+	
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onStart() called");
+	}
+	
+	
 
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onResume() called");
+	}
+	
+	
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onPause() called");
+	}
+	
+	
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onStop() called");
+	}
+	
+	
+	@Override
+	public void onDestroyView()
+	{
+		super.onDestroyView();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDestroyView() called");
+	}
+	
+	
+	
+	@Override
+	public void onDestroy()
+	{
+
+		super.onDestroy();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDestroy() called");
+	}
+
+	
+
+	
+	@Override
+	public void onDetach()
+	{
+		super.onDetach();
+		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDetach() called");
+	}
+	
+	
+	@Override
+	public void onViewCreated (View view, Bundle savedInstanceState)
+	{
+		super.onViewCreated(view, savedInstanceState);
+		//(LOG_INFO_TAG, "onViewCreated called");
+	}
 
 
 	@Override
@@ -170,12 +233,7 @@ public class EmployeeInfoFragment extends ListFragment{
 
 
 	}
-	@Override
-	public void onViewCreated (View view, Bundle savedInstanceState)
-	{
-		super.onViewCreated(view, savedInstanceState);
-		//(LOG_INFO_TAG, "onViewCreated called");
-	}
+
 
 
 	public class EmployeeInfoListAdapter<T> extends ArrayAdapter<T> {

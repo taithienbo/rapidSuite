@@ -2,7 +2,9 @@ package controller;
 
 
 
-import home.HomeFragment;
+import java.io.Serializable;
+
+
 import inventory.InventoryFragment;
 
 import employee.EmployeesFragment;
@@ -10,6 +12,7 @@ import employee.EmployeesFragment;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 
 import android.app.FragmentTransaction;
 
@@ -20,65 +23,102 @@ import android.util.Log;
 
 import approval.ApprovalsFragment;
 
-public class MainActivity extends Activity  implements OnModuleItemSelectedListener 
+public class MainActivity extends Activity  implements OnItemSelectedListener 
 {
+
+	// Variables for restoring fragment after a configuration change
+
+
+	private static final String FRAGMENT_RETRIEVAL_KEY = "myFragment";
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		
-		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
-		
-		ft.replace(R.id.fragment_container, new HomeFragment());
-		ft.commit();
+
 		this.setContentView(R.layout.main_activity_layout);
+		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
 	}
+
+
+
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		Log.d(LOG_INFO_TAG, "MainActivity.onStart() called");
+	}
+
+
+	@Override
+	public void onSaveInstanceState (Bundle outState)
+	{
 	
+		super.onSaveInstanceState(outState);
+	}
+
+
+	@Override
+	public void onRestoreInstanceState (Bundle bundle)
+	{
+		super.onRestoreInstanceState(bundle);
+		Log.d(LOG_INFO_TAG, "MainActivity.onRestoreInstanceState called");
+
 	
+	}
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+		Log.d(LOG_INFO_TAG, "MainActivity.onResume() called");
+
+	
 	}
-	
-	
-	@Override
-	public void onRestart()
-	{
-		super.onRestart();
-		Log.d(LOG_INFO_TAG, "onRestart() called");
-	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
+		Log.d(LOG_INFO_TAG, "MainActivity.onPause() called");
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
-	
-	
+
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+		Log.d(LOG_INFO_TAG, "onDestroy() called");
 	}
 
-//The commented out codes below are handled in separate fragments
 
-	
-	public void onModuleItemSelectedListener(String module_name) {
+	@Override
+	public void onRestart()
+	{
+		super.onRestart();
+		Log.d(LOG_INFO_TAG, "MainActivity.onCRestart() called");
+	}
+
+
+
+
+	//The commented out codes below are handled in separate fragments
+
+
+	public void onModuleItemSelectedListener(String module_name) 
+	{
 		// TODO Auto-generated method stub
 		Log.i("Module item clicked", module_name + " clicked");
 
@@ -122,9 +162,29 @@ public class MainActivity extends Activity  implements OnModuleItemSelectedListe
 	}
 
 
+	public void onFragmentSelectedListener(Fragment fragment) 
+	{
+		FragmentManager fm = this.getFragmentManager();
+		Fragment current_fragment = fm.findFragmentById(R.id.fragment_container);
+
+		String current_fragment_class_name;
+		
+		if (current_fragment == null 
+				||  (current_fragment_class_name = current_fragment.getClass().getName()).equals
+						(ApprovalsFragment.class.getName()) 
+				|| !current_fragment_class_name.
+						equals(fragment.getClass().getName()))
+		{
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.replace(R.id.fragment_container, fragment);
+			ft.addToBackStack(null);
+			ft.commit();
+		}
+
+	}
 
 
-	
+
 	private enum modules
 	{
 
@@ -155,5 +215,6 @@ public class MainActivity extends Activity  implements OnModuleItemSelectedListe
 
 	private static final String PENDING = "Pending";
 	private static final String PROCESSED = "Processed";
+
 
 }

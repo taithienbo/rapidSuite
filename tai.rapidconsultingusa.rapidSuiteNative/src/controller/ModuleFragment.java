@@ -52,7 +52,7 @@ public class ModuleFragment extends ListFragment
 
 	private static int current_selected_item_position = 0;
 
-	private OnModuleItemSelectedListener module_item_listener;
+	private OnItemSelectedListener module_item_listener;
 
 
 	@Override
@@ -77,13 +77,14 @@ public class ModuleFragment extends ListFragment
 		super.onActivityCreated(savedInstanceState);
 		//	Log.d(LOG_INFO_TAG, "onActivityCreated() called");
 
+		/**
 		if(savedInstanceState != null)
 		{
 			current_selected_item_position = savedInstanceState.getInt(CURRENT_ITEM_POSITION, 0);
 
 			showDetails(current_selected_item_position);
 		}
-
+**/
 	}
 
 
@@ -92,10 +93,9 @@ public class ModuleFragment extends ListFragment
 	{
 		super.onSaveInstanceState(outState);
 		
-		outState.putInt(CURRENT_ITEM_POSITION, current_selected_item_position);
+	//	outState.putInt(CURRENT_ITEM_POSITION, current_selected_item_position);
 
 	}
-
 
 
 
@@ -105,7 +105,6 @@ public class ModuleFragment extends ListFragment
 		super.onResume();
 
 		Log.d(LOG_INFO_TAG, "onResume() called");
-
 	}
 
 
@@ -122,11 +121,7 @@ public class ModuleFragment extends ListFragment
 	public void onStop()
 	{
 		super.onStop();
-		ListView lv = getListView();
-		int pos = getListView().getSelectedItemPosition();
 
-		if(pos != ListView.INVALID_POSITION)
-			current_selected_item_position = lv.getSelectedItemPosition();
 	
 		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
@@ -146,7 +141,7 @@ public class ModuleFragment extends ListFragment
 		super.onAttach(activity);
 		try
 		{
-			module_item_listener = (OnModuleItemSelectedListener) activity; 
+			module_item_listener = (OnItemSelectedListener) activity; 
 		}
 		catch(ClassCastException e)
 		{
@@ -160,6 +155,7 @@ public class ModuleFragment extends ListFragment
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
+		super.onListItemClick(l, v, position, id);
 		showDetails(position);
 	}
 
@@ -167,7 +163,7 @@ public class ModuleFragment extends ListFragment
 	private void showDetails(int position) 
 	{
 		// TODO Auto-generated method stub
-		Log.i(LOG_INFO_TAG, "onListItemCLick() called");
+		Log.i(LOG_INFO_TAG, "onshowDetails() called");
 		ListView lv = getListView();
 		lv.setItemChecked(position, true);
 
@@ -187,72 +183,33 @@ public class ModuleFragment extends ListFragment
 		switch(position)
 		{
 		case 0:		// Home
-			if(fragment == null || fragment.getClass().getName() != HomeFragment.class.getName())
-			{
-				fragment = new HomeFragment();
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
-
+			module_item_listener.onFragmentSelectedListener(new HomeFragment());
 			break;
+		
 		case 1: 	// Modules
 
 			break;
 		case 2:		// Employees
-			if(fragment == null || fragment.getClass().getName() != EmployeesFragment.class.getName())
-			{
-				fragment = new EmployeesFragment();
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new EmployeesFragment());
 			break;
+		
 		case 3:		// Inventory
-			if(fragment == null || fragment.getClass().getName() != InventoryFragment.class.getName())
-			{
-				fragment = new InventoryFragment();
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new InventoryFragment());
 			break;
+			
 		case 4: 	// Approvals 
-			if(fragment == null || fragment.getClass().getName() != ApprovalsFragment.class.getName())
-			{
-				fragment = new ApprovalsFragment(PENDING);
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new ApprovalsFragment(PENDING));
 			break;
 
 		case 5: 	// ApprovalsHistory
-			if(fragment == null || fragment.getClass().getName() != ApprovalsFragment.class.getName())
-			{
-				fragment = new ApprovalsFragment(PROCESSED);
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new ApprovalsFragment(PROCESSED));
 			break;
+		
 		case 6:		// Reports
-			if(fragment == null || fragment.getClass().getName() != ReportFragment.class.getName())
-			{
-				fragment = new ReportFragment();
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new ReportFragment());
 			break;
 		case 7 : 	// Settings
-			if(fragment == null || fragment.getClass().getName() != SettingsFragment.class.getName())
-			{
-				fragment = new SettingsFragment();
-				ft.replace(R.id.fragment_container, fragment);
-				ft.addToBackStack(null);
-				ft.commit();
-			}
+			module_item_listener.onFragmentSelectedListener(new SettingsFragment());
 			break;
 		}
 

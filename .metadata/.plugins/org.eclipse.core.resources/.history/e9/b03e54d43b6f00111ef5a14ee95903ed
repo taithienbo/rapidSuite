@@ -1,0 +1,245 @@
+package controller;
+
+
+
+import java.io.Serializable;
+
+
+import inventory.InventoryFragment;
+
+import employee.EmployeesFragment;
+
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.Activity;
+import android.app.Fragment;
+
+import android.app.FragmentTransaction;
+
+
+
+import android.os.Bundle;
+import android.util.Log;
+
+import approval.ApprovalsFragment;
+
+public class MainActivity extends Activity  implements OnItemSelectedListener 
+{
+	
+	// Variables for restoring fragment after a configuration change
+	private static Serializable f;
+	
+	private static final String FRAGMENT_RETRIEVAL_KEY = "myFragment";
+	
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		
+		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
+		
+		this.setContentView(R.layout.main_activity_layout);
+		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
+	}
+	
+	
+	
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		Log.d(LOG_INFO_TAG, "MainActivity.onStart() called");
+	}
+	
+	
+	@Override
+	public void onSaveInstanceState (Bundle outState)
+	{
+		outState.putSerializable(FRAGMENT_RETRIEVAL_KEY, f);
+		super.onSaveInstanceState(outState);
+		
+		
+	}
+	
+	
+	@Override
+	public void onRestoreInstanceState (Bundle bundle)
+	{
+		super.onRestoreInstanceState(bundle);
+		Log.d(LOG_INFO_TAG, "MainActivity.onRestoreInstanceState called");
+		
+		if (bundle != null)
+		{
+			f = bundle.getSerializable(FRAGMENT_RETRIEVAL_KEY);
+		}
+		else
+		{
+			Log.d(LOG_INFO_TAG, "onRestoreInstanceSttate(): serialized fragment could not be retrieved");
+		}
+		
+		
+
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		Log.d(LOG_INFO_TAG, "MainActivity.onResume() called");
+		
+		if (f != null)
+		{
+			FragmentTransaction ft = this.getFragmentManager().beginTransaction();
+			ft.replace (R.id.fragment_container, (Fragment) f);
+			ft.commit();
+		}
+		else
+		{
+			Log.d(LOG_INFO_TAG, "fragment f is null");
+		}
+		
+	}
+	
+
+	@Override
+	public void onPause()
+	{
+		super.onPause();
+		Log.d(LOG_INFO_TAG, "MainActivity.onPause() called");
+		Bundle bundle = new Bundle();
+		bundle.putBoolean("test", true);
+		onSaveInstanceState(bundle);
+	}
+	
+	
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		Log.d(LOG_INFO_TAG, "onStop() called");
+	}
+	
+	
+
+	@Override
+	public void onDestroy()
+	{
+		super.onDestroy();
+		Log.d(LOG_INFO_TAG, "onDestroy() called");
+		Bundle bundle = new Bundle ();
+		bundle.putBoolean ("test", true);
+	}
+
+	
+	@Override
+	public void onRestart()
+	{
+		super.onRestart();
+		Log.d(LOG_INFO_TAG, "MainActivity.onCRestart() called");
+	}
+	
+	
+	
+	
+	
+	
+//The commented out codes below are handled in separate fragments
+
+	
+	public void onModuleItemSelectedListener(String module_name) 
+	{
+		// TODO Auto-generated method stub
+		Log.i("Module item clicked", module_name + " clicked");
+
+		Fragment module_fragment = (Fragment) getFragmentManager().findFragmentById(R.id.fragment_container);
+		FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+
+		Fragment newFragment = null;
+
+		if(module_name.equals(modules.EMPLOYEES.getValue()))
+		{
+			newFragment = new EmployeesFragment();
+		}
+
+		else if(module_name.equals(modules.INVENTORY.getValue()))
+		{
+			newFragment = new InventoryFragment();
+		}
+		else if(module_name.equals(modules.APPROVALS.getValue()))
+		{
+			newFragment = new ApprovalsFragment(PENDING);
+		}
+		else if(module_name.equals(modules.APPROVALS_HISTORY.getValue()))
+		{
+			newFragment = new ApprovalsFragment(PROCESSED);
+		}
+		else {}
+
+
+
+		if(newFragment != null)
+		{
+
+			ft.replace(R.id.fragment_container, newFragment);
+			ft.addToBackStack(null);
+			ft.commit();
+		}
+
+
+
+	}
+
+
+	public void onFragmentSelectedListener(Fragment fragment) 
+	{
+		Fragment f = this.getFragmentManager().findFragmentById(R.id.fragment_container);
+		
+		FragmentTransaction ft = this.getFragmentManager().beginTransaction();
+		ft.replace(R.id.fragment_container, fragment);
+		
+		
+		// Save instance state 
+		f = fragment;
+		
+		ft.commit();
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	
+	private enum modules
+	{
+
+		HOME("home"),
+		EMPLOYEES ("Employees"),
+		INVENTORY("Inventory"),
+		APPROVALS("Approvals"),
+		APPROVALS_HISTORY("Approvals History"),
+		REPORTS("Reports"),
+		SETTINGS("Settings");
+
+
+		private final String module;
+
+		public String getValue()
+		{
+			return module;
+		}
+
+
+		modules(String name)
+		{
+			this.module = name;
+		}
+	}
+
+	private static final String LOG_INFO_TAG = "MainActivity Info:";
+
+	private static final String PENDING = "Pending";
+	private static final String PROCESSED = "Processed";
+
+
+}
