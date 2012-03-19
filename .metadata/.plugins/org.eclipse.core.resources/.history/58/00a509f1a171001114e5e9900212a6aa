@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <style name="ListStyleLand">
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <style name="ListStylePort">
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:divider">#000000</item>
+        <item name="android:background">@drawable/rounded_corner_top</item>
+    </style>
+
+</resources>

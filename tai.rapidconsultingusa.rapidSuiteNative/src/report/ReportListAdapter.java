@@ -76,14 +76,7 @@ public class ReportListAdapter extends BaseAdapter
 			holder = (ViewHolder) v.getTag ( );
 		}
 		
-		Log.d(LOG_INFO_TAG, "reportItem is null ? " + (holder.reportItem == null ? 
-				"yes" : "no"));
-		
-		Log.d(LOG_INFO_TAG, "reportList is null ? " + (report_list == null ? 
-				"yes" : "no"));
-		
-		Log.d(LOG_INFO_TAG, "report_list is empty ? " + (report_list.isEmpty() ? 
-				"yes" : "no"));
+	
 		
 		holder.reportItem.setText(Integer.toString(report_list.get(position).getYear()));
 		

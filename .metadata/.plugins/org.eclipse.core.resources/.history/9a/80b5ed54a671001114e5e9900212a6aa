@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  landscape mode -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:weightSum="100" >
+
+    <ImageView
+        android:id="@+id/imageView_employee"
+        style="@style/IconStylePic"
+        android:src="@drawable/employee"
+        android:layout_width = "0dp"
+        android:layout_weight = "20"
+        android:focusable="false" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textView_employee_row"
+        style="@style/TextStyle"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom = "25dp"
+        android:layout_weight="40"
+       >
+    </TextView>
+
+</LinearLayout>

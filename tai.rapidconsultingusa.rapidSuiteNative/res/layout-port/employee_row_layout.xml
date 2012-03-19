@@ -8,15 +8,15 @@
     android:weightSum="100" >
 
     <ImageView
-        android:id="@+id/imageView_employee"
-        style="@style/IconStylePic"
+        style="@style/IconStyleReg"
         android:layout_width="0dp"
         android:layout_weight="30"
-        android:focusable="false" >
+        android:focusable="false"
+        android:src="@drawable/person_gray" >
     </ImageView>
 
     <TextView
-        android:id="@+id/textView_employee_row"
+        android:id="@+id/textView_employee_row_name"
         style="@style/TextStyle.Port"
         android:layout_width="0sp"
         android:layout_height="wrap_content"

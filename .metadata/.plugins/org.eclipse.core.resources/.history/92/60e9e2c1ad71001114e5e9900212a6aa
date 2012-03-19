@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- portrait -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100" >
+
+    <TextView
+        android:id="@+id/textView_employee_row_name"
+        style="@style/TextStyle.Port"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="50" >
+    </TextView>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="50"
+        android:src="@drawable/arrow_right" >
+    </ImageView>
+
+</LinearLayout>

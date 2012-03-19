@@ -13,6 +13,7 @@ import controller.OnItemSelectedListener;
 
 
 
+
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
@@ -20,6 +21,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 
@@ -30,6 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,7 +42,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 {
 
 
-	
+
 	/**
 	 * 
 	 */
@@ -48,59 +51,58 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	private OnItemSelectedListener module_item_listener;
 
 	private static final String CURRENT_SELECTED_EMPLOYEE = "current_selected_employee";
-	
+
 	private static int current_item_position_selected = -1;
-	
+
 	private static final String LOG_INFO_TAG = "EmployeesFragment";
 
 
 	private OnItemSelectedListener mListener;
-	
+
 	@Override
 	public void onViewCreated (View view, Bundle savedInstanceState)
 	{
 		super.onViewCreated(view,  savedInstanceState);
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onViewCreated() called");
 	}
-	
-	
+
+
 	@Override
 	public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
-		
+
 		mListener = (OnItemSelectedListener) activity;
-		
+
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onAttach() called");
 
 	}
-	
-	
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
-		
-		
+
+
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, viewgroup, savedInstanceState);
-		
+
 		Log.d (LOG_INFO_TAG, "EmployeesFragment.onCreateView() called");
-		
+
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.employee_list_layout, null);
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
-		
+
 		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();
-		
-		lv.setAdapter(new EmployeeListAdapter<Employee>(getActivity().getBaseContext(), R.layout.employee_row_layout, R.id.textView_employee_row, 
-				employee_list));
+
+		lv.setAdapter(new EmployeeListAdapter(getActivity(), employee_list));
 
 		if (savedInstanceState != null)
 		{
@@ -108,88 +110,88 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		}
 		return view;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated (Bundle savedInstanceState)
 	{
 		super.onActivityCreated (savedInstanceState);
-	
+
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onActivityCreated called");
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStart() called");
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onResume()
 	{
 		super.onResume();
-		
+
 		int temp = current_item_position_selected;
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onResume() called");
-		
+
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onPause() called");
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStop() called");
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroyView() called");
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroy() called");
-		
-	}
-	
-	
 
-	
-	
+	}
+
+
+
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDetach() called");
-		
+
 	}
-	
-	
-	
+
+
+
 
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
@@ -197,57 +199,12 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		//	showDetails(position);
 		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
 		mListener.onFragmentSelectedListener(new EmployeeInfoFragment (e));
-		
-	}
-
-
-	private void showDetails(int position)
-	{
-		
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.showDetails() called");
-		// Remember the current selected position to restore state if the view
-		// is changed 
-		
-	//	current_item_position_selected = position;
-		
-	///	Bundle saved_state = new Bundle();
-	//	onSaveInstanceState (saved_state);
-	
-		
-		ListView lv = getListView();
-		lv.setItemChecked(position, true);
-
-		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
-		
-
-		FragmentManager fm = this.getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		
-		
-		
-		Fragment fragment = fm.findFragmentById(R.id.fragment_container);
-		
-		if ( fragment == null || fragment.getClass().getName() != EmployeeInfoFragment.class.getName())
-		{
-			fragment = EmployeeInfoFragment.getEmployeesFragmentInstance(e);
-			ft.replace(R.id.fragment_container, fragment);
-			ft.setTransition ( FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-			ft.addToBackStack(null);
-			ft.commit();
-		
-		}
-	
-		
-
-		
 
 	}
 
 
 
-	
 
-	
 	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
@@ -258,61 +215,100 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		outState.putInt(CURRENT_SELECTED_EMPLOYEE, current_item_position_selected);
 
 	}
-	
-	
-	
-
-	
-	
 
 
 
-	public class EmployeeListAdapter<T> extends ArrayAdapter<T> {
 
-		private List<Employee> employee_list;
-		private int textViewResourceId;
-		private int resource;
+	public class EmployeeListAdapter extends BaseAdapter 
+	{
+
+
 		private Context context;
+		private List<Employee> employee_list;
+		private LayoutInflater mInflater;
 
 
-
-		public EmployeeListAdapter(Context context, int resource,
-				int textViewResourceId, List<T> employee_list) 
+		public EmployeeListAdapter(Context context, List<Employee> employee_list)
 		{
-			super(context, resource, textViewResourceId, employee_list);
-			// TODO Auto-generated constructor stub
-		
 			this.context = context;
-			this.textViewResourceId = textViewResourceId;
-			this.resource = resource;
-			this.employee_list = (ArrayList<Employee>) employee_list;
-	
+			this.employee_list = employee_list;
+			this.mInflater = LayoutInflater.from(context);
 		}
 
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent){
-		//	Log.i("EmployeeFragment Info", "EmployeeListAdapter.getView() called");
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return employee_list.size();
+		}
+
+
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return employee_list.get(position);
+		}
+
+
+		public long getItemId(int position) 
+		{
+			// TODO Auto-generated method stub
+			return employee_list.get(position).getEmployeeId();
+		}
+
+
+		public View getView(int position, View convertView, ViewGroup parent) 
+		{
+			// TODO Auto-generated method stub
+			ViewHolder holder;
+
 			View v = convertView;
 
-			if(v == null)
+			if ( v == null )
 			{
-				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = li.inflate(R.layout.employee_row_layout, null);
+
+				v = mInflater.inflate ( R.layout.employee_row_layout, null );
+				holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_employee_row_name));
+
+				v.setTag ( holder );
 			}
-		
-			TextView employee_name = (TextView) v.findViewById(R.id.textView_employee_row);
-				
-			employee_name.setText(employee_list.get(position).getName());
+
+			else
+				holder = (ViewHolder) v.getTag ( );
+
+			holder.employee_name.setText( employee_list.get(position).getName());
 			
-			ImageView employee_image = (ImageView)v.findViewById(R.id.imageView_employee);
-			UrlImageViewHelper.setUrlDrawable(employee_image, employee_list.get(position).getPictureLink());
+			holder.top_edges = context.getResources().getDrawable(R.drawable.rounded_corner_top);
+			
+			holder.bottom_edges = context.getResources().getDrawable(R.drawable.rounded_corner_bottom);
+			
+			if (position == 0)
+				v.setBackgroundDrawable(holder.top_edges);
+			
+			else if (position == employee_list.size() - 1)
+				v.setBackgroundDrawable(holder.bottom_edges);
+			
 
 			return v;
+
 		}
-		
-	//	private static final String LOG_INFO_TAG = "EmploeesFragmentInfo";
-		
+
+
 	}
-	
+
+
+
+
+	private class ViewHolder 
+	{
+		private TextView employee_name;
+		private Drawable top_edges;
+		private Drawable bottom_edges;
+
+		public ViewHolder (TextView employee_name)
+		{
+			this.employee_name = employee_name;
+		}
+	}
+
+
+
 }

@@ -2,6 +2,8 @@ package employee;
 
 
 
+import imageDownloader.UrlImageViewHelper;
+
 import java.io.Serializable;
 
 
@@ -29,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -45,15 +48,15 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 
 	public EmployeeInfoFragment(){}
-	
-	
+
+
 
 	public Employee getCurrentSelectedEmployee()
 	{
 		return (Employee) getArguments().getSerializable(Employee.RETRIEVAL_KEY);
 	}
-	
-	
+
+
 	public static EmployeeInfoFragment getEmployeesFragmentInstance (Employee employee)
 	{
 		EmployeeInfoFragment f = new EmployeeInfoFragment( employee );
@@ -64,7 +67,7 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 		return f;
 	}
-	
+
 
 	public EmployeeInfoFragment( Employee employee)
 	{
@@ -72,27 +75,27 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 		this.setRetainInstance(true);
 	}
 
-	
+
 	@Override
 	public void onAttach(Activity activity)
 	{
 		super.onAttach(activity);
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onAttach() called");
-	
+
 
 	}
-	
-	
-	
-	
+
+
+
+
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		super.setHasOptionsMenu(true);
-		
+
 	}
-	
-	
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
 	{
@@ -109,25 +112,25 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 		return view;
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated( Bundle savedInstanceState)
 	{
 		super.onActivityCreated (savedInstanceState);
-		
+
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onActivityCreated called");
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		super.onStart();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onStart() called");
 	}
-	
-	
+
+
 
 	@Override
 	public void onResume()
@@ -135,33 +138,33 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 		super.onResume();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onResume() called");
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		super.onPause();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onPause() called");
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		super.onStop();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onStop() called");
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		super.onDestroyView();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDestroyView() called");
 	}
-	
-	
-	
+
+
+
 	@Override
 	public void onDestroy()
 	{
@@ -170,17 +173,17 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDestroy() called");
 	}
 
-	
 
-	
+
+
 	@Override
 	public void onDetach()
 	{
 		super.onDetach();
 		Log.d(LOG_INFO_TAG, "EmployeesInfoFragment.onDetach() called");
 	}
-	
-	
+
+
 	@Override
 	public void onViewCreated (View view, Bundle savedInstanceState)
 	{
@@ -213,19 +216,19 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 			Bundle bundle = new Bundle();
 
-			
+
 			bundle.putFloat(CURRENT_EMPLOYEE_LATITUDE_KEY, lati);
 			bundle.putFloat(CURRENT_EMPLOYEE_LONGITUDE_KEY, longit);
-			
+
 			bundle.putSerializable(Employee.RETRIEVAL_KEY, employee);
-		
-			
+
+
 			bundle.putString("caller", this.getClass().getName());
 			intent.putExtras(bundle);
-			
+
 			startActivity(intent);
 			return true;
-	
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -255,13 +258,13 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.employee_info = employee_info;
-	//		Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.constructor called");
+			//		Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.constructor called");
 		}
 
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
-		//	Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.getView() called");
+			//	Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.getView() called");
 			View v = convertView;
 
 			if(v == null){
@@ -273,12 +276,12 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 			employee_info_field.setText((CharSequence) employee_info[position]);
 
 
-
-	//		Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
+			//		Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
 			TextView employee_info_value = (TextView)v.findViewById(R.id.textView_employee_value);
 
+
 			Intent intent = null;
-			
+
 			switch(position){
 			case 0:		// Employee Id
 				employee_info_value.setText(" " + employee.getEmployeeId());//employee.getEmployeeId());
@@ -307,41 +310,47 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 			case 8: 	// Phone Number
 				employee_info_value.setText(employee.getPhoneNumber());
 				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
-				
+
 				Intent dial_intent = new Intent (Intent.ACTION_DIAL);
-			
+
 				dial_intent.setData(Uri.parse("tel:" + employee.getPhoneNumber()));
 				intent.putExtra(android.content.Intent.EXTRA_INTENT, dial_intent);
 				break;
 			case 9: 	// Email
 				employee_info_value.setText(employee.getEmail());
 				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
-				
+
 
 				Intent send_intent = new Intent (Intent.ACTION_SEND);
 				send_intent.setType("plain/text");
-				
+
 				send_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{employee.getEmail()});
-			
+
 				intent.putExtra(android.content.Intent.EXTRA_INTENT, send_intent);
 				break;
 			case 10: 	// Address
 				employee_info_value.setText(employee.getAddress());
 				break;
-			case 11: 	// Current Location
-				employee_info_value.setText("Click here to find current location");
+			case 11: 	// Picture
+
+				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				v = li.inflate(R.layout.employee_image_row_layout, null);
+
+				ImageView employee_image = (ImageView)v.findViewById(R.id.imageView_employee_picture);
+				UrlImageViewHelper.setUrlDrawable(employee_image, employee.getPictureLink());
+
 				break;
 			}
 
-			
+
 			if (intent != null)
 				v.setOnClickListener(new EmployeeOnClickListener(intent, context));
-			
+
 			return v;
 		}
 	}
-	
-	
+
+
 	private class EmployeeOnClickListener implements OnClickListener
 	{
 		private Intent intent;
@@ -350,13 +359,13 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 		{
 			this.intent = intent;
 		}
-		
+
 		public void onClick(View v) 
 		{
 			startActivity(intent);
-			
+
 		}
-		
+
 	}
 
 
@@ -370,7 +379,7 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 	private static final String CURRENT_EMPLOYEE_LONGITUDE_KEY = "longitude";
 	private static final String CURRENT_EMPLOYEE_LATITUDE_KEY = "latitude";
-	
-	
+
+
 	private static final String CALLER = "caller";
 }
