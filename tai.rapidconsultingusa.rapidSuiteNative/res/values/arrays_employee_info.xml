@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string-array name="employee_info_array">
-	   
-		<item>Employee Id</item>
-		<item>Name</item>
-		<item>Status</item>
-		<item>Last Status Update</item>
-		<item>Gender</item>
-		<item>Date of Birth</item>
-		<item>Department</item>
-		<item>Position</item>
-		<item>Phone Number</item>
-		<item>Email</item>
-		<item>Address</item>
-		<item>Picture</item>
-		
-	</string-array>
+
+    <string-array name="employee_info_array">
+        <item>Employee Id</item>
+        <item>Separator</item>
+        <item>Email</item>
+        <item>Separator</item>
+        <item>Phone</item>
+        <item>Separator</item>
+        <item>Position</item>
+        <item>Department</item>
+        <item>Separator</item>
+        <item>Status</item>
+        <item>Last Status Update</item>
+    </string-array>
+
 </resources>

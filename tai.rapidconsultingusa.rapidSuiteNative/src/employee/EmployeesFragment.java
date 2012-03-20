@@ -101,7 +101,9 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
 		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();
-
+		
+		
+	
 		lv.setAdapter(new EmployeeListAdapter(getActivity(), employee_list));
 
 		if (savedInstanceState != null)

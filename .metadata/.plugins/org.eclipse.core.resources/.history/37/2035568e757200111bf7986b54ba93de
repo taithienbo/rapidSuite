@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- the scrollable content -->
+    <TextView android:layout_gravity="bottom|right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp"
+        android:textSize="48sp"
+        android:text="The\nquick\nbrown\nfox\njumps\nover..." />
+
+</ScrollView>
+

@@ -5,6 +5,7 @@ package employee;
 import imageDownloader.UrlImageViewHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 import map.MapViewActivity;
@@ -18,6 +19,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -107,8 +110,24 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 		String[] employee_info =  view.getResources().getStringArray(R.array.employee_info_array);
 
-		lv.setAdapter(new EmployeeInfoListAdapter<String>(getActivity().getBaseContext(), R.layout.employee_info_row_layout,
-				R.id.textView_employee_field, employee_info));
+
+		View header_view = inflater.inflate(R.layout.employee_info_list_heading_layout, null);
+
+		ImageView employee_image = (ImageView)header_view.findViewById(R.id.imageView_employee_pic);
+		UrlImageViewHelper.setUrlDrawable(employee_image, employee.getPictureLink());
+
+		TextView employee_name = (TextView)header_view.findViewById(R.id.textView_employee_info_name);
+		employee_name.setText(employee.getName());
+
+		TextView employee_address = (TextView)header_view.findViewById(R.id.textView_employee_info_address);
+		employee_address.setText(employee.getAddress());
+
+		header_view.setMinimumHeight(200);
+		lv.addHeaderView(header_view);
+		lv.setHeaderDividersEnabled(false);
+
+
+		lv.setAdapter(new EmployeeInfoListAdapter(getActivity(),  employee_info));
 
 		return view;
 	}
@@ -239,107 +258,131 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 
 
-	public class EmployeeInfoListAdapter<T> extends ArrayAdapter<T> {
+	public class EmployeeInfoListAdapter extends BaseAdapter {
 
-		private T[] employee_info;
+		private String[] employee_info;
 		private int textViewResourceId;
 		private int resource;
 		private Context context;
 
+		private LayoutInflater mInflater;
+
+		private static final int NUMBER_OF_VIEW_TYPE = 2;
 
 
-		public EmployeeInfoListAdapter(Context context, int resource,
-				int textViewResourceId, T[] employee_info) {
+		public EmployeeInfoListAdapter(Context context, String[] employee_info) {
 
-			super(context, resource, textViewResourceId, employee_info);
+
 			// TODO Auto-generated constructor stub
 
 			this.context = context;
-			this.textViewResourceId = textViewResourceId;
-			this.resource = resource;
+
+			mInflater = LayoutInflater.from(context);
 			this.employee_info = employee_info;
 			//		Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.constructor called");
 		}
 
 
-		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
 			//	Log.d(LOG_INFO_TAG, "EmployeeInfoListAdapter.getView() called");
 			View v = convertView;
 
-			if(v == null){
-				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = li.inflate(R.layout.employee_info_row_layout, null);
+			ViewHolder holder;
+
+			if(v == null)
+			{
+
+				v = mInflater.inflate(R.layout.employee_info_row_layout, null);
+
+				holder = new ViewHolder
+						(
+								(TextView) v.findViewById(R.id.textView_employee_field), 
+								(TextView) v.findViewById(R.id.textView_employee_value),
+								context.getResources().getDrawable(R.drawable.rounded_corner_top),
+								context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+								context.getResources().getDrawable(R.drawable.rounded_corner)
+								);
+
+
+				v.setTag(holder);
+
 			}
-
-			TextView employee_info_field = (TextView)v.findViewById(R.id.textView_employee_field);
-			employee_info_field.setText((CharSequence) employee_info[position]);
-
-
-			//		Log.i(LOG_INFO_TAG, "EmployeeInfoFragment.getView(): employee_info_field text is: " + employee_info_field.getText().toString());
-			TextView employee_info_value = (TextView)v.findViewById(R.id.textView_employee_value);
-
+			else
+				holder = (ViewHolder) v.getTag();
 
 			Intent intent = null;
 
 			switch(position){
 			case 0:		// Employee Id
-				employee_info_value.setText(" " + employee.getEmployeeId());//employee.getEmployeeId());
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(" " + employee.getEmployeeId());
+				v.setBackgroundDrawable(holder.corners);
 				break;
-			case 1:		// Name
-				employee_info_value.setText(employee.getName());
+
+
+			case 2:		// Email
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getEmail());
+				v.setBackgroundDrawable(holder.corners);
+
+				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
+
+				Intent send_intent = new Intent (Intent.ACTION_SEND);
+				send_intent.setType("plain/text");
+
+				send_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{employee.getEmail()});
+				intent.putExtra(android.content.Intent.EXTRA_INTENT, send_intent);
 				break;
-			case 2:		// Status
-				employee_info_value.setText(employee.getStatus());
-				break;
-			case 3:		// Last Status Update
-				employee_info_value.setText(employee.getLastStatusUpdate());
-				break;
-			case 4:		// Gender
-				employee_info_value.setText(employee.getGender());
-				break;
-			case 5:		// Date of Birth
-				employee_info_value.setText(employee.getBirthday());
-				break;
-			case 6: 	// Department
-				employee_info_value.setText(employee.getDepartment());
-				break;
-			case 7: 	// Position
-				employee_info_value.setText(employee.getPosition());
-				break;
-			case 8: 	// Phone Number
-				employee_info_value.setText(employee.getPhoneNumber());
+
+
+
+			case 4:		// Phone
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getPhoneNumber());
+
+				v.setBackgroundDrawable(holder.corners);
+
 				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
 
 				Intent dial_intent = new Intent (Intent.ACTION_DIAL);
 
 				dial_intent.setData(Uri.parse("tel:" + employee.getPhoneNumber()));
 				intent.putExtra(android.content.Intent.EXTRA_INTENT, dial_intent);
-				break;
-			case 9: 	// Email
-				employee_info_value.setText(employee.getEmail());
-				intent = new Intent (android.content.Intent.ACTION_CHOOSER);
-
-
-				Intent send_intent = new Intent (Intent.ACTION_SEND);
-				send_intent.setType("plain/text");
-
-				send_intent.putExtra(Intent.EXTRA_EMAIL, new String[]{employee.getEmail()});
-
-				intent.putExtra(android.content.Intent.EXTRA_INTENT, send_intent);
-				break;
-			case 10: 	// Address
-				employee_info_value.setText(employee.getAddress());
-				break;
-			case 11: 	// Picture
-
-				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = li.inflate(R.layout.employee_image_row_layout, null);
-
-				ImageView employee_image = (ImageView)v.findViewById(R.id.imageView_employee_picture);
-				UrlImageViewHelper.setUrlDrawable(employee_image, employee.getPictureLink());
 
 				break;
+
+			case 6:		// Position
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getPosition());
+				v.setBackgroundDrawable(holder.top_corner);
+				break;
+
+			case 7:		// Department
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getDepartment());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				break;  
+
+			case 9:		// Status
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getStatus());
+				v.setBackgroundDrawable(holder.top_corner);
+				break;
+				
+			case 10: 	// Last Status Update
+				holder.field.setText(employee_info[position].toString());
+				holder.value.setText(employee.getLastStatusUpdate());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				break;
+
+			default:	//Separator
+			
+				v = mInflater.inflate(R.layout.separator_layout, null);
+				v.setVisibility(View.INVISIBLE);
+
+				break;
+
+
 			}
 
 
@@ -347,6 +390,51 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 				v.setOnClickListener(new EmployeeOnClickListener(intent, context));
 
 			return v;
+		}
+
+
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return employee_info.length;
+		}
+
+
+		public Object getItem(int arg0) {
+			// TODO Auto-generated method stub
+			return employee_info[arg0];
+		}
+
+
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+
+
+
+	}
+
+
+	private static class ViewHolder
+	{
+
+		private TextView field;
+		private TextView value;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private Drawable corners;
+
+		public ViewHolder(TextView field, TextView value,
+				Drawable top_corner, Drawable bottom_corner,
+				Drawable corners)
+		{
+			this.field = field;
+			this.value = value;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.corners = corners;
+
 		}
 	}
 
