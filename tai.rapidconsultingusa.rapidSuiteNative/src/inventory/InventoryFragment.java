@@ -11,6 +11,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -138,21 +139,46 @@ public class InventoryFragment extends ListFragment{
 	
 			View v = convertView;
 
+			ViewHolder holder;
 			if(v == null)
 			{
 				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = li.inflate(R.layout.inventory_row_layout, null);
-			}
-
-		
-			TextView inventory_name = (TextView) v.findViewById(R.id.textView_inventory_name);
 				
-			inventory_name.setText(inventory_list.get(position).getName());
+				v = li.inflate(R.layout.inventory_row_layout, null);
+				
+				holder = new ViewHolder ((TextView) v.findViewById(R.id.textView_inventory_name),
+						context.getResources().getDrawable(R.drawable.rounded_corner_top),
+						context.getResources().getDrawable(R.drawable.rounded_corner_bottom));
+				v.setTag(holder);
+			}
+			else
+				holder = (ViewHolder) v.getTag();
 		
-
+			holder.inventory_name.setText(inventory_list.get(position).getName());
+			
+			if (position == 0)
+				v.setBackgroundDrawable(holder.top_corner);
+			else if (position == inventory_list.size() -1)
+				v.setBackgroundDrawable(holder.bottom_corner);
 			return v;
 		}
 	}
+	
+	
+	private static class ViewHolder
+	{
+		private TextView inventory_name;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		public ViewHolder (TextView inventory_name, Drawable top_corner, Drawable bottom_corner)
+		{
+			this.inventory_name = inventory_name;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			
+		}
+	}
+
 	
 	
 	private static final String LOG_INFO_TAG = "InventoryFragment Info";

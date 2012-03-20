@@ -5,6 +5,7 @@ import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class InventoryInfoFragment extends ListFragment{
 
 		lv.setAdapter(new InventoryInfoListAdapter<String>(this.getActivity(), R.layout.inventory_info_row_layout,
 				R.id.textView_inventory_info_field,inventory_info));
-	
+
 		return view;
 
 	}
@@ -102,11 +103,11 @@ public class InventoryInfoFragment extends ListFragment{
 
 			b.putFloat(INVENTORY_CURRENT_LONGITUDE_KEY, longitude);
 			b.putFloat(INVENTORY_CURRENT_LATITUDE_KEY, latitude);
-			
+
 			b.putSerializable(Inventory.INVENTORY_RETRIEVAL_KEY,inventory);
-			
+
 			b.putString("caller", this.getClass().getName());
-			
+
 			intent.putExtras(b);
 			startActivity(intent);
 
@@ -140,50 +141,89 @@ public class InventoryInfoFragment extends ListFragment{
 		public View getView(int position, View convertView, ViewGroup parent){
 
 			View v = convertView;
+
+			ViewHolder holder;
+
+			LayoutInflater li = LayoutInflater.from(context);
 			if(v == null){
-				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 				v = li.inflate(R.layout.inventory_info_row_layout,null);
+				holder = new ViewHolder((TextView)v.findViewById(R.id.textView_inventory_info_field),
+						(TextView)v.findViewById(R.id.textView_inventory_info_value),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner));
+
+				v.setTag(holder);
 			}
+			else 
+				holder = (ViewHolder) v.getTag();
 
-			TextView field = (TextView) v.findViewById(R.id.textView_inventory_info_field);
-			
-			field.setText(inventoryInfoList[position].toString());
 
-			TextView value = (TextView)v.findViewById(R.id.textView_inventory_info_value);
-			
-		
+
+
+
 			switch(position){
 			case 0:			// Name 
-				value.setText(inventory.getName());
-				break;
-			case 1:			// Id 
-				value.setText(Integer.toString(inventory.getId()));
-				break;
-			case 2:			// Code 
-				value.setText(inventory.getCode());
-				break;
-			case 3:			// Category
-				value.setText(inventory.getCategory());
-				break;
-			case 4:			// Manufacturer
-				value.setText(inventory.getManufacturer());
-				break;
-			case 5:			// Wholesale Price
-				value.setText(inventory.getWholesalePrice());
-				break;
-			case 6:			// Suggested Retail Price
-				value.setText(inventory.getMSRP());
-				break;
-			case 7:			// Availability
-				value.setText(inventory.getAvailability());
-				break;
-			case 8:			// Current Location
-				value.setText(inventory.getAddress());
-				break;
-			case 9:			// Last Location Update
-				value.setText(inventory.getLastLocationUpdate());
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.all_corners);
+				holder.value.setText(inventory.getName());
 				break;
 
+			case 2:			// Id
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.top_corner);
+				holder.value.setText(Integer.toString(inventory.getId()));
+				break;
+			case 3:			// Code
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				holder.value.setText(inventory.getCode());
+				break;
+			case 5:			// Category
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.top_corner);
+				holder.value.setText(inventory.getCategory());
+				holder.field.setText(inventoryInfoList[position].toString());
+				break;
+
+			case 6:			// Manufacturer
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				holder.value.setText(inventory.getManufacturer());
+				break;
+
+			case 8:			// WholseSalePrice
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.top_corner);
+				holder.value.setText(inventory.getWholesalePrice());
+				break;
+
+			case 9:			// Suggested Retail Price
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				holder.value.setText(inventory.getMSRP());
+				break;
+
+			case 11:			// Availability
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.all_corners);
+				holder.value.setText(inventory.getAvailability());
+				break;
+			case 13:			// Current Location
+			//	holder.field.setText(inventoryInfoList[position].toString());
+			//	v.setBackgroundDrawable(holder.top_corner);
+				holder.value.setText(inventory.getAddress());
+				break;
+			case 14:			// Last Location Update
+				holder.field.setText(inventoryInfoList[position].toString());
+				v.setBackgroundDrawable(holder.bottom_corner);
+				holder.value.setText(inventory.getLastLocationUpdate());
+				break;
+			default:	// 
+				v = li.inflate(R.layout.separator_layout, null);
+				v.setVisibility(View.INVISIBLE);
+				break;
 
 			}
 
@@ -192,6 +232,28 @@ public class InventoryInfoFragment extends ListFragment{
 		}
 		private Context context;
 		private T[] inventoryInfoList;
+	}
+
+
+
+	private static class ViewHolder
+	{
+		private TextView value;
+		private TextView field;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private Drawable all_corners;
+
+		public ViewHolder (TextView field, TextView value, Drawable top_corner, Drawable bottom_corner,
+				Drawable all_corners)
+		{
+			this.field = field;
+			this.value = value;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.all_corners = all_corners;
+
+		}
 	}
 
 

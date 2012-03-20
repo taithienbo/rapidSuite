@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--  landscape mode -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="horizontal" 
+  	style = "@style/RowView"
     android:weightSum = "100">
 
     <TextView
@@ -21,7 +18,7 @@
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         style = "@style/TextStyle"
-        android:layout_weight="40"
+        android:layout_weight="70"
  >
     </TextView>
 

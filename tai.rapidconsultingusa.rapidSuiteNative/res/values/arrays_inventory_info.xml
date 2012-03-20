@@ -3,13 +3,18 @@
 
     <string-array name="inventory_info_array">
         <item>Name</item>
+        <item>Separator</item>
         <item>Id</item>
         <item>Code</item>
+        <item>Separator</item>
         <item>Category</item>
         <item>Manufacturer</item>
+        <item>Separator</item>
         <item>Wholesale Price</item>
         <item>Suggested Retail Price</item>
+        <item>Separator</item>
         <item>Availability</item>
+        <item>Separator</item>
         <item>Current Location</item>
         <item>Last Location Update</item>
     </string-array>

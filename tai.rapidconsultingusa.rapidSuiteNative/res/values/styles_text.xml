@@ -10,7 +10,8 @@
     </style>
 
     <style name="TextStyle.Field">
-        <item name="android:textColor"> #0000A0 </item> <!-- Dark blue -->
+        <item name="android:textColor"> #0000A0 </item>     <!-- Dark blue -->
+    	<item name="android:textStyle">bold </item>
 
     </style>
 

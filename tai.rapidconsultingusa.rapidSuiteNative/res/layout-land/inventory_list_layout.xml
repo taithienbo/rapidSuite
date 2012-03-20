@@ -13,6 +13,7 @@
                android:layout_weight="1"
                android:layout_height="0dp"
                style = "@style/ListStyleLand"
+               android:smoothScrollbar="true"
                android:drawSelectorOnTop="true"/>
 
  </LinearLayout>
