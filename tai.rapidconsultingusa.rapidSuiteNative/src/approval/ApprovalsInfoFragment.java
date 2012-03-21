@@ -2,10 +2,15 @@ package approval;
 
 import com.google.gson.Gson;
 
+import controller.OnItemSelectedListener;
+
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +28,8 @@ import android.widget.Toast;
 public class ApprovalsInfoFragment extends ListFragment{
 
 	private static final String APPROVAL_JSON_OBJECT = "approval_json_object";
+	
+	private OnItemSelectedListener mListener;
 
 	public ApprovalsInfoFragment(){};
 
@@ -78,6 +86,13 @@ public class ApprovalsInfoFragment extends ListFragment{
 
 
 
+	@Override
+	public void onAttach (Activity activity)
+	{
+		super.onAttach(activity);
+		mListener = (OnItemSelectedListener) activity;
+	}
+
 	/**
 	 * Called to ask the fragment to save its current dynamic state, so it 
 	 * can later be reconstructed in a new instance of its process is 
@@ -99,27 +114,34 @@ public class ApprovalsInfoFragment extends ListFragment{
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		Fragment fragment;
 		switch (item.getItemId()) {
 		case R.id.menu_approve:
-			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.APPROVE.getValue());
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(), Approvals.ACTION_APPROVE);
+			
+			// Go to Approvals History
+			fragment = new ApprovalsFragment(Approvals.PROCESSED);
+			mListener.onFragmentSelectedListener(fragment);
 			return true;
 
 		case R.id.menu_reject:
-			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.REJECT.getValue());
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(),Approvals.ACTION_REJECT);
 			FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
 
-			Toast.makeText(getActivity(), "Reject clicked", Toast.LENGTH_LONG).show();
+			// Go to Approvals History
+			fragment = new ApprovalsFragment(Approvals.PROCESSED);
+			mListener.onFragmentSelectedListener(fragment);
 			return true;
 
 		case R.id.menu_set_as_pending:
-			ApprovalsItemStatusUpdater.updateItem(approval.getId(), actions.SET_AS_PENDING.getValue());
+			ApprovalsItemStatusUpdater.updateItem(approval.getId(), Approvals.ACTION_REPROCESS);
 
-			Toast.makeText(getActivity(), "Set As Pending clicked", Toast.LENGTH_LONG).show();
-
+			fragment = new ApprovalsFragment(Approvals.PROCEEDING);
+			mListener.onFragmentSelectedListener(fragment);
 			return true;
 
 		default:
-			Toast.makeText(getActivity(), "Something wrong", Toast.LENGTH_LONG).show();
 			return super.onOptionsItemSelected(item);
 		}
 	}
@@ -142,15 +164,14 @@ public class ApprovalsInfoFragment extends ListFragment{
 		menu.removeItem(R.id.menu_logout);
 		String status = approval.getStatus();
 
-		if(status.equals(APPROVED) || status.equals(REJECTED))
+		if(status.equals(Approvals.STATUS_APPROVED) || status.equals(Approvals.STATUS_REJECTED))
 		{
 			menu.removeItem(R.id.menu_approve);
 			menu.removeItem(R.id.menu_reject);
 		}
-		else if (status.equals(PENDING))
-		{
+		else if (status.equals(Approvals.STATUS_PENDING))
 			menu.removeItem(R.id.menu_set_as_pending);
-		}
+		
 
 	}
 
@@ -194,86 +215,150 @@ public class ApprovalsInfoFragment extends ListFragment{
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent){
 
+			LayoutInflater li = LayoutInflater.from(context);
+
+
 			View v = convertView;
-			if(v == null){
-				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			ViewHolder holder;
+			if(v == null)
+			{
+
 				v = li.inflate(R.layout.approvals_info_row_layout,null);
+
+				holder = new ViewHolder ((TextView) v.findViewById(R.id.textView_approvals_info_field),
+						(TextView) v.findViewById(R.id.textView_approvals_info_value),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner));
+
+				v.setTag(holder);
 			}
+			else
+				holder = (ViewHolder) v.getTag();
 
-			TextView field = (TextView) v.findViewById(R.id.textView_approvals_info_field);
-			field.setText(approvalsInfoList[position].toString());
+			String status = approval.getStatus();
 
-			TextView value = (TextView)v.findViewById(R.id.textView_approvals_info_value);
-
-
-			String status = null;
 			switch(position){
 			case 0:			// Item Name 
-				value.setText(approval.getItemName());
-				//	Log.i(LOG_INFO_TAG, "getView(): name of item is: " + value.getText().toString());
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getItemName());
 				break;
 			case 1:			// code 
-				value.setText(approval.getCode());
-				break;
-			case 2:			// Date 
-				value.setText(approval.getDate());
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getCode());
 				break;
 			case 3:			// Requestor 
-				value.setText(approval.getRequestorName());
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getRequestorName());
 				break;
-			case 4:			// Quantity 
-				value.setText(approval.getQuantity());
+			case 4:			// Date Requested
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getDate());
 				break;
-			case 5:			// Cost
-				value.setText(approval.getCost());
+
+			case 5:			// Quantity 
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getQuantity());
 				break;
-			case 6:			// Note 
-				value.setText(approval.getNote());
+			case 6:			// Cost
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getCost());
 				break;
-			case 7:			// Status 
-				status = approval.getStatus();
-				value.setText(status);
+			case 7:			// Note 
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(approval.getNote());
+				break;
+			case 9:			// Status 
+				holder.field.setText((approvalsInfoList[position].toString()));
+				holder.value.setText(status);
+				break;
+			default:
+				v = li.inflate(R.layout.separator_layout,null);
+				v.setVisibility(View.INVISIBLE);
 				break;
 			}
 
-			return v;
+
+			if (position + 1 < approvalsInfoList.length && position -1 >=0 
+					&& approvalsInfoList[position + 1].equals("Separator")
+					&& approvalsInfoList[position - 1].equals("Separator"))		// The view hold single item
+				v.setBackgroundDrawable(holder.all_corners);
+
+			// The top of a view that contains multiple items grouped together
+			else if (position - 1 >= 0 && approvalsInfoList[position-1].equals("Separator")
+					&& position + 1 < approvalsInfoList.length && 
+					!approvalsInfoList[position + 1].equals("Separator"))		
+				v.setBackgroundDrawable(holder.top_corner);
+
+			// The bottom of a view that contains multiple items grouped together
+			else if (position - 1 >= 0 && !approvalsInfoList[position-1].equals("Separator")
+					&& position + 1 < approvalsInfoList.length && 
+					approvalsInfoList[position + 1].equals("Separator"))		
+				v.setBackgroundDrawable(holder.bottom_corner);
+
+			// First row visible on the screen and which holds more than one item grouped together
+			else if (position == 0 && position + 1 < approvalsInfoList.length
+					&& !approvalsInfoList[position+1].equals("Separator"))
+				v.setBackgroundDrawable(holder.top_corner);
+
+			else if (position == 0 && position + 1 < approvalsInfoList.length
+					&& approvalsInfoList[position+1].equals("Separator"))
+				v.setBackgroundDrawable(holder.all_corners);
+
+			// Last row visible on the screen and which holds  one item  
+			else if (position + 1 == approvalsInfoList.length && position - 1 >= 0
+					&& approvalsInfoList[position-1].equals("Separator"))
+				v.setBackgroundDrawable(holder.all_corners);
+
+			// Last row visible on the screen and which holds more than one item  
+			else if (position + 1 == approvalsInfoList.length && position - 1 >= 0
+					&& !approvalsInfoList[position-1].equals("Separator"))
+				v.setBackgroundDrawable(holder.bottom_corner);
+
+				return v;
 
 		}
-		
+
 		private Context context;
 		private T[] approvalsInfoList;
-		
+
 	}
 
 
-	private enum actions
+	private static class ViewHolder 
 	{
-		
-		APPROVE("approve"),
-		REJECT ("reject"),
-		SET_AS_PENDING("set_as_pending");
 
 
-		private final String action;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private TextView field;
+		private TextView value;
+		private Drawable all_corners;
 
-		public String getValue()
+		public ViewHolder (TextView field, TextView value,
+				Drawable top_corner, Drawable bottom_corner, Drawable all_corners)
 		{
-			return action;
+			this.field = field;
+			this.value = value;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.all_corners = all_corners;
+
 		}
 
-
-		actions(String action) 
-		{
-			this.action = action;
-		}
 	}
+
+
+
+
+	
 
 	private static final String LOG_INFO_TAG = "ApprovalsInfoFragment info:";
 
 	private static Approvals approval;
 
-	private static final String PENDING = "Pending";
-	private static final String APPROVED = "Approved";
-	private static final String REJECTED = "Rejected";
+	
+	// Fields for retrieving processed items
+	
 
 }

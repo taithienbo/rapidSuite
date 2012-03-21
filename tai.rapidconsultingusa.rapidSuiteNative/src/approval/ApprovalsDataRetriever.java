@@ -54,7 +54,10 @@ public class ApprovalsDataRetriever extends DBManager{
 	private static ArrayList<Approvals> approvals_list = new ArrayList<Approvals>();
 	
 	
-	private static String getApprovalsData(String itemStatus){
+	private static String getApprovalsData(String itemStatus)
+	{
+		
+		Log.d(LOGINFOTAG, "getApprovalsData(): iemStatus passed is: " + itemStatus);
 		ArrayList<NameValuePair> nameValuePairs = get_database_settings();
 		nameValuePairs.add(new BasicNameValuePair(REQUEST, itemStatus));
 
@@ -102,6 +105,7 @@ public class ApprovalsDataRetriever extends DBManager{
 	public static ArrayList<Approvals> getListOfApprovals(String itemStatus)
 	{
 	
+		Log.d(LOGINFOTAG, "getListOfAPpprovals(): itemStatus passed: " + itemStatus);
 		approvals_list.clear();
 		
 		
@@ -127,6 +131,7 @@ public class ApprovalsDataRetriever extends DBManager{
 	private static Approvals getApprovalsObject(JSONObject jsonObject) {
 		// TODO Auto-generated method stub
 		Approvals approvals = null;
+		Log.d(LOGINFOTAG, "getApprovalsObject(): jsonObject details: " + jsonObject.toString());
 		try {
 			// Approvals Database fields:
 			/**

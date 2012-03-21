@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="approvals_info_array">
+        <item>Requester</item>
+        <item>Item Name</item>
+        <item>Code</item>
+        <item>Quantity</item>
+        <item>Cost</item>
+        <item>Note</item>
+        <item>Status</item>
+        <item>Approver</item>
+    </string-array>
+
+</resources>

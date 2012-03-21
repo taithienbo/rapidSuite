@@ -14,6 +14,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -105,7 +106,9 @@ public class ApprovalsFragment extends ListFragment
 
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState){
+	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
+	{
+		Log.d(LOG_INFO_TAG, "ApprovalsFragment.onCreateView called");
 		
 		String item_status;
 		if (savedInstanceState != null && 
@@ -166,29 +169,54 @@ public class ApprovalsFragment extends ListFragment
 		public View getView(int position, View convertView, ViewGroup parent)
 		{
 			View v = convertView;
-
+			
+			ViewHolder holder;
+			
 			if(v == null)
 			{
 				LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				v = li.inflate(R.layout.approvals_row_layout, null);
+				
+				holder = new ViewHolder((ImageView) v.findViewById(R.id.imageView_approvals_icon),
+						(TextView) v.findViewById(R.id.textView_approvals_item_name),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner),
+						(Drawable) context.getResources().getDrawable(R.drawable.approvals_green),
+						(Drawable) context.getResources().getDrawable(R.drawable.approvals_red),
+						(Drawable) context.getResources().getDrawable(R.drawable.approvals_gray));
+				
+				v.setTag(holder);
 			}
+			else
+				holder = (ViewHolder) v.getTag();
 
-			ImageView item_icon = (ImageView) v.findViewById(R.id.imageView_approvals_icon);
+			ImageView item_icon = holder.status;
 
 			String status = approvals_list.get(position).getStatus();		// The status of the item at position
 
 			if(status.equals(APPROVED))
-				item_icon.setImageDrawable(v.getResources().getDrawable(R.drawable.approvals_green));
+				item_icon.setImageDrawable(holder.status_approved);
 
 			else if(status.equals(REJECTED))
-			{
-				item_icon.setImageDrawable(v.getResources().getDrawable(R.drawable.approvals_red));
-			}
+				item_icon.setImageDrawable(holder.status_rejected);
+			
 			else
-				item_icon.setImageDrawable(v.getResources().getDrawable(R.drawable.approvals_gray));
-
-
-			TextView item_name = (TextView) v.findViewById(R.id.textView_approvals_item_name);
+				item_icon.setImageDrawable(holder.status_pending);
+			
+		
+			if (approvals_list.size() > 1)		// More than 1 item
+			{
+				if (position == 0)		// first_item
+					v.setBackgroundDrawable(holder.top_corner);
+				else if (position == approvals_list.size() -1)	// last item
+					v.setBackgroundDrawable(holder.bottom_corner);
+			}
+			else	// only has one item
+				v.setBackgroundDrawable(holder.all_corners);
+			
+			
+			TextView item_name = holder.item_name;
 
 			item_name.setText(approvals_list.get(position).getItemName());
 
@@ -196,6 +224,35 @@ public class ApprovalsFragment extends ListFragment
 			return v;
 		}
 	}
+	
+	private static class ViewHolder 
+	{
+		private ImageView status;
+		private TextView item_name;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private Drawable all_corners;
+		private Drawable status_approved;
+		private Drawable status_rejected;
+		private Drawable status_pending;
+		
+		public ViewHolder (ImageView approval_status, TextView item_name,
+				Drawable top_corner, Drawable bottom_corner,
+				Drawable all_corners,Drawable status_approved,
+				Drawable status_rejected, Drawable status_pending)
+		{
+			this.status = approval_status;
+			this.item_name = item_name;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.all_corners = all_corners;
+			this.status_approved = status_approved;
+			this.status_rejected = status_rejected;
+			this.status_pending = status_pending;
+		}
+				
+	}
+	
 
 
 	private static final String LOG_INFO_TAG = "ApprovalsFragment Info";
