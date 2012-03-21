@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -189,7 +190,7 @@ public class ApprovalsInfoFragment extends ListFragment{
 			approval = gson.fromJson(savedInstanceState.getString(APPROVAL_JSON_OBJECT), Approvals.class);
 		}
 
-		View view = inflater.inflate(R.layout.approvals_info_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
 		String[] approvals_info = view.getResources().getStringArray(R.array.approvals_info_array);
@@ -314,6 +315,7 @@ public class ApprovalsInfoFragment extends ListFragment{
 			else if (position + 1 == approvalsInfoList.length && position - 1 >= 0
 					&& !approvalsInfoList[position-1].equals("Separator"))
 				v.setBackgroundDrawable(holder.bottom_corner);
+			
 
 				return v;
 

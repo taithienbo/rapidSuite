@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -47,8 +48,8 @@ public class InventoryInfoFragment extends ListFragment{
 
 		String[] inventory_info = view.getResources().getStringArray(R.array.inventory_info_array);
 
-		lv.setAdapter(new InventoryInfoListAdapter<String>(this.getActivity(), R.layout.inventory_info_row_layout,
-				R.id.textView_inventory_info_field,inventory_info));
+		lv.setAdapter(new InventoryInfoListAdapter(this.getActivity(), 
+				inventory_info));
 
 		return view;
 
@@ -126,30 +127,36 @@ public class InventoryInfoFragment extends ListFragment{
 		inflater.inflate(R.menu.menu_location, menu);
 	}
 
-	private class InventoryInfoListAdapter<T> extends ArrayAdapter<T>{
+	
+	private class InventoryInfoListAdapter extends BaseAdapter{
 
-		public InventoryInfoListAdapter(Context context, int resource,
-				int textViewResourceId, T[] inventoryInfoList) {
-			super(context, resource, textViewResourceId, inventoryInfoList);
+
+		private Context context;
+		private String[] inventoryInfoList;
+		private LayoutInflater li;
+		public InventoryInfoListAdapter(Context context, 
+				String[] inventoryInfoList) {
+		
 			this.context = context;
 			this.inventoryInfoList = inventoryInfoList;
+			li = LayoutInflater.from(context);
 			// TODO Auto-generated constructor stub
 		}
 
 
-		@Override
+
 		public View getView(int position, View convertView, ViewGroup parent){
 
 			View v = convertView;
 
 			ViewHolder holder;
 
-			LayoutInflater li = LayoutInflater.from(context);
+			
 			if(v == null){
 
 				v = li.inflate(R.layout.inventory_info_row_layout,null);
-				holder = new ViewHolder((TextView)v.findViewById(R.id.textView_inventory_info_field),
-						(TextView)v.findViewById(R.id.textView_inventory_info_value),
+				holder = new ViewHolder((TextView) v.findViewById(R.id.textView_inventory_info_field),
+						(TextView) v.findViewById(R.id.textView_inventory_info_value),
 						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
 						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
 						(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner));
@@ -158,85 +165,116 @@ public class InventoryInfoFragment extends ListFragment{
 			}
 			else 
 				holder = (ViewHolder) v.getTag();
-
-
-
+			
 
 
 			switch(position){
-			case 0:			// Name 
-				holder.field.setText(inventoryInfoList[position].toString());
+			case 0:			// Name 	
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.all_corners);
 				holder.value.setText(inventory.getName());
 				break;
 
 			case 2:			// Id
-				holder.field.setText(inventoryInfoList[position].toString());
+		
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.top_corner);
 				holder.value.setText(Integer.toString(inventory.getId()));
 				break;
 			case 3:			// Code
-				holder.field.setText(inventoryInfoList[position].toString());
+				
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.bottom_corner);
 				holder.value.setText(inventory.getCode());
 				break;
 			case 5:			// Category
-				holder.field.setText(inventoryInfoList[position].toString());
-				v.setBackgroundDrawable(holder.top_corner);
 				holder.value.setText(inventory.getCategory());
-				holder.field.setText(inventoryInfoList[position].toString());
+				holder.field.setText(inventoryInfoList[position]);
+				v.setBackgroundDrawable(holder.top_corner);
+				
 				break;
 
 			case 6:			// Manufacturer
-				holder.field.setText(inventoryInfoList[position].toString());
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.bottom_corner);
 				holder.value.setText(inventory.getManufacturer());
 				break;
 
 			case 8:			// WholseSalePrice
-				holder.field.setText(inventoryInfoList[position].toString());
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.top_corner);
 				holder.value.setText(inventory.getWholesalePrice());
 				break;
 
 			case 9:			// Suggested Retail Price
-				holder.field.setText(inventoryInfoList[position].toString());
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.bottom_corner);
 				holder.value.setText(inventory.getMSRP());
 				break;
 
 			case 11:			// Availability
-				holder.field.setText(inventoryInfoList[position].toString());
+				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.all_corners);
 				holder.value.setText(inventory.getAvailability());
 				break;
 			case 13:			// Current Location
-			//	holder.field.setText(inventoryInfoList[position].toString());
-			//	v.setBackgroundDrawable(holder.top_corner);
+				holder.field.setText(inventoryInfoList[position]);
+			v.setBackgroundDrawable(holder.top_corner);
 				holder.value.setText(inventory.getAddress());
 				break;
 			case 14:			// Last Location Update
-				holder.field.setText(inventoryInfoList[position].toString());
+			holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.bottom_corner);
 				holder.value.setText(inventory.getLastLocationUpdate());
 				break;
+			
 			default:	// 
-				v = li.inflate(R.layout.separator_layout, null);
-				v.setVisibility(View.INVISIBLE);
+				v = li.inflate(R.layout.separator_layout,null);
 				break;
-
 			}
 
 			return v;
 
 		}
-		private Context context;
-		private T[] inventoryInfoList;
+		
+		
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return  inventoryInfoList.length;
+		}
+
+
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return inventoryInfoList[position];
+		}
+
+
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+		
+		
+		@Override
+		public int getItemViewType(int position)
+		{
+			return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
+		}
+		
+		@Override
+		public int getViewTypeCount ()
+		{
+			return 2;		// has 2 type of view for all items
+							// One for regular item and one for separator
+		}
+
+		
 	}
 
 
 
-	private static class ViewHolder
+	private  class ViewHolder
 	{
 		private TextView value;
 		private TextView field;

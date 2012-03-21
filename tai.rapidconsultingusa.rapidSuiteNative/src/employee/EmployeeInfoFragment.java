@@ -261,8 +261,7 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 	public class EmployeeInfoListAdapter extends BaseAdapter {
 
 		private String[] employee_info;
-		private int textViewResourceId;
-		private int resource;
+		
 		private Context context;
 
 		private LayoutInflater mInflater;
@@ -376,7 +375,6 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 				break;
 
 			default:	//Separator
-			
 				v = mInflater.inflate(R.layout.separator_layout, null);
 				v.setVisibility(View.INVISIBLE);
 
@@ -384,7 +382,6 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 
 			}
-
 
 			if (intent != null)
 				v.setOnClickListener(new EmployeeOnClickListener(intent, context));
@@ -409,6 +406,20 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 			// TODO Auto-generated method stub
 			return position;
 		}
+		
+		
+		@Override
+		public int getViewTypeCount()
+		{
+			return NUMBER_OF_VIEW_TYPE;
+		}
+		
+		@Override
+		public int getItemViewType(int position)
+		{
+			return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
+		}
+		
 
 
 

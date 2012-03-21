@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Landscape mode -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#FFFFFF"
+    android:weightSum = "100">
+
+    <TextView
+        android:id="@+id/textView_approvals_info_field"
+        style="@style/TextStyle.Field.Port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView_approvals_info_value"
+        style="@style/TextStyle.Port"
+        android:layout_width="match_parent"
+  
+        android:layout_height="wrap_content"
+ >
+    </TextView>
+
+</LinearLayout>

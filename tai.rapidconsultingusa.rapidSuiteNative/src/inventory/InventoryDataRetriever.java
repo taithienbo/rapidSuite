@@ -132,7 +132,8 @@ public class InventoryDataRetriever extends DBManager{
 
 	private static Inventory getInventoryObject(JSONObject jsonObject) {
 		// TODO Auto-generated method stub
-
+		
+		Log.d(LOG_INFO_TAG, "getInventoryObject(): jsonObject details: " + jsonObject.toString());
 		Inventory inv = null;
 		// Inventory Database fields
 		// id, code, name, category, lastUpdate, manufacturer, wholesalePrice,
@@ -149,11 +150,13 @@ public class InventoryDataRetriever extends DBManager{
 			String lastUpdate = jsonObject.getString(LAST_UPDATE);
 			String manufacturer = jsonObject.getString(MANUFACTURER);
 			String wholesalePrice = jsonObject.getString(WHOLESALE_PRICE);
+			Log.d(LOG_INFO_TAG ,"getInventoryObject(): wholesalePrice parsed as: " + wholesalePrice);
+			
 			String msrp = jsonObject.getString(MSRP);
 			String availability = jsonObject.getString(AVAILABILITY);
 
 			String address = jsonObject.getString(ADDRNO) + " " + jsonObject.getString(STREET)
-					+ " " + jsonObject.getString(SUITE) + ", " + jsonObject.getString(CITY)
+					+ ", " + jsonObject.getString(CITY)
 					+ ", " + jsonObject.getString(STATE) + " " + jsonObject.getString(ZIP);
 
 			String longitude = jsonObject.getString(LONGITUDE);

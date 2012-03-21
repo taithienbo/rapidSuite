@@ -2,6 +2,8 @@ package inventory;
 
 import java.io.Serializable;
 
+import android.util.Log;
+
 public class Inventory implements Serializable
 {
 
@@ -10,7 +12,7 @@ public class Inventory implements Serializable
 	// msrp, availability, addrno, street, suite, city, state, zip, 
 	// latitude, longitude 
 
-	private String wholesalepPrice;
+	
 	
 	public static final String INVENTORY_RETRIEVAL_KEY = "inventory object";
 
@@ -41,12 +43,15 @@ public class Inventory implements Serializable
 		this.category			= 		category;
 		this.lastUpdate			= 		lastUpdate;
 		this.manufacturer 		= 		manufacturer; 
-		this.wholesalepPrice 	= 		wholesalePrice;
+		this.wholesalePrice 	= 		wholesalePrice;
 		this.msrp 				= 		msrp;
 		this.availability 		= 		availability;
 		this.longitude 			= 		longitude;
 		this.latitude 			= 		latitude;
 		this.address 			= 		address;
+		
+		Log.d(LOG_INFO_TAG, "Inventory Constructor: Value of wholesalePrice"
+			+	" is: " + wholesalePrice);
 		
 	}
 
@@ -89,6 +94,8 @@ public class Inventory implements Serializable
 
 	public String getWholesalePrice()
 	{
+		Log.d(LOG_INFO_TAG, "Inventory.getWholesalePirce() wholeSalePrice " +
+				"is: " + wholesalePrice);
 		return wholesalePrice;
 	}
 
@@ -121,7 +128,9 @@ public class Inventory implements Serializable
 		return latitude;
 	}
 
-
+	
+	
+	private static final String LOG_INFO_TAG = "Inventory";
 	private int id;
 	private String code, name, category, lastUpdate, manufacturer, wholesalePrice,
 	msrp, availability, address, longitude, latitude;

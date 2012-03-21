@@ -98,10 +98,10 @@ public final class R {
     }
     public static final class layout {
         public static final int approvals_fragment_layout=0x7f030000;
-        public static final int approvals_info_list_layout=0x7f030001;
-        public static final int approvals_info_row_layout=0x7f030002;
-        public static final int approvals_list_layout=0x7f030003;
-        public static final int approvals_row_layout=0x7f030004;
+        public static final int approvals_info_row_layout=0x7f030001;
+        public static final int approvals_list_layout=0x7f030002;
+        public static final int approvals_row_layout=0x7f030003;
+        public static final int custom_list_layout=0x7f030004;
         public static final int employee_detail_row_picture_and_text=0x7f030005;
         public static final int employee_fragment_layout=0x7f030006;
         public static final int employee_info_list_heading_layout=0x7f030007;
