@@ -105,7 +105,7 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 
 
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
-		View view = inflater.inflate(R.layout.employee_info_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
 		String[] employee_info =  view.getResources().getStringArray(R.array.employee_info_array);

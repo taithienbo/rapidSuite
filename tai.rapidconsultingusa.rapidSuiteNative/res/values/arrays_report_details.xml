@@ -14,6 +14,7 @@
         <item>October</item>
         <item>November</item>
         <item>December</item>
+        <item>Separator</item>
         <item>Total Revenue</item>
     </string-array>
 

@@ -8,6 +8,7 @@ package report;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,21 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		return 0;
 	}
 
+	
+	@Override
+	public int getItemViewType(int position)
+	{
+		return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
+	}
+	
+	@Override
+	public int getViewTypeCount ()
+	{
+		return 2;		// has 2 type of view for all items
+						// One for regular item and one for separator
+	}
+	
+	
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
 		ViewHolder holder;
@@ -65,7 +81,10 @@ public class ReportDetailsListAdapter extends BaseAdapter
 
 			v = mInflater.inflate ( tai.rapidconsultingusa.rapidSuiteNative.R.layout.report_details_row_layout, null );
 			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_report_detail_field), 
-					(TextView) v.findViewById(R.id.textView_report_details_value));
+					(TextView) v.findViewById(R.id.textView_report_details_value),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner));
 
 			v.setTag ( holder );
 		}
@@ -83,6 +102,7 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		{
 		case 0:		// January 
 			value.append(report.getJanRev());
+			v.setBackgroundDrawable(holder.top_corner);
 			break;
 		case 1:		// February 
 			value.append(report.getFebRev());
@@ -116,29 +136,44 @@ public class ReportDetailsListAdapter extends BaseAdapter
 			break;
 		case 11:	// Dec 
 			value.append(report.getDecRev());
+			v.setBackgroundDrawable(holder.bottom_corner);
 			break;
-		case 12:	// Total Revenue 
+		case 12:	// Separator
+			v = mInflater.inflate(R.layout.separator_layout,null);
+			v.setVisibility(View.INVISIBLE);
+			break;
+		case 13:	// Total Revenue 
 			value.append(report.getTotalrev());
+			v.setBackgroundDrawable(holder.all_corners);
 			break;
 		}
-
-		holder.value.setText(value);
+		
+		if (position != 12)
+			holder.value.setText(value);
 
 		// TODO Auto-generated method stub
 		return v;
 	}
 
 
-
+	
 	private class ViewHolder 
 	{
 		private TextView field;
 		private TextView value;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private Drawable all_corners;
 
-		public ViewHolder ( TextView field, TextView value )
+		public ViewHolder ( TextView field, TextView value,
+				Drawable top_corner, Drawable bottom_corner,
+				Drawable all_corners)
 		{
 			this.field = field;
 			this.value = value;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.all_corners = all_corners;
 		}
 	}
 

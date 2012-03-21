@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- portrait mode -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <SearchView
+        android:id="@+id/searchView_employeeSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:divider="@drawable/dark_border"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/search_hint" >
+    </SearchView>
+
+    <ListView
+        android:id="@id/android:list"
+        style="@style/ListStylePort"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="true" />
+
+</LinearLayout>

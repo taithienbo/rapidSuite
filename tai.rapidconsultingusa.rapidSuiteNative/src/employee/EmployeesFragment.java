@@ -97,7 +97,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		Log.d (LOG_INFO_TAG, "EmployeesFragment.onCreateView() called");
 
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
-		View view = inflater.inflate(R.layout.employee_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
 		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();

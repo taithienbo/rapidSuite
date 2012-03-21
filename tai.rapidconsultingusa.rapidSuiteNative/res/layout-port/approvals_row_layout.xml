@@ -20,7 +20,7 @@
         android:id="@+id/textView_approvals_item_name"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:layout_weight="40"
+        android:layout_weight="70"
         style = "@style/TextStyle.Port"
         android:layout_gravity="center_vertical" >
     </TextView>

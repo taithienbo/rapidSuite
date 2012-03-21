@@ -116,7 +116,7 @@ public class ApprovalsFragment extends ListFragment
 			this.itemStatus = item_status;
 		
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
-		View view = inflater.inflate(R.layout.approvals_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
 		List<Approvals> approvals_list = ApprovalsDataRetriever.getListOfApprovals(itemStatus);

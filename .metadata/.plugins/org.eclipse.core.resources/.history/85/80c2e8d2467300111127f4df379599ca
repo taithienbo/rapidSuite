@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Landscape mode -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:weightSum="100" >
+
+    <TextView
+        android:id="@+id/textView_report_detail_field"
+        style="@style/TextStyle.Field"
+        android:layout_width="0dp"
+        android:layout_height = "wrap_content"
+        android:layout_weight="30"
+>
+    </TextView>
+
+    <TextView
+        android:id="@+id/textView_report_details_value"
+        style="@style/TextStyle"
+        android:layout_width="0sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="70" >
+    </TextView>
+
+</LinearLayout>

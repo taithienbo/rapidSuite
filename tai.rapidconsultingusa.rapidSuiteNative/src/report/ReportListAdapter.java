@@ -11,6 +11,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,7 +55,20 @@ public class ReportListAdapter extends BaseAdapter
 
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return 0;
+		return position;
+	}
+	
+	@Override
+	public int getItemViewType(int position)
+	{
+		return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
+	}
+	
+	@Override
+	public int getViewTypeCount ()
+	{
+		return 1;		// has 1 type of view for all items
+					
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) 
@@ -67,16 +81,25 @@ public class ReportListAdapter extends BaseAdapter
 		{
 
 			v = mInflater.inflate ( tai.rapidconsultingusa.rapidSuiteNative.R.layout.report_row_layout, null );
-			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_report_item_name));
+			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_report_item_name),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_bottom),
+					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner));
 
 			v.setTag ( holder );
 		}
 		else
-		{
 			holder = (ViewHolder) v.getTag ( );
-		}
 		
-	
+		if (report_list.size() > 1)
+		{
+			if (position == 0)
+				v.setBackgroundDrawable(holder.top_corner);
+			else if (position == report_list.size() -1)
+				v.setBackgroundDrawable(holder.bottom_corner);
+		}
+		else
+			v.setBackgroundDrawable(holder.all_corners);
 		
 		holder.reportItem.setText(Integer.toString(report_list.get(position).getYear()));
 		
@@ -121,10 +144,18 @@ public class ReportListAdapter extends BaseAdapter
 	private class ViewHolder 
 	{
 		private TextView reportItem;
+		private Drawable top_corner;
+		private Drawable bottom_corner;
+		private Drawable all_corners;
 
-		public ViewHolder (TextView reportItem)
+		public ViewHolder (TextView reportItem, Drawable top_corner, 
+				Drawable bottom_corner, Drawable all_corners)
 		{
 			this.reportItem = reportItem;
+			this.top_corner = top_corner;
+			this.bottom_corner = bottom_corner;
+			this.all_corners = all_corners;
+			
 		}
 	}
 

@@ -64,9 +64,9 @@ public class ReportDetailsFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, 
 			Bundle savedInstanceState)
 	{
-		View v = inflater.inflate (R.layout.report_details_list_layout, viewgroup, false);
+		View v = inflater.inflate (R.layout.custom_list_layout, viewgroup, false);
 		
-		ListView report_detail_list = (ListView) v.findViewById(R.id.listView_report_details);
+		ListView report_detail_list = (ListView) v.findViewById(android.R.id.list);
 		
 		report_detail_list.setAdapter( new ReportDetailsListAdapter (this.getActivity(), report));
 		

@@ -38,16 +38,18 @@ public class Report implements Serializable
 
 	private float dec_rev;
 	
+	private static final String dollar = "$";
+	
 	public static final String Report_RETRIEVAL_KEY = "Report object";
 
-
+	
 	
 	public Report ( int year, float jan_rev, float feb_rev, float mar_rev, float apr_rev,
 			float may_rev, float jun_rev, float jul_rev, float aug_rev, float sep_rev,
 			float oct_rev, float nov_rev, float dec_rev)
 			{
 
-		this.year				=	 	year;
+		this.year				=		year;
 		this.jan_rev 		=	 	jan_rev;
 		this.feb_rev		= 		feb_rev;
 		this.mar_rev		= 		mar_rev;

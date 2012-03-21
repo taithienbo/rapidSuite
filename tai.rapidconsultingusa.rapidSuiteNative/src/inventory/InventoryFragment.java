@@ -33,7 +33,7 @@ public class InventoryFragment extends ListFragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup, Bundle savedInstanceState)
 	{
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
-		View view = inflater.inflate(R.layout.inventory_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
 		List<Inventory> inventory_list = InventoryDataRetriever.getListOfInventoriess();

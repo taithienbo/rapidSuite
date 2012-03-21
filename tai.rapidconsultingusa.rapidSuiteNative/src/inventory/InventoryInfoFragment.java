@@ -43,7 +43,7 @@ public class InventoryInfoFragment extends ListFragment{
 	{
 
 
-		View view = inflater.inflate(R.layout.inventory_info_list_layout, null);
+		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
 		String[] inventory_info = view.getResources().getStringArray(R.array.inventory_info_array);
