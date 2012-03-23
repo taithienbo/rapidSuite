@@ -32,7 +32,7 @@
             android:name="controller.MainActivity"
             android:label="@string/module_activity"
             android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Holo" >
+            android:theme="@android:style/Theme.Holo.Light" >
         </activity>
         <activity
             android:name="map.MapViewActivity"

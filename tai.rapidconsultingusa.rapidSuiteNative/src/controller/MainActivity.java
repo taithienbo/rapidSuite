@@ -10,6 +10,7 @@ import inventory.InventoryFragment;
 import employee.EmployeesFragment;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -39,6 +40,9 @@ public class MainActivity extends Activity  implements OnItemSelectedListener
 
 		this.setContentView(R.layout.main_activity_layout);
 		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
+		
+		ActionBar mab = getActionBar();
+	
 	}
 
 

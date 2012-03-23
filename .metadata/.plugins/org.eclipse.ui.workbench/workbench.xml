@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="71" version="2.0">
+<workbench progressCount="69" version="2.0">
 <workbenchAdvisor/>
-<window height="774" width="1280" x="-12" y="22">
+<window height="774" width="1280" x="35" y="35">
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="com.android.ide.eclipse.ddms.views.LogCatView"/>
 <orientation position="512" view="org.eclipse.ui.views.ContentOutline"/>
@@ -22,67 +22,95 @@
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="62" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="106" y="22"/>
 <coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="120" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="54" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="54" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="152" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
 <page aggregateWorkingSetId="Aggregate for window 1331177020410" focus="true" label="Workspace - Java">
 <editors>
-<editorArea activeWorkbook="DefaultEditorWorkbook">
-<info part="DefaultEditorWorkbook">
+<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<info part="org.eclipse.ui.internal.EditorStack@128b0043">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.internal.EditorStack@128b0043" ratio="0.5513558" ratioLeft="671" ratioRight="546" relationship="2" relative="DefaultEditorWorkbook">
+<info part="org.eclipse.ui.internal.EditorStack@39017b84" ratio="0.4992948" ratioLeft="354" ratioRight="355" relationship="2" relative="org.eclipse.ui.internal.EditorStack@128b0043">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryInfoFragment.java" partName="InventoryInfoFragment.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java" title="InventoryInfoFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportFragment.java" partName="ReportFragment.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java" title="ReportFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1262" selectionTopPixel="450"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportDetailsFragment.java" partName="ReportDetailsFragment.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java" title="ReportDetailsFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1358" selectionTopPixel="934"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportListAdapter.java" partName="ReportListAdapter.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java" title="ReportListAdapter.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2442" selectionTopPixel="911"/>
+</editor>
+<editor activePart="true" focus="true" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_details_row_layout.xml" partName="report_details_row_layout.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml" title="report_details_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="arrays_report_details.xml" partName="arrays_report_details.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml" title="arrays_report_details.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportDetailsListAdapter.java" partName="ReportDetailsListAdapter.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java" title="ReportDetailsListAdapter.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2391" selectionTopPixel="1314"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Report.java" partName="Report.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java" title="Report.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="837" selectionTopPixel="346"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="styles_rowView.xml" partName="styles_rowView.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml" title="styles_rowView.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_row_layout.xml" partName="report_row_layout.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml" title="report_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryInfoFragment.java" partName="InventoryInfoFragment.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java" title="InventoryInfoFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java" workbook="org.eclipse.ui.internal.EditorStack@39017b84">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5982" selectionTopPixel="2724"/>
+<editorState selectionHorizontalPixel="232" selectionLength="0" selectionOffset="1121" selectionTopPixel="200"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="styles_listView.xml" partName="styles_listView.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml" title="styles_listView.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml"/>
-</editor>
-<editor id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_list_layout.xml" partName="inventory_list_layout.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml" title="inventory_list_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml"/>
-</editor>
-<editor id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="arrays_inventory_info.xml" partName="arrays_inventory_info.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml" title="arrays_inventory_info.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryFragment.java" partName="InventoryFragment.java" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java" title="InventoryFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="355" selectionOffset="4009" selectionTopPixel="1658"/>
-</editor>
-<editor focus="true" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_info_row_layout.xml" partName="inventory_info_row_layout.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml" title="inventory_info_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml" workbook="org.eclipse.ui.internal.EditorStack@128b0043">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml"/>
+<editor focus="true" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_row_layout.xml" partName="inventory_row_layout.xml" path="/Users/taibo/Documents/workspaces/rapid_consulting_services/rapidSuite/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml" title="inventory_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml" workbook="org.eclipse.ui.internal.EditorStack@39017b84">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml"/>
 </editor>
 </editors>
 <views>
 <view id="com.android.ide.eclipse.ddms.views.LogCatView" partName="LogCat">
 <viewState/>
 </view>
+<view id="org.eclipse.jdt.callhierarchy.view" partName="Call Hierarchy">
+<viewState search_scope_type="1"/>
+</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (94 items)"/>
+<category IMemento.internal.id="Warnings (100 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -91,9 +119,6 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -126,14 +151,17 @@
 </customFilters>
 </viewState>
 </view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
-<perspective editorAreaTrimState="1" editorAreaVisible="1" fixed="0" version="0.016">
+<perspectives activePart="com.android.ide.eclipse.editors.layout.LayoutEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.egit.ui.navigation"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
@@ -201,39 +229,29 @@
 <perspective_action id="org.eclipse.wst.jsdt.ui.JavaPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<fastViewBars>
-<fastViewBar fastViewLocation="1024" id="bottom" orientation="256" selectedTabId="com.android.ide.eclipse.ddms.views.LogCatView" style="1">
-<fastViews>
-<view id="org.eclipse.ui.views.ProblemView" ratio="0.3"/>
-<view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
-<view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
-<view id="org.eclipse.ui.console.ConsoleView" ratio="0.29753265"/>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.29753265"/>
-</fastViews>
-</fastViewBar>
-<fastViewBar fastViewLocation="16384" id="left" orientation="512" selectedTabId="org.eclipse.jdt.ui.PackageExplorer" style="1">
-<fastViews>
-<view id="org.eclipse.jdt.ui.PackageExplorer" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-<fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="1">
-<fastViews>
-<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-</fastViewBars>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.jdt.ui.JavadocView"/>
+<view id="org.eclipse.jdt.ui.SourceView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView"/>
+<view id="org.eclipse.jdt.callhierarchy.view"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<fastViewBars/>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder appearance="2" expanded="0">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
 <page content="org.eclipse.wb.core.StructureView" label="LabelNotFound"/>
 <page content="org.eclipse.wb.core.PaletteView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 <info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="left">
@@ -245,16 +263,24 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="318" ratioRight="954" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.74891144" ratioLeft="516" ratioRight="173" relationship="4" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="0">
-<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
-<page content="org.eclipse.jdt.ui.JavadocView" label="LabelNotFound"/>
-<page content="org.eclipse.jdt.ui.SourceView" label="LabelNotFound"/>
+<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LogCat"/>
+<page content="org.eclipse.jdt.callhierarchy.view" label="Call Hierarchy"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
-<page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+</presentation>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@412bc86d" ratio="0.7494759" ratioLeft="715" ratioRight="239" relationship="2" relative="org.eclipse.ui.editorss">
@@ -264,11 +290,13 @@
 </folder>
 </info>
 <info folder="true" part="right" ratio="0.5" ratioLeft="258" ratioRight="258" relationship="4" relative="org.eclipse.ui.internal.ViewStack@412bc86d">
-<folder appearance="2" expanded="0">
-<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
 </folder>
 </info>
 <info part="org.eclipse.egit.ui.RepositoriesView" ratio="0.5994195" ratioLeft="413" ratioRight="276" relationship="4" relative="left"/>
@@ -279,143 +307,145 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/custom_list_layout.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/employee/EmployeesFragment.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/controller/MainActivity.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_text.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/report_details_row_layout.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/report_row_layout.xml"/>
 </editors>
-<item historyLabel="EmployeesFragment.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="report_row_layout.xml" index="4"/>
+<item historyLabel="ReportFragment.java" index="3">
+<position info="not_deleted" x="1262" y="0"/>
 </item>
-<item historyLabel="InventoryFragment.java" index="1">
-<position info="not_deleted" x="3731" y="0"/>
+<item historyLabel="report_row_layout.xml" index="4"/>
+<item historyLabel="ReportFragment.java" index="3">
+<position info="not_deleted" x="1262" y="0"/>
 </item>
-<item historyLabel="InventoryFragment.java" index="1">
-<position info="not_deleted" x="3797" y="0"/>
+<item historyLabel="ReportDetailsFragment.java" index="5">
+<position info="not_deleted" x="1358" y="0"/>
 </item>
-<item historyLabel="InventoryFragment.java" index="1">
-<position info="not_deleted" x="3658" y="0"/>
-</item>
-<item historyLabel="InventoryFragment.java" index="1">
-<position info="not_deleted" x="3838" y="0"/>
-</item>
-<item historyLabel="InventoryFragment.java" index="1">
-<position info="not_deleted" x="3985" y="0"/>
-</item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="3486" y="0"/>
+<item historyLabel="custom_list_layout.xml" index="1"/>
+<item historyLabel="report_details_row_layout.xml" index="6"/>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position/>
 </item>
 <item historyLabel="EmployeesFragment.java" index="2">
+<position info="not_deleted" x="2244" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position/>
+</item>
+<item historyLabel="report_details_row_layout.xml" index="8"/>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position/>
+</item>
+<item historyLabel="InventoryFragment.java" index="0">
+<position info="not_deleted" x="892" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position/>
+</item>
+<item historyLabel="InventoryInfoFragment.java" index="9">
+<position info="not_deleted" x="6376" y="264"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="1910" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2442" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2383" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2101" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2237" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2383" y="0"/>
+</item>
+<item historyLabel="ReportListAdapter.java" index="7">
+<position info="not_deleted" x="2442" y="0"/>
+</item>
+<item historyLabel="report_row_layout.xml" index="4"/>
+<item historyLabel="report_details_row_layout.xml" index="6"/>
+<item historyLabel="arrays_report_details.xml" index="10"/>
+<item historyLabel="ReportDetailsFragment.java" index="5">
+<position info="not_deleted" x="1358" y="0"/>
+</item>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="styles_listView.xml" index="0"/>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="3486" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="2243" y="5"/>
 </item>
-<item historyLabel="styles_text.xml" index="4"/>
-<item historyLabel="arrays_inventory_info.xml" index="5"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6309" y="0"/>
+<item historyLabel="Report.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="MainActivity.java" index="3">
-<position info="not_deleted" x="3486" y="0"/>
+<item historyLabel="Report.java" index="12">
+<position info="not_deleted" x="837" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6309" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="2243" y="5"/>
 </item>
-<item historyLabel="InventoryFragment.java" index="7">
-<position info="not_deleted" x="4009" y="355"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="2381" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6309" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="3184" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3902" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="3312" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3928" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="3438" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="4023" y="5"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="1398" y="1"/>
 </item>
-<item historyLabel="arrays_inventory_info.xml" index="5"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="4240" y="0"/>
+<item historyLabel="InventoryInfoFragment.java" index="9">
+<position info="not_deleted" x="6374" y="266"/>
 </item>
-<item historyLabel="arrays_inventory_info.xml" index="5"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="4335" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="1397" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3434" y="0"/>
+<item historyLabel="report_row_layout.xml" index="4"/>
+<item historyLabel="styles_rowView.xml" index="13"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="1397" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6230" y="1"/>
+<item historyLabel="report_row_layout.xml" index="4"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="1397" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6284" y="0"/>
+<item historyLabel="InventoryInfoFragment.java" index="9">
+<position info="not_deleted" x="1063" y="66"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6273" y="0"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="1397" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="4379" y="0"/>
+<item historyLabel="InventoryInfoFragment.java" index="9">
+<position info="not_deleted" x="1121" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="4143" y="0"/>
+<item historyLabel="inventory_row_layout.xml" index="14"/>
+<item historyLabel="ReportDetailsListAdapter.java" index="11">
+<position info="not_deleted" x="2391" y="0"/>
 </item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6093" y="0"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3984" y="0"/>
-</item>
-<item historyLabel="styles_listView.xml" index="0"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3984" y="0"/>
-</item>
-<item historyLabel="inventory_list_layout.xml" index="8"/>
-<item historyLabel="InventoryFragment.java" index="7">
-<position info="not_deleted" x="4009" y="355"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3984" y="0"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6438" y="25"/>
-</item>
-<item historyLabel="InventoryFragment.java" index="7">
-<position info="not_deleted" x="4009" y="355"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6438" y="25"/>
-</item>
-<item historyLabel="inventory_info_row_layout.xml" index="9"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="6438" y="25"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3338" y="0"/>
-</item>
-<item historyLabel="arrays_inventory_info.xml" index="5"/>
-<item historyLabel="styles_listView.xml" index="0"/>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="3338" y="0"/>
-</item>
-<item historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="5767" y="0"/>
-</item>
-<item historyLabel="arrays_inventory_info.xml" index="5"/>
-<item historyLabel="inventory_info_row_layout.xml" index="9"/>
-<item active="true" historyLabel="InventoryInfoFragment.java" index="6">
-<position info="not_deleted" x="5767" y="0"/>
-</item>
+<item historyLabel="report_row_layout.xml" index="15"/>
+<item active="true" historyLabel="report_details_row_layout.xml" index="8"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -426,9 +456,7 @@
 <trimItem IMemento.internal.id="left"/>
 </trimArea>
 <trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@724cdeb0"/>
 <trimItem IMemento.internal.id="right"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@412bc86d"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
 </trimArea>
 <trimArea IMemento.internal.id="128">
@@ -444,38 +472,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_info_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_info_row_layout.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/report_row_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/report_row_layout.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_list_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_list_layout.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="styles_listView.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_listView.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryFragment.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryInfoFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="arrays_inventory_info.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_inventory_info.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="styles_text.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_text.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_text.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmployeesFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/employee/EmployeesFragment.java">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/employee/EmployeesFragment.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="inventory_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/inventory_row_layout.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="styles_rowView.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml">
 <persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/styles_rowView.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="employee_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/employee_row_layout.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-land/employee_row_layout.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Report.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/Report.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="employee_info_list_heading_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout/employee_info_list_heading_layout.xml">
-<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout/employee_info_list_heading_layout.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportDetailsListAdapter.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsListAdapter.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.resources.ResourcesEditor" name="arrays_report_details.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/values/arrays_report_details.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_details_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_details_row_layout.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout-port/report_row_layout.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InventoryInfoFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/inventory/InventoryInfoFragment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportListAdapter.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportListAdapter.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportDetailsFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportDetailsFragment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReportFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/report/ReportFragment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_list_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout/report_list_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout/report_list_layout.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ModuleFragment.java" tooltip="tai.rapidconsultingusa.rapidSuiteNative/src/controller/ModuleFragment.java">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/src/controller/ModuleFragment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.layout.LayoutEditor" name="report_row_layout.xml" tooltip="tai.rapidconsultingusa.rapidSuiteNative/res/layout/report_row_layout.xml">
+<persistable path="/tai.rapidconsultingusa.rapidSuiteNative/res/layout/report_row_layout.xml"/>
 </file>
 </mruList>
 </workbench>

@@ -31,25 +31,26 @@ public final class R {
         public static final int arrow_right=0x7f020005;
         public static final int dark_border=0x7f020006;
         public static final int employee=0x7f020007;
-        public static final int home=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int inventory=0x7f02000a;
-        public static final int inventory_gray=0x7f02000b;
-        public static final int login_1024_768=0x7f02000c;
-        public static final int login_768_1024=0x7f02000d;
-        public static final int ns_textured_background=0x7f02000e;
-        public static final int person_gray=0x7f02000f;
-        public static final int rapid=0x7f020010;
-        public static final int reports=0x7f020011;
-        public static final int reports_gray=0x7f020012;
-        public static final int rounded_corner=0x7f020013;
-        public static final int rounded_corner_bottom=0x7f020014;
-        public static final int rounded_corner_top=0x7f020015;
-        public static final int separator=0x7f020016;
-        public static final int separator_gray=0x7f020017;
-        public static final int settings=0x7f020018;
-        public static final int splash_welcome_screen_landscape=0x7f020019;
-        public static final int splash_welcome_screen_portrait=0x7f02001a;
+        public static final int header_background4=0x7f020008;
+        public static final int home=0x7f020009;
+        public static final int ic_launcher=0x7f02000a;
+        public static final int inventory=0x7f02000b;
+        public static final int inventory_gray=0x7f02000c;
+        public static final int login_1024_768=0x7f02000d;
+        public static final int login_768_1024=0x7f02000e;
+        public static final int ns_textured_background=0x7f02000f;
+        public static final int person_gray=0x7f020010;
+        public static final int rapid=0x7f020011;
+        public static final int reports=0x7f020012;
+        public static final int reports_gray=0x7f020013;
+        public static final int rounded_corner=0x7f020014;
+        public static final int rounded_corner_bottom=0x7f020015;
+        public static final int rounded_corner_top=0x7f020016;
+        public static final int separator=0x7f020017;
+        public static final int separator_gray=0x7f020018;
+        public static final int settings=0x7f020019;
+        public static final int splash_welcome_screen_landscape=0x7f02001a;
+        public static final int splash_welcome_screen_portrait=0x7f02001b;
     }
     public static final class id {
         public static final int approvals_fragment=0x7f090000;
@@ -100,19 +101,19 @@ public final class R {
         public static final int approvals_info_row_layout=0x7f030001;
         public static final int approvals_row_layout=0x7f030002;
         public static final int custom_list_layout=0x7f030003;
-        public static final int employee_detail_row_picture_and_text=0x7f030004;
-        public static final int employee_fragment_layout=0x7f030005;
-        public static final int employee_info_list_heading_layout=0x7f030006;
-        public static final int employee_info_row_layout=0x7f030007;
-        public static final int employee_info_with_map_row_layout=0x7f030008;
-        public static final int employee_row_layout=0x7f030009;
-        public static final int home_layout=0x7f03000a;
-        public static final int inventory_info_row_layout=0x7f03000b;
-        public static final int inventory_info_with_map_row_layout=0x7f03000c;
-        public static final int inventory_row_layout=0x7f03000d;
-        public static final int login_page=0x7f03000e;
-        public static final int main_activity_layout=0x7f03000f;
-        public static final int map_layout=0x7f030010;
+        public static final int employee_fragment_layout=0x7f030004;
+        public static final int employee_info_list_heading_layout=0x7f030005;
+        public static final int employee_info_row_layout=0x7f030006;
+        public static final int employee_info_with_map_row_layout=0x7f030007;
+        public static final int employee_row_layout=0x7f030008;
+        public static final int home_layout=0x7f030009;
+        public static final int inventory_info_row_layout=0x7f03000a;
+        public static final int inventory_info_with_map_row_layout=0x7f03000b;
+        public static final int inventory_row_layout=0x7f03000c;
+        public static final int login_page=0x7f03000d;
+        public static final int main_activity_layout=0x7f03000e;
+        public static final int map_layout=0x7f03000f;
+        public static final int module_list_heading_layout=0x7f030010;
         public static final int module_list_layout=0x7f030011;
         public static final int module_row_layout=0x7f030012;
         public static final int report_details_row_layout=0x7f030013;
@@ -208,16 +209,21 @@ public final class R {
         public static final int IconStyleReg=0x7f060003;
         public static final int ListStyleLand=0x7f060004;
         public static final int ListStylePort=0x7f060005;
+        /**  the theme applied to the application or activity 
+ other activity and action bar styles here 
+         */
+        public static final int MainActivityTheme=0x7f060006;
         /**  style for the action bar backgrounds 
  <item name="android:background">@drawable/ab_background</item> 
  <item name="android:backgroundStacked">@drawable/ab_background</item> 
  <item name="android:backgroundSplit">@drawable/ab_split_background</item> 
+ style for the action bar backgrounds 
          */
         public static final int MyActionBar=0x7f060001;
-        public static final int RowView=0x7f060006;
-        public static final int TextStyle=0x7f060007;
-        public static final int TextStyle_Field=0x7f060008;
-        public static final int TextStyle_Field_Port=0x7f06000a;
-        public static final int TextStyle_Port=0x7f060009;
+        public static final int RowView=0x7f060007;
+        public static final int TextStyle=0x7f060008;
+        public static final int TextStyle_Field=0x7f060009;
+        public static final int TextStyle_Field_Port=0x7f06000b;
+        public static final int TextStyle_Port=0x7f06000a;
     }
 }

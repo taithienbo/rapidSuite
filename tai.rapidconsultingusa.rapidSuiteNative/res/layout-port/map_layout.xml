@@ -11,7 +11,7 @@
         android:id="@+id/mapview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="60"
+        android:layout_weight="70"
         android:apiKey="@string/mapApiKey"
         android:clickable="true" />
 
@@ -21,7 +21,7 @@
  
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="20" >
+        android:layout_weight="30" >
     </ListView>
 
 </LinearLayout>
