@@ -24,33 +24,35 @@ public final class R {
     }
     public static final class drawable {
         public static final int androidmarker=0x7f020000;
-        public static final int approval_history=0x7f020001;
-        public static final int approvals_gray=0x7f020002;
-        public static final int approvals_green=0x7f020003;
-        public static final int approvals_red=0x7f020004;
-        public static final int arrow_right=0x7f020005;
-        public static final int dark_border=0x7f020006;
-        public static final int employee=0x7f020007;
-        public static final int header_background4=0x7f020008;
-        public static final int home=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int inventory=0x7f02000b;
-        public static final int inventory_gray=0x7f02000c;
-        public static final int login_1024_768=0x7f02000d;
-        public static final int login_768_1024=0x7f02000e;
-        public static final int ns_textured_background=0x7f02000f;
-        public static final int person_gray=0x7f020010;
-        public static final int rapid=0x7f020011;
-        public static final int reports=0x7f020012;
-        public static final int reports_gray=0x7f020013;
-        public static final int rounded_corner=0x7f020014;
-        public static final int rounded_corner_bottom=0x7f020015;
-        public static final int rounded_corner_top=0x7f020016;
-        public static final int separator=0x7f020017;
-        public static final int separator_gray=0x7f020018;
-        public static final int settings=0x7f020019;
-        public static final int splash_welcome_screen_landscape=0x7f02001a;
-        public static final int splash_welcome_screen_portrait=0x7f02001b;
+        public static final int app_logo2=0x7f020001;
+        public static final int approval_history=0x7f020002;
+        public static final int approvals_gray=0x7f020003;
+        public static final int approvals_green=0x7f020004;
+        public static final int approvals_red=0x7f020005;
+        public static final int arrow_right=0x7f020006;
+        public static final int dark_border=0x7f020007;
+        public static final int employee=0x7f020008;
+        public static final int header_background4=0x7f020009;
+        public static final int home=0x7f02000a;
+        public static final int ic_launcher=0x7f02000b;
+        public static final int inventory=0x7f02000c;
+        public static final int inventory_gray=0x7f02000d;
+        public static final int login_1024_768=0x7f02000e;
+        public static final int login_768_1024=0x7f02000f;
+        public static final int main_logo=0x7f020010;
+        public static final int ns_textured_background=0x7f020011;
+        public static final int person_gray=0x7f020012;
+        public static final int rapid=0x7f020013;
+        public static final int reports=0x7f020014;
+        public static final int reports_gray=0x7f020015;
+        public static final int rounded_corner=0x7f020016;
+        public static final int rounded_corner_bottom=0x7f020017;
+        public static final int rounded_corner_top=0x7f020018;
+        public static final int separator=0x7f020019;
+        public static final int separator_gray=0x7f02001a;
+        public static final int settings=0x7f02001b;
+        public static final int splash_welcome_screen_landscape=0x7f02001c;
+        public static final int splash_welcome_screen_portrait=0x7f02001d;
     }
     public static final class id {
         public static final int approvals_fragment=0x7f090000;
@@ -72,6 +74,7 @@ public final class R {
         public static final int menu_location=0x7f090028;
         public static final int menu_logout=0x7f090029;
         public static final int menu_reject=0x7f090026;
+        public static final int menu_search=0x7f09002a;
         public static final int menu_set_as_pending=0x7f090027;
         public static final int moduleFragment=0x7f090018;
         public static final int module_icon=0x7f09001e;
@@ -118,15 +121,15 @@ public final class R {
         public static final int module_row_layout=0x7f030012;
         public static final int report_details_row_layout=0x7f030013;
         public static final int report_row_layout=0x7f030014;
-        public static final int searchable=0x7f030015;
-        public static final int separator_layout=0x7f030016;
-        public static final int settings_layout=0x7f030017;
-        public static final int splash_screen_layout=0x7f030018;
+        public static final int separator_layout=0x7f030015;
+        public static final int settings_layout=0x7f030016;
+        public static final int splash_screen_layout=0x7f030017;
     }
     public static final class menu {
         public static final int menu_approvals_info=0x7f080000;
         public static final int menu_location=0x7f080001;
         public static final int menu_logout=0x7f080002;
+        public static final int menu_search=0x7f080003;
     }
     public static final class string {
         /** Menu Items Title for approvals_info 
@@ -192,7 +195,7 @@ public final class R {
         public static final int position=0x7f050009;
         public static final int rapid=0x7f05000e;
         public static final int report_icon_description=0x7f05001a;
-        public static final int search_hint=0x7f05002a;
+        public static final int search_employees=0x7f05002a;
         public static final int sep=0x7f050024;
         public static final int status=0x7f050004;
         public static final int totalRevenue=0x7f050028;

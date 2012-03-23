@@ -16,6 +16,7 @@ import employee.EmployeesFragment;
 import report.ReportFragment;
 import settings.SettingsFragment;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -62,7 +63,8 @@ public class ModuleFragment extends ListFragment
 		view = inflater.inflate(R.layout.module_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
-
+	//	lv.addHeaderView(inflater.inflate((R.layout.module_list_heading_layout), null));
+	//	lv.setHeaderDividersEnabled(false);
 		String[] modules = this.getActivity().getResources().getStringArray(R.array.modules_array);
 
 		lv.setAdapter(new ModuleListAdapter<String>(getActivity().getBaseContext(), R.layout.module_row_layout,R.id.textView_module_item2, modules));

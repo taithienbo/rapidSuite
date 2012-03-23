@@ -1,10 +1,11 @@
 package approval;
 
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+
 import com.google.gson.Gson;
 
 import controller.OnItemSelectedListener;
 
-import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;

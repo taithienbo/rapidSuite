@@ -1,7 +1,8 @@
 package inventory;
 
-import map.MapViewActivity;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import map.MapViewActivity;
+
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;

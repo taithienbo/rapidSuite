@@ -27,6 +27,9 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.view.ViewGroup;
@@ -35,6 +38,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 
@@ -80,13 +84,41 @@ public class EmployeesFragment extends ListFragment implements Serializable
 
 
 	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
+		super.onCreateOptionsMenu(menu, inflater);
+	
+	//	SearchView emp_search_view = (SearchView) this.getActivity().findViewById(R.id.menu_search);
+	//	emp_search_view.setIconified(false);
+	
+		inflater.inflate(R.menu.menu_search, menu);
+		
+		MenuItem menuItem = menu.findItem(R.id.menu_search);
+		SearchView emp_search_view = (SearchView) menuItem.getActionView();
+	//	emp_search_view.setIconifiedByDefault(false);
+	
+
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		return false;
+	}
+	
+	
+
+	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		super.setHasOptionsMenu(true);
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
 
-
 	}
+	
+	
+
 
 
 	@Override
@@ -101,9 +133,9 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
 
 		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();
-		
-		
-	
+
+
+
 		lv.setAdapter(new EmployeeListAdapter(getActivity(), employee_list));
 
 		if (savedInstanceState != null)
@@ -277,17 +309,17 @@ public class EmployeesFragment extends ListFragment implements Serializable
 				holder = (ViewHolder) v.getTag ( );
 
 			holder.employee_name.setText( employee_list.get(position).getName());
-			
+
 			holder.top_edges = context.getResources().getDrawable(R.drawable.rounded_corner_top);
-			
+
 			holder.bottom_edges = context.getResources().getDrawable(R.drawable.rounded_corner_bottom);
-			
+
 			if (position == 0)
 				v.setBackgroundDrawable(holder.top_edges);
-			
+
 			else if (position == employee_list.size() - 1)
 				v.setBackgroundDrawable(holder.bottom_edges);
-			
+
 
 			return v;
 

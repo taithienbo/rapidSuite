@@ -7,11 +7,13 @@
     android:background="#463E41"
     android:orientation="vertical" >
 
+
     <ListView
         android:id="@id/android:list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+    
         android:divider="@drawable/dark_border"
         android:drawSelectorOnTop="true" />
 

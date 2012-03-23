@@ -79,7 +79,7 @@ public class ReportDetailsListAdapter extends BaseAdapter
 		if ( v == null )
 		{
 
-			v = mInflater.inflate ( tai.rapidconsultingusa.rapidSuiteNative.R.layout.report_details_row_layout, null );
+			v = mInflater.inflate ( R.layout.report_details_row_layout, null );
 			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_report_detail_field), 
 					(TextView) v.findViewById(R.id.textView_report_details_value),
 					(Drawable) context.getResources().getDrawable(R.drawable.rounded_corner_top),

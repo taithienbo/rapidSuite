@@ -4,12 +4,14 @@ package controller;
 
 import java.io.Serializable;
 
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+
 
 import inventory.InventoryFragment;
 
 import employee.EmployeesFragment;
 
-import tai.rapidconsultingusa.rapidSuiteNative.R;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -42,6 +44,7 @@ public class MainActivity extends Activity  implements OnItemSelectedListener
 		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
 		
 		ActionBar mab = getActionBar();
+	
 	
 	}
 

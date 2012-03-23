@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name = "app_label">Rapid Executive Suite</string>
-    <string name = "search_hint">Search Employees</string>
+    <string name = "search_employees">Search Employees</string>
  
 </resources>
