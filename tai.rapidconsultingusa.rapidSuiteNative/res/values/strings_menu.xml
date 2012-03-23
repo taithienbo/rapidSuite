@@ -6,13 +6,13 @@
 	
 	<string name="action_approve">Approve</string>
 	<string name="action_reject">Reject</string>
-	<string name="action_set_as_pending">Set As Pending</string>
+	<string name="action_set_as_pending">Reprocess</string>
 
 <!-- Menu item title for log_out -->
 
     <string name="action_logout">Log Out</string>
     
     <!-- Menu item title for View Employee Location -->
-    <string name="action_view_location">View Location</string>
+    <string name="action_view_location">Current Location</string>
 </resources>
 	

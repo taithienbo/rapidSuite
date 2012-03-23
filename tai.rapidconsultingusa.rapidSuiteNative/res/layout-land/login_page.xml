@@ -15,27 +15,31 @@
         android:layout_marginLeft="400dp"
         android:layout_marginRight="400dp"
         android:layout_marginTop="130dp"
-        android:hint="@string/user_name" >
+        android:hint="@string/user_name"
+        android:textColor="#000000" >
     </EditText>
 
     <EditText
         android:id="@+id/loginPage_exitText_user_pass"
-        style="@android:style/TextAppearance.Large"
+        style="@android:style/TextAppearance.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="400dp"
         android:layout_marginRight="400dp"
-        android:hint="@string/user_pass" >
+        android:hint="@string/user_pass"
+        android:inputType="textPassword"
+        android:textColor="#000000" >
     </EditText>
 
     <Button
         android:id="@+id/loginPage_button_login"
-        style="@android:style/TextAppearance.Large"
+        style="@style/ButtonText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="400dp"
         android:layout_marginRight="400dp"
+        android:background="@drawable/button"
         android:text="@string/login_button" >
     </Button>
 

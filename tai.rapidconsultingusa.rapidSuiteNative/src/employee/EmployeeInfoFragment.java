@@ -421,9 +421,6 @@ public class EmployeeInfoFragment extends ListFragment implements Serializable
 		}
 		
 
-
-
-
 	}
 
 

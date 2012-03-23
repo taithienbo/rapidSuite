@@ -121,7 +121,14 @@ public class Employee implements Serializable
 
 	public String getPhoneNumber()
 	{
-		return phoneNumber;
+		StringBuilder answer = new StringBuilder("(");
+		answer.append(phoneNumber.substring(0, 3))
+		.append(")")
+		.append("-")
+		.append(phoneNumber.substring(3,6))
+		.append("-")
+		.append(phoneNumber.substring(6,10));
+		return answer.toString();
 	}
 
 	public String getEmail(){

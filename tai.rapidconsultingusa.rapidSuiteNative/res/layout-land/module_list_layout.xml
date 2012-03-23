@@ -4,9 +4,8 @@
     android:id="@+id/linearLayout_modules_list_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#463E41"
+    android:background="#555555"
     android:orientation="vertical" >
-    
 
     <ListView
         android:id="@id/android:list"

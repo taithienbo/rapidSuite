@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="database_configurations">Database Configuration</string>
+
+    <!-- Database Host Information -->
+
+    <string name="database_host">Host</string>
+    <string name="database_host_summary">Enter the URL to access the database\'s host</string>
+    <string name="database_host_dialog_title">Database Host</string>
+
+    <!-- Database Name -->
+
+    <string name="database_name">Database Name</string>
+    <string name="database_name_summary">Enter the name of the database</string>
+    <string name="database_name_dialog_title">Database Name</string>
+
+    <!-- Database User -->
+    <string name="database_user">Database User</string>
+    <string name="database_user_summary">Enter the user name to access the database</string>
+    <string name="database_user_dialog_title">Database User</string>
+
+    <!-- Database Password -->
+    
+    <string name="database_pass">Database Password</string>
+    <string name="database_pass_summary">Enter the password to access the database</string>
+    <string name="database_pass_dialog_title">Database Password</string>
+    
+    
+
+</resources>

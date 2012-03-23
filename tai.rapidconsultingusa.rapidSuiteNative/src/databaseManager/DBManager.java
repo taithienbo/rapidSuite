@@ -9,6 +9,9 @@ import org.apache.http.NameValuePair;
 
 import org.apache.http.message.BasicNameValuePair;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+
 
 public class DBManager {
 
@@ -23,6 +26,7 @@ public class DBManager {
 		return nameValuePairs;
 	}
 
+	
 
 	// These are the initial database values.  These values are updated
 	// by user via LoginActivity.class, and Settings_Activity.class 

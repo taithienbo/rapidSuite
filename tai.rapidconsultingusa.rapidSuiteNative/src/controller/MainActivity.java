@@ -42,10 +42,7 @@ public class MainActivity extends Activity  implements OnItemSelectedListener
 
 		this.setContentView(R.layout.main_activity_layout);
 		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
-		
-		ActionBar mab = getActionBar();
-	
-	
+			
 	}
 
 

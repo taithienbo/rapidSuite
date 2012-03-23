@@ -50,3 +50,14 @@
 1332464313550	Rename package 'tai'
 1332464387925	Delete element
 1332469070983	Delete element
+1332479330002	Rename field 'employee_list'
+1332484900661	Delete element
+1332485583922	Delete element
+1332489490987	Delete element
+1332496373849	Rename resource 'mainLogo.png'
+1332496539244	Rename resource 'main_logo'
+1332499711130	Move file
+1332500558854	Delete element
+1332501175888	Infer generic type arguments
+1332505284245	Rename type 'about_fragment'
+1332505699122	Delete element

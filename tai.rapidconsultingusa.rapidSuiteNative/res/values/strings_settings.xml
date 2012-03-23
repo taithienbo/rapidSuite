@@ -25,5 +25,7 @@
     <string name="database_pass">Database Password</string>
     <string name="database_pass_summary">Enter the password to access the database</string>
     <string name="database_pass_dialog_title">Database Password</string>
+    
+    <string name = "about">About</string>
 
 </resources>

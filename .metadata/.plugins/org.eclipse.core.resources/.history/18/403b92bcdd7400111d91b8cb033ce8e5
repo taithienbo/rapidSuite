@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    string-array name="approvals_info_array">
+        <item>App Name</item>
+        <item>App Version</item>
+        <item>Release Date</item>
+        <item>Developed By</item>
+        <item>Separator</item>
+        <item>Description</item>
+        <item>Separator</item>
+        <item>Contact</item>
+   
+     
+    </string-array>
+</resources>

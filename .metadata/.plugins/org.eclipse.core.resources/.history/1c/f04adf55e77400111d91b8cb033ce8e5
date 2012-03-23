@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- landscape -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_1024_768"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/loginPage_exitText_user_name"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginRight="400dp"
+        android:textColor="#000000"
+        android:layout_marginTop="130dp"
+        android:hint="@string/user_name" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/loginPage_exitText_user_pass"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginRight="400dp"
+        android:inputType="password"
+        android:textColor="#000000"
+        android:hint="@string/user_pass" >
+    </EditText>
+
+    <Button
+        android:id="@+id/loginPage_button_login"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="400dp"
+        android:layout_marginRight="400dp"
+        android:background="@drawable/button"
+        android:text="@string/login_button" >
+    </Button>
+
+</LinearLayout>

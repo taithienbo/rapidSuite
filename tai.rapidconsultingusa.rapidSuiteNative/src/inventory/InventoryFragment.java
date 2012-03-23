@@ -10,16 +10,21 @@ import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.app.SearchManager;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 
@@ -42,7 +47,34 @@ public class InventoryFragment extends ListFragment{
 		
 		return view;
 	}
+	
+	
+	@Override 
+	public void onCreate (Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+		super.setHasOptionsMenu(true);
+	}
 
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
+		super.onCreateOptionsMenu(menu, inflater);
+
+
+		inflater.inflate(R.menu.menu_search, menu);
+
+		MenuItem menuItem = menu.findItem(R.id.menu_search);
+
+		// Get the SearchView and set the searchable configuration
+		SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+	//	searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+		searchView.setQueryHint("Search Inventories");
+	}
 
 
 

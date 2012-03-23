@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- portrait -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/separator"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/fragment_title"
+        android:layout_width=""
+        android:layout_height="40dp"
+        match_parent="" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="100" >
+
+        <fragment
+            android:id="@+id/moduleFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            class="controller.ModuleFragment" >
+        </fragment>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="65"
+            android:background="#aaaaaa" >
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

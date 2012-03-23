@@ -231,6 +231,7 @@ public class InventoryInfoFragment extends ListFragment{
 			
 			default:	// 
 				v = li.inflate(R.layout.separator_layout,null);
+				v.setVisibility(View.INVISIBLE);
 				break;
 			}
 

@@ -2,9 +2,10 @@ package employee;
 
 
 
-import imageDownloader.UrlImageViewHelper;
+
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +17,11 @@ import controller.OnItemSelectedListener;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.app.ListFragment;
+import android.app.SearchManager;
 import android.content.Context;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -34,12 +35,13 @@ import android.view.View;
 
 import android.view.ViewGroup;
 
-import android.widget.ArrayAdapter;
+
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+
 
 
 public class EmployeesFragment extends ListFragment implements Serializable
@@ -59,6 +61,11 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	private static int current_item_position_selected = -1;
 
 	private static final String LOG_INFO_TAG = "EmployeesFragment";
+
+
+	private static List<Employee> all_employees;
+
+	private static ListView lv;
 
 
 	private OnItemSelectedListener mListener;
@@ -87,26 +94,40 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
 	{
 		super.onCreateOptionsMenu(menu, inflater);
-	
-	//	SearchView emp_search_view = (SearchView) this.getActivity().findViewById(R.id.menu_search);
-	//	emp_search_view.setIconified(false);
-	
+
+
 		inflater.inflate(R.menu.menu_search, menu);
-		
+
 		MenuItem menuItem = menu.findItem(R.id.menu_search);
-		SearchView emp_search_view = (SearchView) menuItem.getActionView();
-	//	emp_search_view.setIconifiedByDefault(false);
+
+		// Get the SearchView and set the searchable configuration
+		SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+	//	searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+		searchView.setQueryHint("Search Employees");
 	
 
+
+
+
+
+
 	}
+
+
+
+
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		return false;
 	}
-	
-	
+
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -116,8 +137,8 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
 
 	}
-	
-	
+
+
 
 
 
@@ -130,18 +151,15 @@ public class EmployeesFragment extends ListFragment implements Serializable
 
 		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.custom_list_layout, null);
-		ListView lv = (ListView) view.findViewById(android.R.id.list);
+		lv = (ListView) view.findViewById(android.R.id.list);
 
-		List<Employee> employee_list = EmployeeDataRetriever.getListOfEmployees();
+		all_employees = EmployeeDataRetriever.getListOfEmployees();
 
-
-
-		lv.setAdapter(new EmployeeListAdapter(getActivity(), employee_list));
+		lv.setAdapter(new EmployeeListAdapter(getActivity(), all_employees));
 
 		if (savedInstanceState != null)
-		{
 			lv.setItemChecked(savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE), true);
-		}
+
 		return view;
 	}
 
@@ -169,7 +187,6 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	{
 		super.onResume();
 
-		int temp = current_item_position_selected;
 		Log.d(LOG_INFO_TAG, "EmployeesFragment.onResume() called");
 
 	}
@@ -253,7 +270,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 
 
 
-	public class EmployeeListAdapter extends BaseAdapter 
+	private class EmployeeListAdapter extends BaseAdapter 
 	{
 
 
@@ -268,6 +285,11 @@ public class EmployeesFragment extends ListFragment implements Serializable
 			this.employee_list = employee_list;
 			this.mInflater = LayoutInflater.from(context);
 		}
+
+	
+		
+
+	
 
 
 		public int getCount() {
@@ -287,6 +309,8 @@ public class EmployeesFragment extends ListFragment implements Serializable
 			// TODO Auto-generated method stub
 			return employee_list.get(position).getEmployeeId();
 		}
+
+
 
 
 		public View getView(int position, View convertView, ViewGroup parent) 
@@ -309,17 +333,16 @@ public class EmployeesFragment extends ListFragment implements Serializable
 				holder = (ViewHolder) v.getTag ( );
 
 			holder.employee_name.setText( employee_list.get(position).getName());
-
 			holder.top_edges = context.getResources().getDrawable(R.drawable.rounded_corner_top);
-
 			holder.bottom_edges = context.getResources().getDrawable(R.drawable.rounded_corner_bottom);
+			holder.all_corners = context.getResources().getDrawable(R.drawable.rounded_corner);
 
-			if (position == 0)
+			if (employee_list.size() == 0)
+				v.setBackgroundDrawable(holder.all_corners);
+			else if (position == 0)
 				v.setBackgroundDrawable(holder.top_edges);
-
 			else if (position == employee_list.size() - 1)
 				v.setBackgroundDrawable(holder.bottom_edges);
-
 
 			return v;
 
@@ -336,10 +359,15 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		private TextView employee_name;
 		private Drawable top_edges;
 		private Drawable bottom_edges;
+		private Drawable all_corners;
 
 		public ViewHolder (TextView employee_name)
 		{
 			this.employee_name = employee_name;
+			this.top_edges = top_edges;
+			this.bottom_edges = bottom_edges;
+			this.all_corners = all_corners;
+
 		}
 	}
 

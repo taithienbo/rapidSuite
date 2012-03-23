@@ -213,6 +213,7 @@ public class ModuleFragment extends ListFragment
 		case 7 : 	// Settings
 			module_item_listener.onFragmentSelectedListener(new SettingsFragment());
 			break;
+	
 		}
 
 
@@ -288,6 +289,7 @@ public class ModuleFragment extends ListFragment
 			case 7:
 				module_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.settings));
 				break;
+	
 			}
 
 			module_item.setText(modules[position]);
@@ -295,6 +297,9 @@ public class ModuleFragment extends ListFragment
 
 			return v;
 		}
+		
+		
+
 
 
 

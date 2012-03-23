@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
@@ -109,15 +110,31 @@ public class MapViewActivity extends MapActivity{
 		mapOverlays = mapView.getOverlays();
 		drawable = this.getResources().getDrawable(R.drawable.androidmarker);
 		itemizedOverlay = new MapItemizedOverlay(drawable);
-
-
+		
 
 
 		GeoPoint point = new GeoPoint(latitude, longitude);
 		OverlayItem overlayitem = new OverlayItem(point, "", "");
-
+		
 		itemizedOverlay.addOverlay(overlayitem);
 		mapOverlays.add(itemizedOverlay);
+
+		/**
+		int minLat = Integer.MIN_VALUE;
+		int maxLat = Integer.MAX_VALUE;
+		int minLon = Integer.MAX_VALUE;
+		int maxLon = Integer.MIN_VALUE;
+
+		maxLat = Math.max(latitude, maxLat);
+		minLat = Math.min(latitude, minLat);
+		maxLon = Math.max(longitude, minLon);
+		minLon = Math.min(longitude, minLon);
+		**/
+		
+		MapController mapController = mapView.getController();
+		   double fitFactor = 1.5;
+		   mapController.zoomToSpan( latitude, longitude);
+		
 
 	}
 

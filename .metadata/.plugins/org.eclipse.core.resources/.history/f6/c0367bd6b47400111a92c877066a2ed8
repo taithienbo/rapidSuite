@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- the theme applied to the application or activity -->
+    <style name="ActionBarStyle" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <!-- other activity and action bar styles here -->
+    </style>
+
+    <!-- style for the action bar backgrounds -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
+  	<item name="android:actionBarDivider">@drawable/dark_border</item>
+        <!-- <item name="android:backgroundStacked">@drawable/ab_background</item> -->
+        <!-- <item name="android:backgroundSplit">@drawable/ab_split_background</item> -->
+    </style>
+
+</resources>

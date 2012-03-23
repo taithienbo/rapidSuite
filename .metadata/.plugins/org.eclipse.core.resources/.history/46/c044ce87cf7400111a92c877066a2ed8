@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="modules_array">
+        <item>Home</item>
+        <item>Modules</item>
+        <item>Employees</item>
+        <item>Inventory</item>
+        <item>Approvals</item>
+        <item>Approvals History</item>
+        <item>Reports</item>
+        <item>Settings</item>
+        <item>About</item>
+    </string-array>
+
+</resources><!-- Temporary take out the report section <item>Reports</item> -->

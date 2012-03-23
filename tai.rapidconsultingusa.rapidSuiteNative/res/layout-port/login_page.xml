@@ -15,7 +15,8 @@
         android:layout_marginLeft="200dp"
         android:layout_marginRight="200dp"
         android:layout_marginTop="210dp"
-        android:hint="@string/user_name" >
+        android:hint="@string/user_name"
+        android:textColor="#000000" >
     </EditText>
 
     <EditText
@@ -26,17 +27,19 @@
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="200dp"
         android:layout_marginRight="200dp"
-        android:hint="@string/user_pass" >
+        android:hint="@string/user_pass"
+        android:textColor="#000000" >
     </EditText>
 
     <Button
         android:id="@+id/loginPage_button_login"
-        style="@android:style/TextAppearance.Large"
+        style="@style/ButtonText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="200dp"
         android:layout_marginRight="200dp"
-        android:text="@string/login_button" >
+        android:text="@string/login_button" 
+        android:background="@drawable/button">
     </Button>
 
 </LinearLayout>
