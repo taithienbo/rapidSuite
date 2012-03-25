@@ -5,6 +5,7 @@ import tai.rapidconsultingusa.rapidSuiteNative.R;
 
 import inventory.Inventory;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,18 +26,18 @@ public class MyMapInventoryListAdapter extends BaseAdapter
 	private ListView 			lv;
 
 	private static final String LOG_INFO = "MyMapInventoryListAdapter";
-	
+
 	public MyMapInventoryListAdapter(Context context,
 			Inventory inventory, ListView lv) 
 	{
 		this.context = context;
 
-		
+
 		mInflater = LayoutInflater.from ( this.context );
-	
+
 		this.inventory = inventory;
 		inventory_fields = this.context.getResources().getStringArray(R.array.inventory_info_for_map);
-		
+
 		this.lv = lv;	}
 
 
@@ -45,14 +46,14 @@ public class MyMapInventoryListAdapter extends BaseAdapter
 		return inventory_fields.length;
 	}
 
-	
+
 	public Object getItem(int position) 
 	{
 		// TODO Auto-generated method stub
 		return inventory_fields[position];
 	}
 
-	
+
 	public long getItemId(int position) 
 	{
 		// TODO Auto-generated method stub
@@ -63,34 +64,38 @@ public class MyMapInventoryListAdapter extends BaseAdapter
 	{
 		// TODO Auto-generated method stub
 		View v = convertView;
-		
+
 		ViewHolder holder;
-		
+
 		if(v == null)
 		{
 			v = mInflater.inflate(R.layout.inventory_info_with_map_row_layout, null);
 			holder = new ViewHolder ( (TextView) v.findViewById(R.id.textView_map_inventory_field),
-					(TextView) v.findViewById(R.id.textView_map_inventory_value));
+					(TextView) v.findViewById(R.id.textView_map_inventory_value),
+					(Drawable) v.getResources().getDrawable(R.drawable.rounded_corner));
 		}
 		else
 		{
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
-	
+
+
 		holder.field.setText(inventory_fields[position]);
-		
+
 		String value;
-		
+
 		switch(position)
 		{
 		case 0:		// Availability
 			value = inventory.getAvailability();
-			lv.setDividerHeight(10);
+			lv.setDividerHeight(40);
+			
+			v.setBackgroundDrawable(holder.all_corner);
 			break;
 		case 1:		// last location update
 			value = inventory.getLastLocationUpdate();
-			
+			v.setBackgroundDrawable(holder.all_corner);
+
 			if(value == null)
 			{
 				value = "Unknown";
@@ -99,7 +104,7 @@ public class MyMapInventoryListAdapter extends BaseAdapter
 		default:
 			value = "error";
 		}
-		
+
 		holder.value.setText(value);
 		return v;
 	}
@@ -108,17 +113,20 @@ public class MyMapInventoryListAdapter extends BaseAdapter
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+
 	class ViewHolder
 	{
-		public ViewHolder (TextView field, TextView value)
+		private Drawable all_corner;
+		public ViewHolder (TextView field, TextView value,
+				Drawable all_corner)
 		{
 			this.field = field;
 			this.value = value;
+			this.all_corner = all_corner;
 		}
-		
-		
+
+
 		private TextView field;
 		private TextView value;
 	}

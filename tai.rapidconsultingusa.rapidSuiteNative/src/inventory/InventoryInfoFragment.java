@@ -1,6 +1,9 @@
 package inventory;
 
+import com.google.android.maps.MapActivity;
+
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import map.MapViewActivity;
 
 import android.app.ListFragment;
@@ -24,15 +27,22 @@ import android.widget.TextView;
 public class InventoryInfoFragment extends ListFragment{
 
 
+
+	private static Inventory inventory;
+
+
 	public InventoryInfoFragment(){};
-	public InventoryInfoFragment(Inventory inventory){
+
+	public InventoryInfoFragment(Inventory inventory)
+	{
 		InventoryInfoFragment.inventory = inventory;
 	}
 
 
 
 	@Override
-	public void onCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		super.setHasOptionsMenu(true);
 	}
@@ -51,6 +61,9 @@ public class InventoryInfoFragment extends ListFragment{
 
 		lv.setAdapter(new InventoryInfoListAdapter(this.getActivity(), 
 				inventory_info));
+		
+		lv.setSelector(new ListSelector(lv));
+		lv.setSelector(R.color.transparent);
 
 		return view;
 
@@ -62,7 +75,7 @@ public class InventoryInfoFragment extends ListFragment{
 	public void onResume()
 	{
 		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 
@@ -71,7 +84,7 @@ public class InventoryInfoFragment extends ListFragment{
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
+	//	Log.d(LOG_INFO_TAG, "onPause() called");
 	}
 
 
@@ -79,7 +92,7 @@ public class InventoryInfoFragment extends ListFragment{
 	public void onStop()
 	{
 		super.onStop();
-		Log.d(LOG_INFO_TAG, "onStop() called");
+	//	Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 
 
@@ -87,12 +100,13 @@ public class InventoryInfoFragment extends ListFragment{
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		switch (item.getItemId()) {
 		case R.id.menu_location:
 			// app icon in action bar clicked; go home
@@ -103,12 +117,12 @@ public class InventoryInfoFragment extends ListFragment{
 			Float longitude = new Float(inventory.getCurrentLongitude());
 			Float latitude = new Float(inventory.getCurrentLatitude());
 
-			b.putFloat(INVENTORY_CURRENT_LONGITUDE_KEY, longitude);
-			b.putFloat(INVENTORY_CURRENT_LATITUDE_KEY, latitude);
+			b.putFloat(MapViewActivity.LONGITUDE_KEY, longitude);
+			b.putFloat(MapViewActivity.LATITUDE_KEY, latitude);
 
 			b.putSerializable(Inventory.INVENTORY_RETRIEVAL_KEY,inventory);
 
-			b.putString("caller", this.getClass().getName());
+			b.putString(MapViewActivity.INTENT_CALLER_KEY, this.getClass().getName());
 
 			intent.putExtras(b);
 			startActivity(intent);
@@ -121,7 +135,8 @@ public class InventoryInfoFragment extends ListFragment{
 
 
 	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
 
 		super.onCreateOptionsMenu(menu, inflater);
 
@@ -129,12 +144,16 @@ public class InventoryInfoFragment extends ListFragment{
 	}
 
 	
-	private class InventoryInfoListAdapter extends BaseAdapter{
+	private class InventoryInfoListAdapter extends BaseAdapter
+	{
 
 
 		private Context context;
 		private String[] inventoryInfoList;
 		private LayoutInflater li;
+		private static final int NUMBER_OF_VIEW_TYPE = 2;
+		
+		
 		public InventoryInfoListAdapter(Context context, 
 				String[] inventoryInfoList) {
 		
@@ -146,14 +165,16 @@ public class InventoryInfoFragment extends ListFragment{
 
 
 
-		public View getView(int position, View convertView, ViewGroup parent){
+		public View getView(int position, View convertView, ViewGroup parent)
+		{
 
 			View v = convertView;
 
 			ViewHolder holder;
 
 			
-			if(v == null){
+			if(v == null)
+			{
 
 				v = li.inflate(R.layout.inventory_info_row_layout,null);
 				holder = new ViewHolder((TextView) v.findViewById(R.id.textView_inventory_info_field),
@@ -169,7 +190,8 @@ public class InventoryInfoFragment extends ListFragment{
 			
 
 
-			switch(position){
+			switch(position)
+			{
 			case 0:			// Name 	
 				holder.field.setText(inventoryInfoList[position]);
 				v.setBackgroundDrawable(holder.all_corners);
@@ -240,19 +262,22 @@ public class InventoryInfoFragment extends ListFragment{
 		}
 		
 		
-		public int getCount() {
+		public int getCount() 
+		{
 			// TODO Auto-generated method stub
 			return  inventoryInfoList.length;
 		}
 
 
-		public Object getItem(int position) {
+		public Object getItem(int position) 
+		{
 			// TODO Auto-generated method stub
 			return inventoryInfoList[position];
 		}
 
 
-		public long getItemId(int position) {
+		public long getItemId(int position) 
+		{
 			// TODO Auto-generated method stub
 			return position;
 		}
@@ -267,7 +292,7 @@ public class InventoryInfoFragment extends ListFragment{
 		@Override
 		public int getViewTypeCount ()
 		{
-			return 2;		// has 2 type of view for all items
+			return NUMBER_OF_VIEW_TYPE;		// has 2 type of view for all items
 							// One for regular item and one for separator
 		}
 
@@ -295,11 +320,6 @@ public class InventoryInfoFragment extends ListFragment{
 
 		}
 	}
-
-
-	private static final String LOG_INFO_TAG = "InventoryInfoFragment info:";
-
-	private static final String INVENTORY_CURRENT_LONGITUDE_KEY = "longitude";
-	private static final String INVENTORY_CURRENT_LATITUDE_KEY = "latitude";
-	private static Inventory inventory;
 }
+
+

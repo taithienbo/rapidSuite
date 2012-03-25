@@ -1,0 +1,71 @@
+package rapidSuite;
+
+import tai.rapidconsultingusa.rapidSuiteNative.R;
+import android.content.Context;
+import android.graphics.Color;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+public class RoundedRectListView extends ListView {	
+
+	private Context mContext;
+
+	public RoundedRectListView(Context context) {
+		super(context);		
+		this.mContext=context;
+		init();
+	}
+
+	public RoundedRectListView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		this.mContext=context;
+		init();
+	}
+
+	public RoundedRectListView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		this.mContext=context;
+		init();
+	}
+
+	protected void init(){
+		setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.background_rounded_white));
+		setCacheColorHint(Color.WHITE);
+		setFooterDividersEnabled(false);
+	}
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+
+		switch (ev.getAction()) {
+		case MotionEvent.ACTION_DOWN:
+			int x = (int) ev.getX();
+			int y = (int) ev.getY();
+			int itemnum = pointToPosition(x, y);
+
+			if (itemnum == AdapterView.INVALID_POSITION) 
+				break;			
+			else
+			{  
+				if(itemnum==0){
+					if(itemnum==(getAdapter().getCount()-1))
+						setSelector(R.drawable.selector_for_rounded_corner);
+					else
+						setSelector(R.drawable.selector_for_rounded_corner_top);
+				}
+				else if(itemnum==(getAdapter().getCount()-1))
+					setSelector(R.drawable.selector_for_rounded_corner_bottom);
+				else
+					setSelector(R.drawable.selector_for_rounded_corner);			
+			}
+
+			break;
+		case MotionEvent.ACTION_UP:
+			break;
+		}
+		return true;	
+	}	
+}
+

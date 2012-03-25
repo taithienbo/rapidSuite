@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- landscape -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/button_approve"
+      
+        style="@style/ButtonText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_green"
+        android:text="@string/button_approve_text"
+        android:textSize="16sp" >
+    </Button>
+
+    <Button
+        style="@style/ButtonText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_red"
+        android:text="button_reject_text"
+        android:textSize="16sp" >
+    </Button>
+
+    <Button
+        style="@style/ButtonText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_black"
+        android:text="button 3" >
+    </Button>
+
+</RelativeLayout>

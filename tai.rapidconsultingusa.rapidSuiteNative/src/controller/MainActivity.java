@@ -42,7 +42,11 @@ public class MainActivity extends Activity  implements OnItemSelectedListener
 
 		this.setContentView(R.layout.main_activity_layout);
 		Log.d(LOG_INFO_TAG, "MainActivity.onCreate() called");
-			
+		
+		ActionBar ab = this.getActionBar();
+		ab.setDisplayShowHomeEnabled(false);
+		
+	
 	}
 
 
@@ -133,9 +137,8 @@ public class MainActivity extends Activity  implements OnItemSelectedListener
 		Fragment newFragment = null;
 
 		if(module_name.equals(modules.EMPLOYEES.getValue()))
-		{
 			newFragment = new EmployeesFragment();
-		}
+		
 
 		else if(module_name.equals(modules.INVENTORY.getValue()))
 		{

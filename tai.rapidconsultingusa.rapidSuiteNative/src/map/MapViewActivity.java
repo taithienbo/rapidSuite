@@ -3,16 +3,20 @@ package map;
 
 import inventory.Inventory;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
-
+import utility_classes.ListSelector;
+import android.app.ActionBar;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
-
+import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -24,7 +28,8 @@ import com.google.android.maps.OverlayItem;
 import employee.Employee;
 import employee.EmployeeInfoFragment;
 
-public class MapViewActivity extends MapActivity{
+public class MapViewActivity extends MapActivity
+{
 
 
 	LinearLayout linearLayout;
@@ -35,11 +40,19 @@ public class MapViewActivity extends MapActivity{
 	MapItemizedOverlay itemizedOverlay;
 
 	ListView lv;
+	
+	Employee employee;
+	Inventory inventory_item;
 
+	// for handling touch events on map Overlay
+	long start = 0;		
+	long end = 0;
 	
 
+	// For retrieving parameters
 	public static final String LONGITUDE_KEY = "longitude";
 	public static final String LATITUDE_KEY = "latitude";
+	public static final String INTENT_CALLER_KEY = "caller";
 
 
 	@Override
@@ -50,9 +63,13 @@ public class MapViewActivity extends MapActivity{
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_layout);
+		
+		ActionBar ab = this.getActionBar();
+		ab.hide();
 
 		Bundle b = getIntent().getExtras();
 
@@ -69,31 +86,24 @@ public class MapViewActivity extends MapActivity{
 
 		initializeMap(latitude, longitude);
 
-
-
-		String caller = b.getString("caller");
+	
+		String caller = b.getString(INTENT_CALLER_KEY);
 
 		// Initialize the list to display info
 		lv = (ListView) findViewById(R.id.listView_map_info_list);
-		
+	//	lv.setSelector(new ListSelector(lv));
+		lv.setSelector(R.color.transparent);
 		if( caller.equals(EmployeeInfoFragment.class.getName()) )
 		{
-			Employee employee;
-		
 			employee = (Employee) b.getSerializable(Employee.RETRIEVAL_KEY);
-		
 		
 			lv.setAdapter(new MyMapEmployeeListAdapter(this, employee, lv));
 		}
 		
 		else	// The caller is InventoryInfoFragment
-		{
-			Inventory inventory;
-			
-			inventory = (Inventory) b.getSerializable(Inventory.INVENTORY_RETRIEVAL_KEY);
-			lv.setAdapter(new MyMapInventoryListAdapter(this, inventory, lv));
-			
-			
+		{	
+			inventory_item = (Inventory) b.getSerializable(Inventory.INVENTORY_RETRIEVAL_KEY);
+			lv.setAdapter(new MyMapInventoryListAdapter(this, inventory_item, lv));
 		}
 
 	}
@@ -114,7 +124,8 @@ public class MapViewActivity extends MapActivity{
 
 
 		GeoPoint point = new GeoPoint(latitude, longitude);
-		OverlayItem overlayitem = new OverlayItem(point, "", "");
+	
+		OverlayItem overlayitem = new OverlayItem(point, "getAddress(point)", "");
 		
 		itemizedOverlay.addOverlay(overlayitem);
 		mapOverlays.add(itemizedOverlay);
@@ -132,10 +143,62 @@ public class MapViewActivity extends MapActivity{
 		**/
 		
 		MapController mapController = mapView.getController();
-		   double fitFactor = 1.5;
+	//	   double fitFactor = 1.5;
 		   mapController.zoomToSpan( latitude, longitude);
-		
+		   mapController.animateTo(point);
+		   
+		   mapController.setZoom(18);
 
+	}
+	
+	
+	private String getAddress(GeoPoint point)
+	{
+		// TODO Auto-generated method stub
+		Geocoder geoCoder = new Geocoder (MapViewActivity.this, Locale.getDefault());
+		StringBuilder formattedAddress = new StringBuilder();
+		try
+		{
+			List<Address> address = 
+					geoCoder.getFromLocation(point.getLatitudeE6()/(Math.exp(6)),
+							point.getLongitudeE6()/(Math.exp(6)), 1);
+			
+			for (int i = 0; i < address.get(0).getMaxAddressLineIndex(); i++)
+				formattedAddress.append(i).append("\n");
+				
+		} 
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "hahaha";//formattedAddress.toString();
+	}
+
+
+	private class Touchy extends Overlay
+	{
+		public boolean onTouchEvent (MotionEvent e, MapView m)
+		{
+			switch (e.getAction())
+			{
+			case MotionEvent.ACTION_DOWN :
+				start = e.getEventTime();
+				break;
+			case MotionEvent.ACTION_UP :
+				end = e.getEventTime();
+				break;
+			}
+			
+			if (end - start > 1500)
+			{
+				
+			}
+			
+			return false;
+			
+		}
 	}
 
 	private static final String LOG_INFO_TAG = "MapViewActivity Info";

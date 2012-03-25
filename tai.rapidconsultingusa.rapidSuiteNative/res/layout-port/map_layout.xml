@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#555555"
+	 android:background="#aaaaaa"
     android:weightSum="100" >
 
     <com.google.android.maps.MapView

@@ -3,6 +3,7 @@ package report;
 
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import android.app.Activity;
 import android.app.Fragment;
 
@@ -67,6 +68,8 @@ public class ReportDetailsFragment extends Fragment{
 		View v = inflater.inflate (R.layout.custom_list_layout, viewgroup, false);
 		
 		ListView report_detail_list = (ListView) v.findViewById(android.R.id.list);
+		report_detail_list.setSelector(R.color.transparent);
+		report_detail_list.setSelector(new ListSelector(report_detail_list));
 		
 		report_detail_list.setAdapter( new ReportDetailsListAdapter (this.getActivity(), report));
 		
@@ -91,7 +94,7 @@ public class ReportDetailsFragment extends Fragment{
 	public void onResume()
 	{
 		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 
@@ -125,7 +128,7 @@ public class ReportDetailsFragment extends Fragment{
 	public void onDestroyView()
 	{
 		super.onDestroyView();
-		Log.d(LOG_INFO_TAG, "onDestroyView() called");
+	//	Log.d(LOG_INFO_TAG, "onDestroyView() called");
 	}
 	
 	
@@ -134,7 +137,7 @@ public class ReportDetailsFragment extends Fragment{
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onDestroy() called");
+//		Log.d(LOG_INFO_TAG, "onDestroy() called");
 	}
 	
 
@@ -143,7 +146,7 @@ public class ReportDetailsFragment extends Fragment{
 		public void onDetach()
 		{
 			super.onDetach();
-			Log.d(LOG_INFO_TAG, "onDetach() called");
+		//	Log.d(LOG_INFO_TAG, "onDetach() called");
 		}
 
 	/**

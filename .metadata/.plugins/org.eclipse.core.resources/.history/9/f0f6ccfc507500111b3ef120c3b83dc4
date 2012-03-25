@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- the theme applied to the application or activity -->
+    <style name="MainActivityTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MainActivityTheme.ActionBarStyle</item>
+        <!-- other activity and action bar styles here -->
+    </style>
+
+    <!-- style for the action bar backgrounds -->
+    <style name="MainActivityTheme.ActionBarStyle" parent="@android:style/Widget.Holo.ActionBar">
+        <item name = "android:titleTextStyle"></item>
+
+       
+      
+    </style>
+
+</resources>

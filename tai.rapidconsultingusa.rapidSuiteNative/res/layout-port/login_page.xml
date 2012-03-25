@@ -39,7 +39,7 @@
         android:layout_marginLeft="200dp"
         android:layout_marginRight="200dp"
         android:text="@string/login_button" 
-        android:background="@drawable/button">
+        android:background="@drawable/button_black">
     </Button>
 
 </LinearLayout>

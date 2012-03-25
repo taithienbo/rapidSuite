@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--  landscape mode -->
+<!-- landscape mode -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mapViewParentLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#555555" >
+    android:background="#aaaaaa"
+  
+    android:orientation="vertical" >
 
     <com.google.android.maps.MapView
         android:id="@+id/mapview"
@@ -17,13 +18,12 @@
 
     <ListView
         android:id="@+id/listView_map_info_list"
+        style="@style/ListStyleLand"
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
         android:layout_height="0dp"
-        android:layout_weight="30" 
-        style = "@style/ListStyleLand">
+        android:layout_marginTop="30dp"
+        android:layout_weight="30"
+        android:drawSelectorOnTop="false" >
     </ListView>
-
-
 
 </LinearLayout>

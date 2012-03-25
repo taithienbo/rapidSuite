@@ -10,7 +10,7 @@ import databaseManager.Authentication;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 import android.app.Activity;
-import android.app.Dialog;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity
 {
+	
+	private static final boolean DEBUG = true;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -47,6 +49,12 @@ public class LoginActivity extends Activity
 			String user_name = getUserName();
 			String user_password = getUserPassWord();
 
+		
+			if (DEBUG)
+			{
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);
+			}
 			if(Authentication.passAuthentication(user_name, user_password)){
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
@@ -62,6 +70,7 @@ public class LoginActivity extends Activity
 					Toast.makeText(v.getContext(), "Login failed. Please check your username/password and try again \n", Toast.LENGTH_LONG).show();
 			}
 		}
+		
 
 	};
 

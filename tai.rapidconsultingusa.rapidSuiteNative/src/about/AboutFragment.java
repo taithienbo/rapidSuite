@@ -207,8 +207,8 @@ public class AboutFragment extends ListFragment
 	private static final String RELEASE_DATE = "03-23-2012";
 	private static final String DEVELOPED_BY = "Rapid Consulting Services";
 	private static final String DESCRIPTION = "Executive users are able to browse " +
-			"the Contacts' information, check inventory, approve or reject requests, " +
-			"view approval history, and monitor various sales reports within one application.";
+			"employees' information, check inventories, approve or reject requests, " +
+			"view approvals' history, and monitor various sales reports within one application.";
 
 	private static final String CONTACT = "sales@rapidconsultingusa.com";
 

@@ -2,6 +2,7 @@ package approval;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
 
+
 import com.google.gson.Gson;
 
 import controller.OnItemSelectedListener;
@@ -20,12 +21,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+
 import android.widget.ListView;
+
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class ApprovalsInfoFragment extends ListFragment{
 
@@ -47,8 +49,6 @@ public class ApprovalsInfoFragment extends ListFragment{
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-
-
 		super.setHasOptionsMenu(true);
 	}
 
@@ -192,33 +192,62 @@ public class ApprovalsInfoFragment extends ListFragment{
 		}
 
 		View view = inflater.inflate(R.layout.custom_list_layout, null);
+		
+		
 		ListView lv = (ListView) view.findViewById(android.R.id.list);
+		
+		lv.setSelector(R.color.transparent);
+		// Commented out because they do not have any effects
+		/**
+		lv.setSelector(new ListSelector(lv));
+		lv.setFocusable(false);
+		lv.setClickable(false);
+	 * 
+	 */
+	
 
 		String[] approvals_info = view.getResources().getStringArray(R.array.approvals_info_array);
+		
+		// The commentted out section below did not work
+		// will work on this later
+		/**
+		View footer = inflater.inflate(R.layout.approvals_buttons_layout, null);
+		View button3 = footer.findViewById(R.id.button_approve);
+		button3.setVisibility(View.GONE);
+		lv.addFooterView(footer);
+		lv.setFooterDividersEnabled(true);
+		
+**/
+		lv.setAdapter(new ApprovalsInfoListAdapter<String>(this.getActivity(),
+				approvals_info));
+		
 
-		lv.setAdapter(new ApprovalsInfoListAdapter<String>(this.getActivity(), R.layout.approvals_info_row_layout,
-				R.id.textView_approvals_info_field, approvals_info));
+
 		return view;
 
 	}
 
 
-	private class ApprovalsInfoListAdapter<T> extends ArrayAdapter<T>{
+	private class ApprovalsInfoListAdapter<T> extends BaseAdapter{
 
-		public ApprovalsInfoListAdapter(Context context, int resource,
-				int textViewResourceId, T[] approvalsInfoList) {
-			super(context, resource, textViewResourceId, approvalsInfoList);
+		
+		private Context context;
+		private String[] approvalsInfoList;
+		private LayoutInflater li;
+		
+		private static final int NUMBER_OF_VIEW_TYPE = 2;
+		public ApprovalsInfoListAdapter(Context context,  String[] approvalsInfoList) {
+			
 			this.context = context;
 			this.approvalsInfoList = approvalsInfoList;
+			li = LayoutInflater.from(context);
 			// TODO Auto-generated constructor stub
 		}
 
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent){
-
-			LayoutInflater li = LayoutInflater.from(context);
-
+	
+		public View getView(int position, View convertView, ViewGroup parent)
+		{
 
 			View v = convertView;
 			ViewHolder holder;
@@ -274,7 +303,7 @@ public class ApprovalsInfoFragment extends ListFragment{
 				holder.field.setText((approvalsInfoList[position].toString()));
 				holder.value.setText(status);
 				break;
-			default:
+			default:		// Separator
 				v = li.inflate(R.layout.separator_layout,null);
 				v.setVisibility(View.INVISIBLE);
 				break;
@@ -317,13 +346,46 @@ public class ApprovalsInfoFragment extends ListFragment{
 					&& !approvalsInfoList[position-1].equals("Separator"))
 				v.setBackgroundDrawable(holder.bottom_corner);
 			
-
+			v.setClickable(false);
+			v.setFocusable(false);
 				return v;
 
 		}
 
-		private Context context;
-		private T[] approvalsInfoList;
+	
+		public int getCount()
+		{
+			// TODO Auto-generated method stub
+			return approvalsInfoList.length;
+		}
+
+
+		public Object getItem(int position)
+		{
+			// TODO Auto-generated method stub
+			return approvalsInfoList[position];
+		}
+
+
+		public long getItemId(int position)
+		{
+			// TODO Auto-generated method stub
+			return position;
+		}
+		
+		
+		@Override
+		public int getViewTypeCount()
+		{
+			return NUMBER_OF_VIEW_TYPE ;
+		}
+		
+		@Override
+		public int getItemViewType(int position)
+		{
+			return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
+		}
+		
 
 	}
 
@@ -360,8 +422,6 @@ public class ApprovalsInfoFragment extends ListFragment{
 
 	private static Approvals approval;
 
-	
-	// Fields for retrieving processed items
-	
+
 
 }

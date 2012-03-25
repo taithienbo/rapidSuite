@@ -8,6 +8,10 @@ public class Inventory implements Serializable
 {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// id, code, name, category, lastUpdate, manufacturer, wholesalePrice,
 	// msrp, availability, addrno, street, suite, city, state, zip, 
 	// latitude, longitude 
@@ -49,9 +53,6 @@ public class Inventory implements Serializable
 		this.longitude 			= 		longitude;
 		this.latitude 			= 		latitude;
 		this.address 			= 		address;
-		
-		Log.d(LOG_INFO_TAG, "Inventory Constructor: Value of wholesalePrice"
-			+	" is: " + wholesalePrice);
 		
 	}
 

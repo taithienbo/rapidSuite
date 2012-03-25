@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_approve_text">Approve</string>
+    <string name="button_reject_text">Reject</string>
+    <string name="button_reprocess_text">Reprocess</string>
+</resources>

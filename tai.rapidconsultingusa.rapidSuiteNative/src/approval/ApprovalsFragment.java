@@ -9,6 +9,7 @@ import controller.OnItemSelectedListener;
 
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -21,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,7 +47,7 @@ public class ApprovalsFragment extends ListFragment
 	{
 		super.onResume();
 			
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 
@@ -60,7 +62,7 @@ public class ApprovalsFragment extends ListFragment
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
+	//	Log.d(LOG_INFO_TAG, "onPause() called");
 	}
 
 
@@ -68,7 +70,7 @@ public class ApprovalsFragment extends ListFragment
 	public void onStop()
 	{
 		super.onStop();
-		Log.d(LOG_INFO_TAG, "onStop() called");
+	//	Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 
 
@@ -87,7 +89,7 @@ public class ApprovalsFragment extends ListFragment
 	{
 		super.onActivityCreated (savedInstanceState);
 	
-		Log.d(LOG_INFO_TAG, "ApprovalsFragmentt.onActivityCreated called");
+//		Log.d(LOG_INFO_TAG, "ApprovalsFragmentt.onActivityCreated called");
 		
 		String item_status;
 		if (savedInstanceState != null && 
@@ -101,7 +103,7 @@ public class ApprovalsFragment extends ListFragment
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+//		Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 	
@@ -119,11 +121,12 @@ public class ApprovalsFragment extends ListFragment
 		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		ListView lv = (ListView)view.findViewById(android.R.id.list);
 
+		lv.setSelector(new ListSelector(lv));
+		
 		List<Approvals> approvals_list = ApprovalsDataRetriever.getListOfApprovals(itemStatus);
-
-		lv.setAdapter(new ApprovalsListAdapter<Approvals>(getActivity().getBaseContext(), R.layout.approvals_row_layout,
-				R.id.textView_approvals_item_name, approvals_list));
-
+	
+		lv.setAdapter(new ApprovalsListAdapter(getActivity(), approvals_list));
+		
 		return view;
 	}
 
@@ -140,32 +143,26 @@ public class ApprovalsFragment extends ListFragment
 
 	
 
-	public class ApprovalsListAdapter<T> extends ArrayAdapter<T> 
+	public class ApprovalsListAdapter extends BaseAdapter
 	{
 
 		private List<Approvals> approvals_list;
-		private int textViewResourceId;
-		private int resource;
+
 		private Context context;
 
+		private static final int NUMBER_OF_VIEW_TYPE = 1;
 
 
-		public ApprovalsListAdapter(Context context, int resource,
-				int textViewResourceId, List<T> approvals_list) 
+
+		public ApprovalsListAdapter(Context context,
+				 List<Approvals> approvals_list) 
 		{
-
-			super(context, resource, textViewResourceId, approvals_list);
-			// TODO Auto-generated constructor stub
-
 			this.context = context;
-			this.textViewResourceId = textViewResourceId;
-			this.resource = resource;
 			this.approvals_list = (ArrayList<Approvals>) approvals_list;
-
 		}
 
 
-		@Override
+
 		public View getView(int position, View convertView, ViewGroup parent)
 		{
 			View v = convertView;
@@ -222,6 +219,40 @@ public class ApprovalsFragment extends ListFragment
 
 
 			return v;
+		}
+
+
+		public int getCount()
+		{
+			// TODO Auto-generated method stub
+			return approvals_list.size();
+		}
+
+
+		public Object getItem(int position)
+		{
+			// TODO Auto-generated method stub
+			return approvals_list.get(position);
+		}
+
+
+		public long getItemId(int position)
+		{
+			// TODO Auto-generated method stub
+			return position;
+		}
+		
+		
+		@Override
+		public int getViewTypeCount()
+		{
+			return NUMBER_OF_VIEW_TYPE ;
+		}
+		
+		@Override
+		public int getItemViewType(int position)
+		{
+			return BaseAdapter.IGNORE_ITEM_VIEW_TYPE;
 		}
 	}
 	

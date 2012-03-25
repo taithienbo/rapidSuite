@@ -85,14 +85,17 @@ public class MyMapEmployeeListAdapter extends BaseAdapter
 		holder.field.setText(employee_fields[position]);
 
 		String value =
-		null;
+				null;
+
+		lv.setClickable(false);
+		lv.setDividerHeight(1);
 
 		switch(position)
 		{
 		case 0:		// status
-		value = employee.getStatus();
-		v.setBackgroundDrawable(holder.top_corner);
-		break;
+			value = employee.getStatus();
+			v.setBackgroundDrawable(holder.top_corner);
+			break;
 		case 1:		// last status update
 			value = employee.getLastStatusUpdate();
 			if(value == null)
@@ -100,8 +103,9 @@ public class MyMapEmployeeListAdapter extends BaseAdapter
 
 
 			v.setBackgroundDrawable(holder.bottom_corner);
+
 			break;
-		
+
 
 		}
 		holder.value.setText(value);

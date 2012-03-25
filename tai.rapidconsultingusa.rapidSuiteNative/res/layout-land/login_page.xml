@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="400dp"
         android:layout_marginRight="400dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_black"
         android:text="@string/login_button" >
     </Button>
 

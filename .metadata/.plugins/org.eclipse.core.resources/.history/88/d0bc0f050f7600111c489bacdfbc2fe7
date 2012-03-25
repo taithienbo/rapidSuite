@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- landscape -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout_custom_list"
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+     <ListView android:id="@id/android:list"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               style = "@style/ListStylePort"
+               android:drawSelectorOnTop="true"/>
+     
+     <LinearLayout 
+         android:layout_marginLeft = "40dp"
+ 		android:layout_marginRight = "40dp"
+       	android:layout_marginTop = "25dp"
+    	android:layout_marginBottom = "25dp"
+         android:layout_width = "match_parent"
+         android:layout_height = "wrap_content"
+
+ </LinearLayout>

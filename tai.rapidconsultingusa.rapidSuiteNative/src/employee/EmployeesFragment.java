@@ -13,9 +13,8 @@ import java.util.List;
 import controller.OnItemSelectedListener;
 
 
-
-
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import android.app.Activity;
 
 import android.app.ListFragment;
@@ -56,9 +55,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 
 	private OnItemSelectedListener module_item_listener;
 
-	private static final String CURRENT_SELECTED_EMPLOYEE = "current_selected_employee";
 
-	private static int current_item_position_selected = -1;
 
 	private static final String LOG_INFO_TAG = "EmployeesFragment";
 
@@ -85,7 +82,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 
 		mListener = (OnItemSelectedListener) activity;
 
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onAttach() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onAttach() called");
 
 	}
 
@@ -99,21 +96,18 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		inflater.inflate(R.menu.menu_search, menu);
 
 		MenuItem menuItem = menu.findItem(R.id.menu_search);
-
+		/**
 		// Get the SearchView and set the searchable configuration
 		SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+		
 	//	searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
 
 		searchView.setQueryHint("Search Employees");
-	
 
-
-
-
-
-
+		 **/
+		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 	}
 
 
@@ -134,7 +128,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	{
 		super.onCreate(savedInstanceState);
 		super.setHasOptionsMenu(true);
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
+		//		Log.d(LOG_INFO_TAG, "EmployeesFragment.onCreate() called");
 
 	}
 
@@ -147,18 +141,16 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	{
 		super.onCreateView(inflater, viewgroup, savedInstanceState);
 
-		Log.d (LOG_INFO_TAG, "EmployeesFragment.onCreateView() called");
+		//	Log.d (LOG_INFO_TAG, "EmployeesFragment.onCreateView() called");
 
-		//	 setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, List));
 		View view = inflater.inflate(R.layout.custom_list_layout, null);
 		lv = (ListView) view.findViewById(android.R.id.list);
 
 		all_employees = EmployeeDataRetriever.getListOfEmployees();
 
 		lv.setAdapter(new EmployeeListAdapter(getActivity(), all_employees));
+		lv.setSelector(new ListSelector(lv));
 
-		if (savedInstanceState != null)
-			lv.setItemChecked(savedInstanceState.getInt(CURRENT_SELECTED_EMPLOYEE), true);
 
 		return view;
 	}
@@ -169,7 +161,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	{
 		super.onActivityCreated (savedInstanceState);
 
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onActivityCreated called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onActivityCreated called");
 	}
 
 
@@ -177,7 +169,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onStart()
 	{
 		super.onStart();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStart() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onStart() called");
 	}
 
 
@@ -186,8 +178,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onResume()
 	{
 		super.onResume();
-
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onResume() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onResume() called");
 
 	}
 
@@ -197,7 +188,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onPause() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onPause() called");
 	}
 
 
@@ -205,9 +196,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onStop()
 	{
 		super.onStop();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onStop() called");
-
-
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onStop() called");
 	}
 
 
@@ -216,7 +205,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onDestroyView()
 	{
 		super.onDestroyView();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroyView() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroyView() called");
 	}
 
 
@@ -225,7 +214,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroy() called");
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onDestroy() called");
 
 	}
 
@@ -237,7 +226,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onDetach()
 	{
 		super.onDetach();
-		Log.d(LOG_INFO_TAG, "EmployeesFragment.onDetach() called");
+		//Log.d(LOG_INFO_TAG, "EmployeesFragment.onDetach() called");
 
 	}
 
@@ -247,7 +236,6 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	@Override 
 	public void onListItemClick(ListView l, View v, int position, long id)
 	{
-		//	showDetails(position);
 		Employee e = EmployeeDataRetriever.getListOfEmployees().get(position);
 		mListener.onFragmentSelectedListener(new EmployeeInfoFragment (e));
 
@@ -260,10 +248,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
-
-
-		outState.putInt(CURRENT_SELECTED_EMPLOYEE, current_item_position_selected);
+		//Log.d(LOG_INFO_TAG, "onSaveInstanceState called");
 
 	}
 
@@ -284,21 +269,20 @@ public class EmployeesFragment extends ListFragment implements Serializable
 			this.context = context;
 			this.employee_list = employee_list;
 			this.mInflater = LayoutInflater.from(context);
+
 		}
 
-	
-		
-
-	
 
 
-		public int getCount() {
+		public int getCount() 
+		{
 			// TODO Auto-generated method stub
 			return employee_list.size();
 		}
 
 
-		public Object getItem(int position) {
+		public Employee getItem(int position) 
+		{
 			// TODO Auto-generated method stub
 			return employee_list.get(position);
 		}
@@ -307,7 +291,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		public long getItemId(int position) 
 		{
 			// TODO Auto-generated method stub
-			return employee_list.get(position).getEmployeeId();
+			return position;
 		}
 
 
@@ -317,6 +301,7 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		{
 			// TODO Auto-generated method stub
 			ViewHolder holder;
+
 
 			View v = convertView;
 
@@ -338,11 +323,20 @@ public class EmployeesFragment extends ListFragment implements Serializable
 			holder.all_corners = context.getResources().getDrawable(R.drawable.rounded_corner);
 
 			if (employee_list.size() == 0)
+			{
 				v.setBackgroundDrawable(holder.all_corners);
+
+			}
 			else if (position == 0)
+			{
 				v.setBackgroundDrawable(holder.top_edges);
+
+			}
 			else if (position == employee_list.size() - 1)
+			{
 				v.setBackgroundDrawable(holder.bottom_edges);
+			}
+
 
 			return v;
 
@@ -364,9 +358,6 @@ public class EmployeesFragment extends ListFragment implements Serializable
 		public ViewHolder (TextView employee_name)
 		{
 			this.employee_name = employee_name;
-			this.top_edges = top_edges;
-			this.bottom_edges = bottom_edges;
-			this.all_corners = all_corners;
 
 		}
 	}

@@ -7,6 +7,7 @@ import java.util.List;
 
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
@@ -45,6 +46,8 @@ public class InventoryFragment extends ListFragment{
 		lv.setAdapter(new InvventoryListAdapter<Inventory>(getActivity().getBaseContext(), R.layout.inventory_row_layout,
 				R.id.textView_inventory_name,inventory_list));
 		
+		lv.setSelector(new ListSelector(lv));
+		
 		return view;
 	}
 	
@@ -66,7 +69,7 @@ public class InventoryFragment extends ListFragment{
 		inflater.inflate(R.menu.menu_search, menu);
 
 		MenuItem menuItem = menu.findItem(R.id.menu_search);
-
+/**
 		// Get the SearchView and set the searchable configuration
 		SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
@@ -74,6 +77,7 @@ public class InventoryFragment extends ListFragment{
 		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 
 		searchView.setQueryHint("Search Inventories");
+		**/
 	}
 
 
@@ -82,7 +86,7 @@ public class InventoryFragment extends ListFragment{
 	public void onViewCreated (View view, Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		Log.d(LOG_INFO_TAG, "onViewCreated() called");
+	//	Log.d(LOG_INFO_TAG, "onViewCreated() called");
 
 	}
 	
@@ -92,7 +96,7 @@ public class InventoryFragment extends ListFragment{
 	public void onResume()
 	{
 		super.onResume();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 	
 	
@@ -101,7 +105,7 @@ public class InventoryFragment extends ListFragment{
 	public void onPause()
 	{
 		super.onPause();
-		Log.d(LOG_INFO_TAG, "onPause() called");
+	//	Log.d(LOG_INFO_TAG, "onPause() called");
 	}
 	
 	
@@ -109,7 +113,7 @@ public class InventoryFragment extends ListFragment{
 	public void onStop()
 	{
 		super.onStop();
-		Log.d(LOG_INFO_TAG, "onStop() called");
+//		Log.d(LOG_INFO_TAG, "onStop() called");
 	}
 	
 	
@@ -117,7 +121,7 @@ public class InventoryFragment extends ListFragment{
 	public void onDestroy()
 	{
 		super.onDestroy();
-		Log.d(LOG_INFO_TAG, "onResume() called");
+	//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 	
 	
@@ -133,7 +137,7 @@ public class InventoryFragment extends ListFragment{
 		FragmentTransaction ft = fm.beginTransaction();
 		
 		Inventory i = InventoryDataRetriever.getListOfInventoriess().get(position);
-		Log.i(LOG_INFO_TAG, "onView: inventory item clicked is: " + i.getName());
+	//	Log.i(LOG_INFO_TAG, "onView: inventory item clicked is: " + i.getName());
 		
 		ft.replace(R.id.fragment_container, new InventoryInfoFragment(i));
 		ft.addToBackStack(null);
@@ -160,7 +164,6 @@ public class InventoryFragment extends ListFragment{
 			this.textViewResourceId = textViewResourceId;
 			this.resource = resource;
 			this.inventory_list = (ArrayList<Inventory>) inventory_list;
-
 		}
 
 	

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 import android.app.Activity;
 import android.app.Fragment;
 
@@ -38,7 +39,7 @@ public class ReportFragment extends Fragment
 	{
 		super.onCreate (savedInstanceState);
 		
-		Log.d(LOG_INFO_TAG, "onCreate() called");
+	//	Log.d(LOG_INFO_TAG, "onCreate() called");
 		//setContentView (R.layout.report_list_layout);
 	}
 
@@ -55,7 +56,7 @@ public class ReportFragment extends Fragment
 		View v = inflater.inflate(R.layout.custom_list_layout, container, false);
 		
 		ListView reportListView = (ListView) v.findViewById(android.R.id.list);
-		
+		reportListView.setSelector(new ListSelector(reportListView));
 	
 		ArrayList<Report> report_list = ReportDataRetriever.getReportList();
 		

@@ -278,7 +278,7 @@ public class ModuleFragment extends ListFragment
 				module_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.inventory));
 				break;
 			case 4:
-				module_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.approvals_gray));
+				module_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.approvals_white));
 				break;
 			case 5:
 				module_icon.setImageDrawable(context.getResources().getDrawable(R.drawable.approval_history));
