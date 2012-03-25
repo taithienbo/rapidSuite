@@ -2,13 +2,12 @@ package report;
 
 
 
+import graphs.BarGraph;
+import graphs.PieGraph;
 import tai.rapidconsultingusa.rapidSuiteNative.R;
-import utility_classes.ListSelector;
 import android.app.Activity;
 import android.app.Fragment;
-
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import controller.OnItemSelectedListener;
 
 
 public class ReportDetailsFragment extends Fragment{
@@ -27,6 +27,8 @@ public class ReportDetailsFragment extends Fragment{
 	private static final String LOG_INFO_TAG = "ReportDetailsFragment info:";
 
 	private static Report report;
+
+	private OnItemSelectedListener mListener;
 
 
 
@@ -38,16 +40,19 @@ public class ReportDetailsFragment extends Fragment{
 		ReportDetailsFragment.report = report;
 	}
 
-	
-	
 
-	// Called when the fragment is associated with its activity
+
 	@Override
-	public void onAttach (Activity activity)
+	public void onAttach(Activity activity)
 	{
-		super.onAttach (activity);
+		super.onAttach(activity);
+
+		mListener = (OnItemSelectedListener) activity;
+
+		//	Log.d(LOG_INFO_TAG, "EmployeesFragment.onAttach() called");
+
 	}
-	
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -58,7 +63,7 @@ public class ReportDetailsFragment extends Fragment{
 	}
 
 
-	
+
 	// onCreateView() creates and returns the view hierarchy associated with 
 	// the fragment.
 	@Override
@@ -66,18 +71,18 @@ public class ReportDetailsFragment extends Fragment{
 			Bundle savedInstanceState)
 	{
 		View v = inflater.inflate (R.layout.custom_list_layout, viewgroup, false);
-		
+
 		ListView report_detail_list = (ListView) v.findViewById(android.R.id.list);
 		report_detail_list.setSelector(R.color.transparent);
-		report_detail_list.setSelector(new ListSelector(report_detail_list));
-		
+		//report_detail_list.setSelector(new ListSelector(report_detail_list));
+
 		report_detail_list.setAdapter( new ReportDetailsListAdapter (this.getActivity(), report));
-		
+
 		return v;
 	}
 
 
-	
+
 	// onActivityCreated() tells the fragment that its activity has completed 
 	// its own Activity.onCreaate.
 	@Override
@@ -85,16 +90,16 @@ public class ReportDetailsFragment extends Fragment{
 	{
 		super.onActivityCreated(savedInstanceState);
 	}
-	
-	
-	
+
+
+
 	// onResume() makes the fragment interacting with the user (based on its 
 	// containing activity being resumed).
 	@Override
 	public void onResume()
 	{
 		super.onResume();
-	//	Log.d(LOG_INFO_TAG, "onResume() called");
+		//	Log.d(LOG_INFO_TAG, "onResume() called");
 	}
 
 
@@ -122,32 +127,34 @@ public class ReportDetailsFragment extends Fragment{
 
 
 
+
+
 	// onDestroyView() allows the fragment to clean up resources associated 
 	// with its View.
 	@Override 
 	public void onDestroyView()
 	{
 		super.onDestroyView();
-	//	Log.d(LOG_INFO_TAG, "onDestroyView() called");
+		//	Log.d(LOG_INFO_TAG, "onDestroyView() called");
 	}
-	
-	
-// 	onDestroy() called to do final cleanup of the fragment's state.
+
+
+	// 	onDestroy() called to do final cleanup of the fragment's state.
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
-//		Log.d(LOG_INFO_TAG, "onDestroy() called");
+		//		Log.d(LOG_INFO_TAG, "onDestroy() called");
 	}
-	
+
 
 	//onDetach() called immediately prior to the fragment no longer being associated with its activity.
-		@Override
-		public void onDetach()
-		{
-			super.onDetach();
+	@Override
+	public void onDetach()
+	{
+		super.onDetach();
 		//	Log.d(LOG_INFO_TAG, "onDetach() called");
-		}
+	}
 
 	/**
 	 * Called to ask the fragment to save its current dynamic state, so it 
@@ -163,21 +170,48 @@ public class ReportDetailsFragment extends Fragment{
 		super.onSaveInstanceState(outState);
 	}
 
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+	{
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.menu_graph, menu);
+
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) 
 	{	
-		return super.onOptionsItemSelected(item);
+		Intent intent;
+		switch (item.getItemId())
+		{
+		case R.id.menu_bar_graph :
+			BarGraph bg = new BarGraph(report);
+			 intent = bg.getIntent(getActivity());
+			startActivity(intent);
+			
+			break;
+		
+			
+		case R.id.menu_pie_graph :
+			PieGraph pg = new PieGraph(report);
+			intent =	pg.getIntent(getActivity());
+			startActivity(intent);
+			break;
+		
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		
+		if (intent != null)
+		{
+			startActivity(intent);
+			return true;
+		}
+		
+		return false;
+
 	}
 
-
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-	{
-
-		super.onCreateOptionsMenu(menu, inflater);
-
-	}
 
 
 	@Override

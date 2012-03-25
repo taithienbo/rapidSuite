@@ -47,6 +47,8 @@ public class ListSelector extends Drawable
 
 		canvas.save();
 		canvas.clipRect(b.left, b.top, b.right, (b.bottom + b.top) / 2);
+		
+
 		drawHalf(canvas, b, position == 0);//position == 0);
 	
 		
@@ -57,6 +59,13 @@ public class ListSelector extends Drawable
 		drawHalf(canvas, b, position == mList.getAdapter().getCount() - 1 && b.bottom == mList.getHeight());
 		canvas.restore();
 		Log.d(TAG, "draw " + b);
+	}
+
+	private boolean needRounded(int position)
+	{
+		
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private void drawHalf(Canvas canvas, Rect b ,boolean round) {

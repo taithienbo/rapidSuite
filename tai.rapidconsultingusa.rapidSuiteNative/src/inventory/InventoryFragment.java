@@ -69,15 +69,15 @@ public class InventoryFragment extends ListFragment{
 		inflater.inflate(R.menu.menu_search, menu);
 
 		MenuItem menuItem = menu.findItem(R.id.menu_search);
-/**
+
 		// Get the SearchView and set the searchable configuration
-		SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+	//	SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
 	//	searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
 		searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 
 		searchView.setQueryHint("Search Inventories");
-		**/
+	
 	}
 
 

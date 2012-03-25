@@ -1,0 +1,146 @@
+package utility_classes;
+
+
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+
+import android.graphics.drawable.Drawable;
+
+import android.util.Log;
+
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+
+
+public class ListSelector extends Drawable
+{
+	private static final String TAG = "Selector";
+	private Paint mPaint;
+	private ListView mList;
+	private RectF mRectF;
+	private String[] objects;
+
+	public static final String LOG_INFO_TAG = "ListSelector";
+
+	public ListSelector(ListView list) 
+	{
+		mList = list;
+		mPaint = new Paint();
+		mPaint.setColor(Color.parseColor("#357EC7"));
+		mPaint.setAlpha(150);		// To see through the underlying view
+
+
+		mRectF = new RectF();
+	}
+
+
+	public ListSelector(ListView list, String[] objects)
+	{
+		this(list);
+		this.objects = objects;
+	}
+
+	@Override
+	public void draw(Canvas canvas) {
+		Rect b = getBounds();
+
+		//get SelectedItemPosition not work
+
+		int position =  mList.pointToPosition(b.left, b.top);//mList.getCheckedItemPosition();
+		Log.d(LOG_INFO_TAG, "Position selected is: " + position);
+
+		canvas.save();
+		canvas.clipRect(b.left, b.top, b.right, (b.bottom + b.top) / 2);
+
+		boolean rounded = needRounded(position);
+		drawHalf(canvas, b, position == 0);//position == 0);
+
+
+		canvas.restore();
+		canvas.save();
+		canvas.clipRect(b.left, (b.bottom + b.top) / 2, b.right, b.bottom);
+
+		drawHalf(canvas, b, rounded);//position == mList.getAdapter().getCount() - 1 && b.bottom == mList.getHeight());
+		canvas.restore();
+		Log.d(TAG, "draw " + b);
+	}
+
+	private boolean needRounded(int position)
+	{
+		ListAdapter la = mList.getAdapter();
+
+		if (position + 1 < la.getCount() && position -1 >=0 
+				&& objects[position + 1].equals("Separator")
+				&& objects[position - 1].equals("Separator"))		// The view hold single item
+			return true;
+
+		// The top of a view that contains multiple items grouped together
+		else if (position - 1 >= 0 && position - 1 < objects.length && objects[position-1].equals("Separator")
+				&& position + 1 < objects.length && 
+				!objects[position + 1].equals("Separator"))		
+			return false;
+
+		// The bottom of a view that contains multiple items grouped together
+		else if (position - 1 >= 0 && position - 1 < objects.length && !objects[position-1].equals("Separator")
+				&& position + 1 < objects.length && 
+				objects[position + 1].equals("Separator"))		
+			return false;
+
+		// First row visible on the screen and which holds more than one item grouped together
+		else if (position == 0 && position + 1 < objects.length
+				&& !objects[position+1].equals("Separator"))
+			return false;
+
+		else if (position == 0 && position + 1 < objects.length
+				&& objects[position+1].equals("Separator"))
+			return true;
+
+		// Last row visible on the screen and which holds  one item  
+		else if (position + 1 == objects.length && position - 1 >= 0
+				&& position - 1 < objects.length && objects[position-1].equals("Separator"))
+			return true;
+
+		// Last row visible on the screen and which holds more than one item  
+		else if (position + 1 == objects.length && position - 1 >= 0
+				&& position - 1 < objects.length && !objects[position-1].equals("Separator"))
+			return false;
+
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private void drawHalf(Canvas canvas, Rect b ,boolean round) {
+		if (round)
+		{
+			mRectF.set(b);
+			canvas.drawRoundRect(mRectF, 10, 10, mPaint);
+		} else {
+			canvas.drawRect(b, mPaint);
+		}
+	}
+
+	@Override
+	public int getOpacity() {
+		return 0;
+	}
+
+	@Override
+	public void setAlpha(int alpha)
+	{
+
+	}
+
+	@Override
+	public void setColorFilter(ColorFilter cf)
+	{
+
+	}
+
+
+
+}

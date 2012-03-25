@@ -19,6 +19,7 @@
         android:id="@+id/textView_employee_row_name"
         style="@style/TextStyle.Port"
         android:layout_width="0sp"
+        android:focusable="false"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="40" >

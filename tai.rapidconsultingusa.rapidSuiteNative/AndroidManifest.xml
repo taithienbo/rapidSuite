@@ -35,6 +35,13 @@
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Holo.Light" >
         </activity>
+        
+         <activity
+            android:name="org.achartengine.GraphicalActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+        </activity>
+        
 
         <uses-library android:name="com.google.android.maps" >
         </uses-library>

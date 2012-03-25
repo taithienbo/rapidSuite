@@ -1,6 +1,7 @@
 package approval;
 
 import tai.rapidconsultingusa.rapidSuiteNative.R;
+import utility_classes.ListSelector;
 
 
 import com.google.gson.Gson;
@@ -207,6 +208,7 @@ public class ApprovalsInfoFragment extends ListFragment{
 	
 
 		String[] approvals_info = view.getResources().getStringArray(R.array.approvals_info_array);
+	//	lv.setSelector(new ListSelector(lv, approvals_info));
 		
 		// The commentted out section below did not work
 		// will work on this later

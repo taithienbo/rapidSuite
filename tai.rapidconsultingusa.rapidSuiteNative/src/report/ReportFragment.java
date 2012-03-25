@@ -51,7 +51,7 @@ public class ReportFragment extends Fragment
                              Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
         
-		Log.d(LOG_INFO_TAG, "onCreateView called");
+
 		// Inflate the layout for this fragment
 		View v = inflater.inflate(R.layout.custom_list_layout, container, false);
 		

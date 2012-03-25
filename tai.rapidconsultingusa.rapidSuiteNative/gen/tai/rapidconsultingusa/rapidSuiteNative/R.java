@@ -64,56 +64,60 @@ public final class R {
         public static final int settings=0x7f020025;
         public static final int splash_welcome_screen_landscape=0x7f020026;
         public static final int splash_welcome_screen_portrait=0x7f020027;
+        public static final int zero_six_bargraph_gradient=0x7f020028;
     }
     public static final class id {
         public static final int approvals_fragment=0x7f090003;
         public static final int button_approve=0x7f090002;
-        public static final int employeesFragment=0x7f090009;
-        public static final int fragment_container=0x7f09001d;
+        public static final int employeesFragment=0x7f09000a;
+        public static final int fragment_container=0x7f09001e;
         public static final int imageView_approvals_icon=0x7f090007;
-        public static final int imageView_employee_pic=0x7f09000a;
-        public static final int imageView_inventory=0x7f090017;
-        public static final int imageView_rapid=0x7f090012;
-        public static final int imageView_report_icon=0x7f090026;
+        public static final int imageView_barGraph=0x7f090009;
+        public static final int imageView_employee_pic=0x7f09000b;
+        public static final int imageView_inventory=0x7f090018;
+        public static final int imageView_rapid=0x7f090013;
+        public static final int imageView_report_icon=0x7f090027;
         public static final int linearLayout_custom_list=0x7f090004;
-        public static final int linearLayout_modules_list_layout=0x7f090021;
-        public static final int listView_map_info_list=0x7f090020;
-        public static final int loginPage_button_login=0x7f09001b;
-        public static final int loginPage_exitText_user_name=0x7f090019;
-        public static final int loginPage_exitText_user_pass=0x7f09001a;
-        public static final int mapViewParentLinearLayout=0x7f09001e;
-        public static final int mapview=0x7f09001f;
-        public static final int menu_about=0x7f090029;
-        public static final int menu_approve=0x7f09002a;
-        public static final int menu_location=0x7f09002d;
-        public static final int menu_logout=0x7f09002e;
-        public static final int menu_reject=0x7f09002b;
-        public static final int menu_search=0x7f09002f;
-        public static final int menu_set_as_pending=0x7f09002c;
-        public static final int moduleFragment=0x7f09001c;
-        public static final int module_icon=0x7f090022;
-        public static final int separator=0x7f090028;
+        public static final int linearLayout_modules_list_layout=0x7f090022;
+        public static final int listView_map_info_list=0x7f090021;
+        public static final int loginPage_button_login=0x7f09001c;
+        public static final int loginPage_exitText_user_name=0x7f09001a;
+        public static final int loginPage_exitText_user_pass=0x7f09001b;
+        public static final int mapViewParentLinearLayout=0x7f09001f;
+        public static final int mapview=0x7f090020;
+        public static final int menu_about=0x7f09002a;
+        public static final int menu_approve=0x7f09002b;
+        public static final int menu_bar_graph=0x7f09002e;
+        public static final int menu_location=0x7f090030;
+        public static final int menu_logout=0x7f090031;
+        public static final int menu_pie_graph=0x7f09002f;
+        public static final int menu_reject=0x7f09002c;
+        public static final int menu_search=0x7f090032;
+        public static final int menu_set_as_pending=0x7f09002d;
+        public static final int moduleFragment=0x7f09001d;
+        public static final int module_icon=0x7f090023;
+        public static final int separator=0x7f090029;
         public static final int textView_about_field=0x7f090000;
         public static final int textView_about_value=0x7f090001;
         public static final int textView_approvals_info_field=0x7f090005;
         public static final int textView_approvals_info_value=0x7f090006;
         public static final int textView_approvals_item_name=0x7f090008;
-        public static final int textView_employee_field=0x7f09000d;
-        public static final int textView_employee_info_address=0x7f09000c;
-        public static final int textView_employee_info_name=0x7f09000b;
-        public static final int textView_employee_row_name=0x7f090011;
-        public static final int textView_employee_value=0x7f09000e;
-        public static final int textView_inventory_info_field=0x7f090013;
-        public static final int textView_inventory_info_value=0x7f090014;
-        public static final int textView_inventory_name=0x7f090018;
-        public static final int textView_map_employee_field=0x7f09000f;
-        public static final int textView_map_employee_value=0x7f090010;
-        public static final int textView_map_inventory_field=0x7f090015;
-        public static final int textView_map_inventory_value=0x7f090016;
-        public static final int textView_module_item2=0x7f090023;
-        public static final int textView_report_detail_field=0x7f090024;
-        public static final int textView_report_details_value=0x7f090025;
-        public static final int textView_report_item_name=0x7f090027;
+        public static final int textView_employee_field=0x7f09000e;
+        public static final int textView_employee_info_address=0x7f09000d;
+        public static final int textView_employee_info_name=0x7f09000c;
+        public static final int textView_employee_row_name=0x7f090012;
+        public static final int textView_employee_value=0x7f09000f;
+        public static final int textView_inventory_info_field=0x7f090014;
+        public static final int textView_inventory_info_value=0x7f090015;
+        public static final int textView_inventory_name=0x7f090019;
+        public static final int textView_map_employee_field=0x7f090010;
+        public static final int textView_map_employee_value=0x7f090011;
+        public static final int textView_map_inventory_field=0x7f090016;
+        public static final int textView_map_inventory_value=0x7f090017;
+        public static final int textView_module_item2=0x7f090024;
+        public static final int textView_report_detail_field=0x7f090025;
+        public static final int textView_report_details_value=0x7f090026;
+        public static final int textView_report_item_name=0x7f090028;
     }
     public static final class layout {
         public static final int about_footer_view_layout=0x7f030000;
@@ -123,37 +127,40 @@ public final class R {
         public static final int approvals_info_list_layout=0x7f030004;
         public static final int approvals_info_row_layout=0x7f030005;
         public static final int approvals_row_layout=0x7f030006;
-        public static final int custom_list_layout=0x7f030007;
-        public static final int employee_fragment_layout=0x7f030008;
-        public static final int employee_info_list_heading_layout=0x7f030009;
-        public static final int employee_info_row_layout=0x7f03000a;
-        public static final int employee_info_with_map_row_layout=0x7f03000b;
-        public static final int employee_row_layout=0x7f03000c;
-        public static final int home_layout=0x7f03000d;
-        public static final int inventory_info_row_layout=0x7f03000e;
-        public static final int inventory_info_with_map_row_layout=0x7f03000f;
-        public static final int inventory_row_layout=0x7f030010;
-        public static final int login_page=0x7f030011;
-        public static final int main_activity_layout=0x7f030012;
-        public static final int map_layout=0x7f030013;
-        public static final int module_list_heading_layout=0x7f030014;
-        public static final int module_list_layout=0x7f030015;
-        public static final int module_row_layout=0x7f030016;
-        public static final int report_details_row_layout=0x7f030017;
-        public static final int report_row_layout=0x7f030018;
-        public static final int separator_layout=0x7f030019;
-        public static final int settings_layout=0x7f03001a;
-        public static final int splash_screen_layout=0x7f03001b;
+        public static final int bar_graph_layout=0x7f030007;
+        public static final int custom_list_layout=0x7f030008;
+        public static final int employee_fragment_layout=0x7f030009;
+        public static final int employee_info_list_heading_layout=0x7f03000a;
+        public static final int employee_info_row_layout=0x7f03000b;
+        public static final int employee_info_with_map_row_layout=0x7f03000c;
+        public static final int employee_row_layout=0x7f03000d;
+        public static final int home_layout=0x7f03000e;
+        public static final int inventory_info_row_layout=0x7f03000f;
+        public static final int inventory_info_with_map_row_layout=0x7f030010;
+        public static final int inventory_row_layout=0x7f030011;
+        public static final int login_page=0x7f030012;
+        public static final int main_activity_layout=0x7f030013;
+        public static final int map_layout=0x7f030014;
+        public static final int module_list_heading_layout=0x7f030015;
+        public static final int module_list_layout=0x7f030016;
+        public static final int module_row_layout=0x7f030017;
+        public static final int report_detail_list_layout=0x7f030018;
+        public static final int report_details_row_layout=0x7f030019;
+        public static final int report_row_layout=0x7f03001a;
+        public static final int separator_layout=0x7f03001b;
+        public static final int settings_layout=0x7f03001c;
+        public static final int splash_screen_layout=0x7f03001d;
     }
     public static final class menu {
         public static final int menu_about=0x7f080000;
         public static final int menu_approvals_info=0x7f080001;
-        public static final int menu_location=0x7f080002;
-        public static final int menu_logout=0x7f080003;
-        public static final int menu_search=0x7f080004;
+        public static final int menu_graph=0x7f080002;
+        public static final int menu_location=0x7f080003;
+        public static final int menu_logout=0x7f080004;
+        public static final int menu_search=0x7f080005;
     }
     public static final class string {
-        public static final int about=0x7f05003b;
+        public static final int about=0x7f05003d;
         /** Menu Items Title for approvals_info 
          */
         public static final int action_approve=0x7f050018;
@@ -166,7 +173,7 @@ public final class R {
          */
         public static final int action_view_location=0x7f05001c;
         public static final int address=0x7f05000f;
-        public static final int app_label=0x7f05002c;
+        public static final int app_label=0x7f05002e;
         public static final int app_name=0x7f050001;
         public static final int apr=0x7f050022;
         public static final int aug=0x7f050026;
@@ -175,27 +182,27 @@ public final class R {
         public static final int button_reprocess_text=0x7f050004;
         public static final int copyright=0x7f050000;
         public static final int currentLocation=0x7f050010;
-        public static final int database_configurations=0x7f05002e;
+        public static final int database_configurations=0x7f050030;
         /**  Database Host Information 
          */
-        public static final int database_host=0x7f05002f;
-        public static final int database_host_dialog_title=0x7f050031;
-        public static final int database_host_summary=0x7f050030;
+        public static final int database_host=0x7f050031;
+        public static final int database_host_dialog_title=0x7f050033;
+        public static final int database_host_summary=0x7f050032;
         /**  Database Name 
          */
-        public static final int database_name=0x7f050032;
-        public static final int database_name_dialog_title=0x7f050034;
-        public static final int database_name_summary=0x7f050033;
+        public static final int database_name=0x7f050034;
+        public static final int database_name_dialog_title=0x7f050036;
+        public static final int database_name_summary=0x7f050035;
         /**  Database Password 
          */
-        public static final int database_pass=0x7f050038;
-        public static final int database_pass_dialog_title=0x7f05003a;
-        public static final int database_pass_summary=0x7f050039;
+        public static final int database_pass=0x7f05003a;
+        public static final int database_pass_dialog_title=0x7f05003c;
+        public static final int database_pass_summary=0x7f05003b;
         /**  Database User 
          */
-        public static final int database_user=0x7f050035;
-        public static final int database_user_dialog_title=0x7f050037;
-        public static final int database_user_summary=0x7f050036;
+        public static final int database_user=0x7f050037;
+        public static final int database_user_dialog_title=0x7f050039;
+        public static final int database_user_summary=0x7f050038;
         public static final int dateOfBirth=0x7f05000a;
         public static final int dec=0x7f05002a;
         public static final int department=0x7f05000b;
@@ -219,8 +226,10 @@ public final class R {
         public static final int phoneNumber=0x7f05000d;
         public static final int position=0x7f05000c;
         public static final int rapid=0x7f050011;
+        public static final int report_bar_graph=0x7f05002c;
         public static final int report_icon_description=0x7f05001d;
-        public static final int search_employees=0x7f05002d;
+        public static final int report_pie_graph=0x7f05002d;
+        public static final int search_employees=0x7f05002f;
         public static final int sep=0x7f050027;
         public static final int status=0x7f050007;
         public static final int totalRevenue=0x7f05002b;
